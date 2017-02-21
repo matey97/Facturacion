@@ -25,8 +25,9 @@ public abstract class Cliente {
         this.tarifa = tarifa;
     }
 
-
-    public abstract String getNombre();
+    public String getNombre(){
+        return nombre;
+    }
 
     public String getNIF(){
         return NIF;

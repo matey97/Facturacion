@@ -14,8 +14,5 @@ public class Empresa extends Cliente{
     public Empresa(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
         super(nombre,NIF,direccion,email,fecha,tarifa);
     }
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
+
 }
