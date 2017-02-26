@@ -1,4 +1,6 @@
-package facturacion;
+package facturacion.cliente;
+
+import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
 
@@ -37,7 +39,7 @@ public abstract class Cliente {
         return direccion;
     }
 
-    public String email(){
+    public String getEmail(){
         return email;
     }
 
@@ -47,5 +49,14 @@ public abstract class Cliente {
 
     public Tarifa getTarifa(){
         return tarifa;
+    }
+
+    public String toString() {
+        return "Nombre: "+ getNombre()+"\n" +
+                "NIF: "+ getNIF()+"\n"+
+                "Dirección: "+ getDireccion()+"\n"+
+                "Email: "+ getEmail()+"\n"+
+                "Fecha: "+ getFecha()+"\n"+
+                "Tarifa: "+ getTarifa();
     }
 }

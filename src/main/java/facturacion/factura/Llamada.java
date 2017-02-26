@@ -1,4 +1,4 @@
-package facturacion;
+package facturacion.factura;
 
 import java.time.LocalDateTime;
 
