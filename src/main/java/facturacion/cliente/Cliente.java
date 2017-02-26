@@ -1,4 +1,6 @@
-package facturacion;
+package facturacion.cliente;
+
+import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
 

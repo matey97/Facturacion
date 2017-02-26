@@ -1,4 +1,6 @@
-package facturacion;
+package facturacion.cliente;
+
+import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
 
@@ -13,8 +15,9 @@ public class Particular extends Cliente {
         super();
     }
 
-    public Particular(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
+    public Particular(String nombre,String apellidos, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
         super(nombre,NIF,direccion,email,fecha,tarifa);
+        this.apellidos=apellidos;
     }
 
     @Override
