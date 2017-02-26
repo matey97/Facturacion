@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class Empresas implements Clientes {
 
-    private HashMap<String,Cliente> empresas=new HashMap<>();
+    private HashMap<String,Cliente> empresas;
 
     public Empresas(){
         empresas=new HashMap<>();
