@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 21/2/17.
  */
-public class Facturas {
+public class Factura {
 
     private int codfac;
     private Tarifa tarifa;
@@ -13,7 +13,7 @@ public class Facturas {
     private LocalDateTime Periodofact;
     private int importe;
 
-    public Facturas(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, LocalDateTime periodofact, int importe) {
+    public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, LocalDateTime periodofact,int importe) {
         this.codfac = codfac;
         this.tarifa = tarifa;
         this.fechaDeEmision = fechaDeEmision;
@@ -30,7 +30,7 @@ public class Facturas {
         return tarifa;
     }
 
-    public LocalDateTime getFechaDeEmision() {
+    public LocalDateTime getFecha() {
         return fechaDeEmision;
     }
 

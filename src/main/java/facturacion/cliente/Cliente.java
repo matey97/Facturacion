@@ -52,7 +52,7 @@ public abstract class Cliente {
     }
 
     public String toString() {
-        return "Nombre: "+ getNombre()+"\n" +
+        return  "Nombre: "+ getNombre()+"\n" +
                 "NIF: "+ getNIF()+"\n"+
                 "Dirección: "+ getDireccion()+"\n"+
                 "Email: "+ getEmail()+"\n"+

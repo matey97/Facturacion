@@ -1,7 +1,7 @@
 package facturacion.colecciones;
 
 import facturacion.cliente.Cliente;
-
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class Particulares implements Clientes{
 
-    private HashMap<String,Cliente> particular;
+    private HashMap<String,Cliente> particulares;
 
     public Particulares() {
        HashMap<String, Cliente> particular = new HashMap<String,Cliente>();
@@ -17,7 +17,7 @@ public class Particulares implements Clientes{
 
     @java.lang.Override
     public boolean existeCliente(Cliente cliente) {
-        if(particular.containsKey(cliente.getNIF())){
+        if(particulares.containsKey(cliente.getNIF())){
             return true;
         }
         return false;
@@ -26,7 +26,7 @@ public class Particulares implements Clientes{
     @java.lang.Override
     public boolean añadirCliente(Cliente cliente) {
         if (!existeCliente(cliente)){
-            particular.put(cliente.getNIF(),cliente);//revisar implementación encontrar error.
+            particulares.put(cliente.getNIF(),cliente);//revisar implementación encontrar error.
             return true;
         }
         return false;
@@ -34,8 +34,8 @@ public class Particulares implements Clientes{
 
     @java.lang.Override
     public boolean borrarCliente(Cliente cliente) {
-        if( particular.containsKey(cliente.getNIF(),cliente)){
-            particular.remove(cliente.getNIF());
+        if( particulares.containsKey(cliente.getNIF())){
+            particulares.remove(cliente.getNIF());
             return true;
         }
         return false;
@@ -43,8 +43,8 @@ public class Particulares implements Clientes{
 
     @java.lang.Override
     public boolean cambiarTarifa(Cliente cliente, int precioMinuto) {
-        if(particular.containsKey(cliente.getNIF())){
-            Cliente aux =particular.get(cliente.getNIF());
+        if(particulares.containsKey(cliente.getNIF())){
+            Cliente aux = particulares.get(cliente.getNIF());
             aux.getTarifa().setPrecioMinuto(precioMinuto);
             return true;
         }
@@ -53,15 +53,14 @@ public class Particulares implements Clientes{
 
     @java.lang.Override
     public Cliente getDatosCliente(String NIF) {
-        if(particular.containsKey(NIF)) {
-            return particular.get(NIF);
-
+        if(particulares.containsKey(NIF))
+            return particulares.get(NIF);
         return null;
     }
 
 
     @java.lang.Override
     public Collection<Cliente> getListadoClientes() {
-        return particular.values();
+        return particulares.values();
     }
 }
