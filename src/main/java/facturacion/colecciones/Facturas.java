@@ -27,7 +27,7 @@ public class Facturas {
         for (Llamada llamada : llamadas.listarLlamadas(cliente)){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
-        Factura aux=new Factura(contador++,cliente.getTarifa(),,,importe); //No se como poner las fechas...
+        Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),,importe); //Fecha facturacion?
         if (!facturas.containsKey(cliente.getNIF()))
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);
