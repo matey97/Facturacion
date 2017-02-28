@@ -15,22 +15,18 @@ public class OperacionesLlamadas {
     private int duracion;
     private ColeccionLlamadas llamadas=new ColeccionLlamadas();
 
-    public OperacionesLlamadas(int telefono, LocalDateTime fecha, int duracion) {
-        this.telefono = telefono;
-        this.fecha = fecha;
-        this.duracion = duracion;
-    }
+
 
     public void darDeAltaLlamada(Llamada llamada){
-        Scanner sc = new Scanner(System.in)
+        Scanner sc = new Scanner(System.in);
         System.out.println("introduce NIF del cliente:  ");
-        String nif = sc.toString();
+        String nif = sc.next();
         llamadas.darDeAlta(nif,llamada);
 
 
     }
     public void pedirDatosLlamada(){
-        Scanner sc = new Scanner(System.in)
+        Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el telefono: ");
         int telefono = sc.nextInt();
         System.out.println("Introduce la duración: ");
@@ -41,4 +37,14 @@ public class OperacionesLlamadas {
         darDeAltaLlamada(nuevaLlamada);
 
     }
+    public void listadoLlamadascliente(){
+
+    Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el NIF del cliente:  ");
+        String nif = sc.next();// hay que acceder a la coleccion comprobar las coincidentes con el nif
+                                // e imprimir usando un bucle.
+
+
+    }
+
 }

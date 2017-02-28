@@ -88,6 +88,7 @@ public class Menu {
                             opLlamada.pedirDatosLlamada();
                             break;
                         case 2:
+                            opLlamada.listadoLlamadascliente();
                             break;
                         default:
                             break;
