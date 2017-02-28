@@ -17,13 +17,13 @@ public class ColeccionLlamadas {
         llamadas=new HashMap<>();
     }
 
-    public void darDeAlta(Cliente cliente, Llamada llamada){
-        if (!llamadas.containsKey(cliente.getNIF()))
-            llamadas.put(cliente.getNIF(),new LinkedList<>());
-        llamadas.get(cliente.getNIF()).add(llamada);
+    public void darDeAlta(String nif, Llamada llamada){
+        if (!llamadas.containsKey(nif))
+            llamadas.put(nif,new LinkedList<>());
+        llamadas.get(nif).add(llamada);
     }
 
-    public LinkedList<Llamada> listarLlamadas(Cliente cliente){
-        return llamadas.get(cliente.getNIF());
+    public LinkedList<Llamada> listarLlamadas(String nif){
+        return llamadas.get(nif);
     }
 }

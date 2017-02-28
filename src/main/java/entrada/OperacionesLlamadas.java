@@ -21,20 +21,24 @@ public class OperacionesLlamadas {
         this.duracion = duracion;
     }
 
-    public void darDeAltaLlamada(int telefono, int  duracion){
-        LocalDateTime fecha = LocalDateTime.now();
-        telefono = telefono;
-        duracion = duracion;
-        Llamada nuevaLlamada = new Llamada(telefono,fecha, duracion);
-        llamadas.darDeAlta(,Llamada);
+    public void darDeAltaLlamada(Llamada llamada){
+        Scanner sc = new Scanner(System.in)
+        System.out.println("introduce NIF del cliente:  ");
+        String nif = sc.toString();
+        llamadas.darDeAlta(nif,llamada);
 
 
     }
     public Llamada pedirDatosLlamada(){
-        System.out.println("Introduce");
-
+        Scanner sc = new Scanner(System.in)
+        System.out.println("Introduce el telefono : ");
+        int telefono = sc.nextInt();
+        System.out.println("Introduce la duración: ");
+        int duracion = sc.nextInt();
+        LocalDateTime fecha = LocalDateTime.now();
 
         Llamada nuevaLlamada= new Llamada(telefono,fecha, duracion);
+        darDeAltaLlamada(nuevaLlamada);
         return nuevaLlamada;
     }
 }
