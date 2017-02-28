@@ -29,9 +29,9 @@ public class OperacionesLlamadas {
 
 
     }
-    public Llamada pedirDatosLlamada(){
+    public void pedirDatosLlamada(){
         Scanner sc = new Scanner(System.in)
-        System.out.println("Introduce el telefono : ");
+        System.out.println("Introduce el telefono: ");
         int telefono = sc.nextInt();
         System.out.println("Introduce la duración: ");
         int duracion = sc.nextInt();
@@ -39,6 +39,6 @@ public class OperacionesLlamadas {
 
         Llamada nuevaLlamada= new Llamada(telefono,fecha, duracion);
         darDeAltaLlamada(nuevaLlamada);
-        return nuevaLlamada;
+
     }
 }

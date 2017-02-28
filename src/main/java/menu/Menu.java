@@ -1,6 +1,7 @@
 package menu;
 
 import entrada.OperacionesCliente;
+import entrada.OperacionesLlamadas;
 import facturacion.colecciones.ColeccionClientes;
 import facturacion.colecciones.ColeccionEmpresas;
 import facturacion.colecciones.ColeccionParticulares;
@@ -78,11 +79,13 @@ public class Menu {
                     }
                     break;
                 case 2:
+                    OperacionesLlamadas opLlamada = new OperacionesLlamadas();
                     System.out.println("Introduce 1 para --> Dar de alta una llamada");
                     System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
+                            opLlamada.pedirDatosLlamada();
                             break;
                         case 2:
                             break;
