@@ -90,4 +90,17 @@ public class OperacionesCliente {
         if(clientes.cambiarTarifa(NIF,precio))
             System.out.println("Tarifa cambiada con exito.");
     }
+
+    public void obtenerDatos(ColeccionClientes clientes){
+        System.out.println("Introduce NIF del cliente: ");
+        NIF=sc.next();
+        System.out.println(clientes.getDatosCliente(NIF));
+    }
+
+    public void obtenerListado(ColeccionClientes clientes){
+        for (Cliente cliente : clientes.getListadoClientes()){
+            System.out.println(cliente);
+            System.out.println("");
+        }
+    }
 }

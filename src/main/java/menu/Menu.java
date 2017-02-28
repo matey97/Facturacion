@@ -33,9 +33,9 @@ public class Menu {
                     System.out.println("Introduce 4 para --> Obtener datos de cliente a partir de DNI");
                     System.out.println("Introduce 5 para --> Listado de clientes");
                     n = sc.nextInt();
+                    int m;
                     switch (n) {
                         case 1:
-                            int m;
                             System.out.println("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa");
                             m = sc.nextInt();
                             switch (m) {
@@ -46,6 +46,7 @@ public class Menu {
                                     opCliente.nuevoCliente(empresas, m);
                                     break;
                             }
+                            break;
                         case 2:
                             System.out.println("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa");
                             m = sc.nextInt();
@@ -63,18 +64,31 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    opCliente.nuevoCliente(particulares, m);
+                                    opCliente.cambiarTarifa(particulares);
                                     break;
                                 case 2:
-                                    opCliente.nuevoCliente(empresas, m);
+                                    opCliente.cambiarTarifa(empresas);
                                     break;
                             }
                             break;
                         case 4:
+                            System.out.println("Introduce 1 si quieres obtener los datos de  un particular, o 2 si a una empresa");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    opCliente.obtenerDatos(particulares);
+                                    break;
+                                case 2:
+                                    opCliente.obtenerDatos(empresas);
+                                    break;
+                            }
                             break;
                         case 5:
-                            break;
-                        default:
+                            System.out.println("Listado de particulares:");
+                            opCliente.obtenerListado(particulares);
+                            System.out.println("");
+                            System.out.println("Listado de empresas:");
+                            opCliente.obtenerListado(empresas);
                             break;
                     }
                     break;
