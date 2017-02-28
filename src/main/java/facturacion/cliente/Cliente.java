@@ -54,7 +54,7 @@ public abstract class Cliente {
     public String toString() {
         return  "Nombre: "+ getNombre()+"\n" +
                 "NIF: "+ getNIF()+"\n"+
-                "Dirección: "+ getDireccion()+"\n"+
+                "Dirección: "+"\n"+
                 "Email: "+ getEmail()+"\n"+
                 "Fecha: "+ getFecha()+"\n"+
                 "Tarifa: "+ getTarifa().getPrecioMinuto();

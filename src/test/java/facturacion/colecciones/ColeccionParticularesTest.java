@@ -1,0 +1,81 @@
+package facturacion.colecciones;
+
+import facturacion.cliente.Cliente;
+import facturacion.cliente.Direccion;
+import facturacion.cliente.Particular;
+import facturacion.factura.Tarifa;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
+
+
+/**
+ * Created by user on 28/02/17.
+ */
+public class ColeccionParticularesTest {
+
+    private static ColeccionParticulares particulares;
+    private static Cliente cliente1, cliente2;
+
+    @BeforeClass
+    public static void init(){
+        particulares=new ColeccionParticulares();
+        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),new Tarifa(5));
+        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.now(),new Tarifa(3));
+    }
+
+    @AfterClass
+    public static void end(){
+        particulares=null;
+        cliente1=null;
+
+    }
+
+    @Test
+    public void añadirClienteTest(){
+        assertTrue(particulares.añadirCliente(cliente1));
+
+        assertTrue(particulares.añadirCliente(cliente2));
+    }
+
+    @Test
+    public void existeClienteTest(){
+        assertTrue(particulares.existeCliente("73402320M"));
+        assertTrue(!particulares.existeCliente("0000"));
+        assertTrue(particulares.existeCliente("53649080T"));
+    }
+
+    @Test
+    public void getDatosClienteTest(){
+        assertEquals(particulares.getDatosCliente("73402320M"),cliente1);
+        assertNotEquals(particulares.getDatosCliente("73402320M"),cliente2);
+        assertEquals(particulares.getDatosCliente("53649080T"),cliente2);
+
+    }
+
+    @Test
+    public void cambiarTarifaTest(){
+        int n=7;
+        particulares.cambiarTarifa("73402320M",n);
+        particulares.cambiarTarifa("53649080T",n+3);
+
+        assertThat(particulares.getDatosCliente("53649080T").getTarifa().getPrecioMinuto(),is(n+3));
+        assertThat(particulares.getDatosCliente("73402320M").getTarifa().getPrecioMinuto(),is(n));
+    }
+
+    @Test
+    public void getListadoClientesTest(){
+        assertTrue(particulares.getListadoClientes().contains(cliente1));
+        assertTrue(particulares.getListadoClientes().contains(cliente2));
+    }
+
+
+}
