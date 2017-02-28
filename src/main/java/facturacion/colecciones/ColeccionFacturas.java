@@ -21,12 +21,12 @@ public class ColeccionFacturas {
         contador=1;
     }
 
-    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas){
+    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
         int importe=0;
         for (Llamada llamada : llamadas.listarLlamadas(cliente)){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
-        Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),,importe); //Fecha facturacion?
+        Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
         if (!facturas.containsKey(cliente.getNIF()))
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);
