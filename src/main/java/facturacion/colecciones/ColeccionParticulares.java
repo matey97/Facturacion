@@ -26,7 +26,7 @@ public class ColeccionParticulares implements ColeccionClientes {
     @java.lang.Override
     public boolean añadirCliente(Cliente cliente) {
         if (!existeCliente(cliente.getNIF())){
-            particulares.put(cliente.getNIF(),cliente);//revisar implementación encontrar error.
+            particulares.put(cliente.getNIF(),cliente);
             return true;
         }
         return false;

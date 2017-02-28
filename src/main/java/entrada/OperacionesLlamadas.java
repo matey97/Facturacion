@@ -2,6 +2,9 @@ package entrada;
 
 import facturacion.colecciones.ColeccionLlamadas;
 import facturacion.factura.Llamada;
+
+import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 import java.time.LocalDateTime;
@@ -13,7 +16,7 @@ public class OperacionesLlamadas {
     private int telefono;
     private LocalDateTime fecha;
     private int duracion;
-    private ColeccionLlamadas llamadas=new ColeccionLlamadas();
+    private ColeccionLlamadas llamadas;
 
 
 
@@ -38,11 +41,15 @@ public class OperacionesLlamadas {
 
     }
     public void listadoLlamadascliente(){
-
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el NIF del cliente:  ");
-        String nif = sc.next();// hay que acceder a la coleccion comprobar las coincidentes con el nif
-                                // e imprimir usando un bucle.
+        String nif = sc.next();
+        llamadas =new ColeccionLlamadas();
+        ListIterator lista= llamadas.listarLlamadas(nif).listIterator();
+        while (lista.hasNext()){
+            System.out.println(lista.next().toString());
+        }
+
 
 
     }
