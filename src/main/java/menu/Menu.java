@@ -1,5 +1,7 @@
 package menu;
 
+import entrada.OperacionesCliente;
+
 import java.util.Scanner;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Scanner;
 public class Menu {
 
     public static void main(String[] args) {
+        OperacionesCliente opCliente=new OperacionesCliente();
         Scanner sc = new Scanner(System.in);
         System.out.println("¿Que tipo de gestión quieres realizar?");
         System.out.println("");
@@ -25,6 +28,7 @@ public class Menu {
                 n=sc.nextInt();
                 switch (n){
                     case 1:
+                        opCliente.nuevoCliente();
                         break;
                     case 2:
                         break;

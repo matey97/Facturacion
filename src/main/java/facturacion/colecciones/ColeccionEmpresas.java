@@ -1,7 +1,6 @@
 package facturacion.colecciones;
 
 import facturacion.cliente.Cliente;
-import facturacion.cliente.Empresa;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,11 +8,11 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public class Empresas implements Clientes {
+public class ColeccionEmpresas implements ColeccionClientes {
 
     private HashMap<String,Cliente> empresas;
 
-    public Empresas(){
+    public ColeccionEmpresas(){
         empresas=new HashMap<>();
     }
 

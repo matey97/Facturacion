@@ -7,11 +7,11 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public class Particulares implements Clientes{
+public class ColeccionParticulares implements ColeccionClientes {
 
     private HashMap<String,Cliente> particulares;
 
-    public Particulares() {
+    public ColeccionParticulares() {
        HashMap<String, Cliente> particular = new HashMap<String,Cliente>();
     }
 

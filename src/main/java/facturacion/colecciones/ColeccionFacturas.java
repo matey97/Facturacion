@@ -7,22 +7,21 @@ import facturacion.factura.Llamada;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 /**
  * Created by user on 27/02/17.
  */
-public class Facturas {
+public class ColeccionFacturas {
 
     private HashMap<String,HashMap<Integer,Factura>> facturas;
     private static int contador;
 
-    public Facturas(){
+    public ColeccionFacturas(){
         facturas=new HashMap<>();
         contador=1;
     }
 
-    public Factura emitirFactura(Cliente cliente, Llamadas llamadas){
+    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas){
         int importe=0;
         for (Llamada llamada : llamadas.listarLlamadas(cliente)){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();

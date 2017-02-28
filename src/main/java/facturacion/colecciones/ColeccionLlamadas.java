@@ -9,11 +9,11 @@ import java.util.LinkedList;
 /**
  * Created by user on 27/02/17.
  */
-public class Llamadas {
+public class ColeccionLlamadas {
 
     private HashMap<String,LinkedList<Llamada>> llamadas;
 
-    public Llamadas(){
+    public ColeccionLlamadas(){
         llamadas=new HashMap<>();
     }
 

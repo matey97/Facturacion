@@ -7,7 +7,7 @@ import java.util.Collection;
 /**
  * Created by user on 26/02/17.
  */
-public interface Clientes {
+public interface ColeccionClientes {
     public boolean existeCliente(Cliente cliente);
     public boolean añadirCliente(Cliente cliente);
     public boolean borrarCliente(Cliente cliente);
