@@ -57,6 +57,6 @@ public abstract class Cliente {
                 "Dirección: "+ getDireccion()+"\n"+
                 "Email: "+ getEmail()+"\n"+
                 "Fecha: "+ getFecha()+"\n"+
-                "Tarifa: "+ getTarifa();
+                "Tarifa: "+ getTarifa().getPrecioMinuto();
     }
 }
