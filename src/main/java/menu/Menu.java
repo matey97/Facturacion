@@ -34,19 +34,40 @@ public class Menu {
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
+                            int m;
                             System.out.println("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa");
-                            n = sc.nextInt();
-                            switch (n) {
+                            m = sc.nextInt();
+                            switch (m) {
                                 case 1:
-                                    opCliente.nuevoCliente(particulares, n);
+                                    opCliente.nuevoCliente(particulares, m);
                                     break;
                                 case 2:
-                                    opCliente.nuevoCliente(empresas, n);
+                                    opCliente.nuevoCliente(empresas, m);
                                     break;
                             }
                         case 2:
+                            System.out.println("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    opCliente.borrarCliente(particulares);
+                                    break;
+                                case 2:
+                                    opCliente.borrarCliente(empresas);
+                                    break;
+                            }
                             break;
                         case 3:
+                            System.out.println("Introduce 1 si quieres cambiar la tarifa a un particular, o 2 si a una empresa");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    opCliente.nuevoCliente(particulares, m);
+                                    break;
+                                case 2:
+                                    opCliente.nuevoCliente(empresas, m);
+                                    break;
+                            }
                             break;
                         case 4:
                             break;

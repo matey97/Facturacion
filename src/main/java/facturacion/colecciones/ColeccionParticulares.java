@@ -16,8 +16,8 @@ public class ColeccionParticulares implements ColeccionClientes {
     }
 
     @java.lang.Override
-    public boolean existeCliente(Cliente cliente) {
-        if(particulares.containsKey(cliente.getNIF())){
+    public boolean existeCliente(String NIF) {
+        if(particulares.containsKey(NIF)){
             return true;
         }
         return false;
@@ -25,7 +25,7 @@ public class ColeccionParticulares implements ColeccionClientes {
 
     @java.lang.Override
     public boolean añadirCliente(Cliente cliente) {
-        if (!existeCliente(cliente)){
+        if (!existeCliente(cliente.getNIF())){
             particulares.put(cliente.getNIF(),cliente);//revisar implementación encontrar error.
             return true;
         }
@@ -33,18 +33,18 @@ public class ColeccionParticulares implements ColeccionClientes {
     }
 
     @java.lang.Override
-    public boolean borrarCliente(Cliente cliente) {
-        if( particulares.containsKey(cliente.getNIF())){
-            particulares.remove(cliente.getNIF());
+    public boolean borrarCliente(String NIF) {
+        if( particulares.containsKey(NIF)){
+            particulares.remove(NIF);
             return true;
         }
         return false;
     }
 
     @java.lang.Override
-    public boolean cambiarTarifa(Cliente cliente, int precioMinuto) {
-        if(particulares.containsKey(cliente.getNIF())){
-            Cliente aux = particulares.get(cliente.getNIF());
+    public boolean cambiarTarifa(String NIF, int precioMinuto) {
+        if(particulares.containsKey(NIF)){
+            Cliente aux = particulares.get(NIF);
             aux.getTarifa().setPrecioMinuto(precioMinuto);
             return true;
         }
