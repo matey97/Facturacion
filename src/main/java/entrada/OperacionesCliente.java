@@ -67,7 +67,27 @@ public class OperacionesCliente {
             cliente = new Empresa(nombre,NIF,direccion,email,LocalDateTime.now(),tarifa);
         }
 
-        clientes.añadirCliente(cliente);
+        if (clientes.añadirCliente(cliente))
+            System.out.println("Añadido con exito.");
 
+    }
+
+    public void borrarCliente(ColeccionClientes clientes){
+        System.out.println("Introduce NIF del cliente a borrar: ");
+        NIF=sc.next();
+
+        if(clientes.borrarCliente(NIF))
+            System.out.println("Borrado con exito.");
+
+    }
+
+    public void cambiarTarifa(ColeccionClientes clientes){
+        System.out.println("Introduce NIF del cliente para cambiar la tarifa: ");
+        NIF=sc.next();
+        System.out.println("Introduce la nueva tarifa: ");
+        int precio=sc.nextInt();
+
+        if(clientes.cambiarTarifa(NIF,precio))
+            System.out.println("Tarifa cambiada con exito.");
     }
 }
