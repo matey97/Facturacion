@@ -32,4 +32,9 @@ public class Llamada {
     public int getDuración() {
         return duracion;
     }
+    @Override
+    public String toString(){
+        return("Llamada realizada al telefono:"+this.telefono+"con duración:"+ this.duracion+" a fecha de: "+this.fecha);
+    }
+
 }
