@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -73,8 +74,13 @@ public class ColeccionParticularesTest {
 
     @Test
     public void getListadoClientesTest(){
-        assertTrue(particulares.getListadoClientes().contains(cliente1));
-        assertTrue(particulares.getListadoClientes().contains(cliente2));
+        int i=0;
+        List<Cliente> l = new ArrayList<>();
+        l.add(cliente1);
+        l.add(cliente2);
+        for (Cliente particular : particulares.getListadoClientes()){
+            assertEquals(particular,l.get(i++));
+        }
     }
 
 

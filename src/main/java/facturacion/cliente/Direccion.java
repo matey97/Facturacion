@@ -17,6 +17,7 @@ public class Direccion {
     public String getDireccion(){
         return codPostal+", "+poblacion+", "+provincia;
     }
+
     @Override
     public String toString(){
         return codPostal+", "+poblacion+", "+provincia;
