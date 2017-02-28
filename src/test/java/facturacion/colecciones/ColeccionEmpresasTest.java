@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 /**
  * Created by user on 28/02/17.
  */
-public class ColeccionEmpresasTest {
+public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     private static ColeccionEmpresas empresas;
     private static Cliente empresa1, empresa2;

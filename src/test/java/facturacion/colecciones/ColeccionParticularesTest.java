@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 /**
  * Created by user on 28/02/17.
  */
-public class ColeccionParticularesTest {
+public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     private static ColeccionParticulares particulares;
     private static Cliente cliente1, cliente2;

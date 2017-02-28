@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by user on 28/02/17.
  */
-public class DireccionTest {
+public class DireccionTest { //Test de Direccion
 
     private static Direccion direccion;
 
