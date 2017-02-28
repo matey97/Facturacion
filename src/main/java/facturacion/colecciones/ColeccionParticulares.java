@@ -12,7 +12,7 @@ public class ColeccionParticulares implements ColeccionClientes {
     private HashMap<String,Cliente> particulares;
 
     public ColeccionParticulares() {
-       HashMap<String, Cliente> particular = new HashMap<String,Cliente>();
+       particulares = new HashMap<String,Cliente>();
     }
 
     @java.lang.Override
