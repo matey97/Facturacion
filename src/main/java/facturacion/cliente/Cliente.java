@@ -1,5 +1,6 @@
 package facturacion.cliente;
 
+import facturacion.Fecha;
 import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
 /**
  * Created by al341802 on 21/02/17.
  */
-public abstract class Cliente {
+public abstract class Cliente implements Fecha{
     private String nombre;
     private String NIF;
     private Direccion direccion;
@@ -43,6 +44,7 @@ public abstract class Cliente {
         return email;
     }
 
+    @Override
     public LocalDateTime getFecha(){
         return fecha;
     }

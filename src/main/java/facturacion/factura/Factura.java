@@ -1,12 +1,14 @@
 package facturacion.factura;
 
+import facturacion.Fecha;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 21/2/17.
  */
-public class Factura {
+public class Factura implements Fecha{
 
     private int codfac;
     private Tarifa tarifa;
@@ -31,6 +33,7 @@ public class Factura {
         return tarifa;
     }
 
+    @Override
     public LocalDateTime getFecha() {
         return fechaDeEmision;
     }
@@ -47,7 +50,4 @@ public class Factura {
         this.importe = importe;
     }
 
-    private int calcularaImporte(int importe){
-        return 0;
-    }
 }

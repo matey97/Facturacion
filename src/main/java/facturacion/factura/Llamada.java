@@ -1,11 +1,13 @@
 package facturacion.factura;
 
+import facturacion.Fecha;
+
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 21/2/17.
  */
-public class Llamada {
+public class Llamada implements Fecha{
 
     private int telefono;
     private LocalDateTime fecha;
@@ -24,6 +26,7 @@ public class Llamada {
         return telefono;
     }
 
+    @Override
     public LocalDateTime getFecha() {
 
         return fecha;
@@ -32,6 +35,7 @@ public class Llamada {
     public int getDuración() {
         return duracion;
     }
+
     @Override
     public String toString(){
         return("Llamada realizada al telefono:"+this.telefono+"con duración:"+ this.duracion+" a fecha de: "+this.fecha);
