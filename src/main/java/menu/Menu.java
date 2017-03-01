@@ -1,11 +1,16 @@
 package menu;
 
-import entrada.OperacionesCliente;
 import entrada.OperacionesLlamadas;
+import facturacion.cliente.Cliente;
+import facturacion.cliente.Direccion;
+import facturacion.cliente.Empresa;
+import facturacion.cliente.Particular;
 import facturacion.colecciones.ColeccionClientes;
 import facturacion.colecciones.ColeccionEmpresas;
 import facturacion.colecciones.ColeccionParticulares;
+import facturacion.factura.Tarifa;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 /**
  * Created by al341802 on 21/02/17.
@@ -13,7 +18,6 @@ import java.util.Scanner;
 public class Menu {
 
     public static void main(String[] args) {
-        OperacionesCliente opCliente=new OperacionesCliente();
         ColeccionClientes particulares = new ColeccionParticulares();
         ColeccionClientes empresas= new ColeccionEmpresas();
         Scanner sc = new Scanner(System.in);
@@ -40,10 +44,16 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    opCliente.nuevoCliente(particulares, m);
+                                    if(particulares.añadirCliente(entradaDatosCliente(m)))
+                                        System.out.println("Cliente añadido con exito.");
+                                    else
+                                        System.out.println("No se ha añadido el cliente.");
                                     break;
                                 case 2:
-                                    opCliente.nuevoCliente(empresas, m);
+                                    if(empresas.añadirCliente(entradaDatosCliente(m)))
+                                        System.out.println("Cliente añadido con exito.");
+                                    else
+                                        System.out.println("No se ha añadido el cliente.");
                                     break;
                             }
                             break;
@@ -52,10 +62,16 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    opCliente.borrarCliente(particulares);
+                                    if(particulares.borrarCliente(entradaDatosNIF()))
+                                        System.out.println("Cliente borrado con exito.");
+                                    else
+                                        System.out.println("No se pudo borrar el cliente.");
                                     break;
                                 case 2:
-                                    opCliente.borrarCliente(empresas);
+                                    if(particulares.borrarCliente(entradaDatosNIF()))
+                                        System.out.println("Cliente borrado con exito.");
+                                    else
+                                        System.out.println("No se pudo borrar el cliente.");
                                     break;
                             }
                             break;
@@ -64,10 +80,16 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    opCliente.cambiarTarifa(particulares);
+                                    if(particulares.cambiarTarifa(entradaDatosNIF(),entradaDatosPrecioMinuto()))
+                                        System.out.println("Tarifa actualizada con exito.");
+                                    else
+                                        System.out.println("No se pudo acutalizar la tarifa.");
                                     break;
                                 case 2:
-                                    opCliente.cambiarTarifa(empresas);
+                                    if(empresas.cambiarTarifa(entradaDatosNIF(),entradaDatosPrecioMinuto()))
+                                        System.out.println("Tarifa actualizada con exito.");
+                                    else
+                                        System.out.println("No se pudo acutalizar la tarifa.");
                                     break;
                             }
                             break;
@@ -76,19 +98,26 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    opCliente.obtenerDatos(particulares);
+                                    System.out.println(particulares.getDatosCliente(entradaDatosNIF()));
                                     break;
                                 case 2:
-                                    opCliente.obtenerDatos(empresas);
+                                    System.out.println(empresas.getDatosCliente(entradaDatosNIF()));
                                     break;
                             }
                             break;
                         case 5:
                             System.out.println("Listado de particulares:");
-                            opCliente.obtenerListado(particulares);
                             System.out.println("");
+                            for (Cliente cliente : particulares.getListadoClientes()){
+                                System.out.println(cliente);
+                                System.out.println("");
+                            }
                             System.out.println("Listado de empresas:");
-                            opCliente.obtenerListado(empresas);
+                            System.out.println("");
+                            for (Cliente cliente : empresas.getListadoClientes()){
+                                System.out.println(cliente);
+                                System.out.println("");
+                            }
                             break;
                     }
                     break;
@@ -131,5 +160,61 @@ public class Menu {
             }
         }while(n!=0);
 
+    }
+
+    private static Cliente entradaDatosCliente(int n){  //Pide por teclado los datos de un Cliente
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce nombre del cliente: ");
+        String nombre=sc.nextLine();
+        String apellidos=null;
+        if (n==1){
+            System.out.println("Introduce apellidos del cliente: ");
+            apellidos=sc.nextLine();
+        }
+
+        String NIF=entradaDatosNIF();
+
+        System.out.println("Introduce el codigo postal: ");
+        int codPostal=sc.nextInt();
+
+        System.out.println("Introduce la población: ");
+        sc.nextLine();
+        String poblacion=sc.nextLine();
+
+        System.out.println("Introduce la provincia: ");
+        String provincia=sc.nextLine();
+
+        Direccion direccion=new Direccion(codPostal,provincia,poblacion);
+
+        System.out.println("Introduce E-mail del cliente: ");
+        String email=sc.nextLine();
+
+        System.out.println("Introduce la tarifa del cliente: ");
+        Tarifa tarifa=new Tarifa(sc.nextInt());
+
+        sc.nextLine();
+
+
+        Cliente cliente;
+
+        if (n==1) {
+            cliente = new Particular(nombre, apellidos, NIF, direccion, email, LocalDateTime.now(), tarifa);
+        }else{
+            cliente = new Empresa(nombre,NIF,direccion,email,LocalDateTime.now(),tarifa);
+        }
+
+        return cliente;
+    }
+
+    private static String entradaDatosNIF(){ //Pide por teclado un NIF
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce NIF del cliente: ");
+        return sc.nextLine();
+    }
+
+    private static int entradaDatosPrecioMinuto(){ //Pide por teclado un precioPorMinuto
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce la nueva tarifa: ");
+        return sc.nextInt();
     }
 }

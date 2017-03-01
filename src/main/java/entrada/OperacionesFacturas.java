@@ -15,11 +15,12 @@ public class OperacionesFacturas {
         System.out.println("Introduce nifcliente:");
                     System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
                     System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
+                    return null; //Pongo el return por el error al compilar
     }
     public void mostrarDatosFactura(){// devuelve los atributos de la factura por pantallausando toString
 
     }
-    public _____ listadoFacturasCliente(){
+/*    public _____ listadoFacturasCliente(){ Comento para que no haya error al compilar
 
-    }
+    }*/
 }
