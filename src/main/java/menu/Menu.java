@@ -12,6 +12,7 @@ import facturacion.factura.Llamada;
 import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Scanner;
 /**
@@ -131,10 +132,11 @@ public class Menu {
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
-                            pedirDatosLlamada();
+                            llamadas.darDeAlta(entradaDatosNIF(),pedirDatosLlamada());
                             break;
                         case 2:
-                            listadoLlamadascliente();
+                            ;
+                            imprimirLista(listadoLlamadascliente(llamadas))
                             break;
                         default:
                             break;
@@ -221,7 +223,7 @@ public class Menu {
         return sc.nextInt();
     }
 
-    private static void pedirDatosLlamada() {
+    private static Llamada pedirDatosLlamada() {
         /*Scanner sc = new Scanner(System.in);
         System.out.println("introduce NIF del cliente:  ");
         String nif = sc.next();*/
@@ -231,23 +233,23 @@ public class Menu {
         System.out.println("Introduce la duración: ");
         int duracion = sc.nextInt();
         LocalDateTime fecha = LocalDateTime.now();
-        Llamada nuevaLlamada = new Llamada(telefono, fecha, duracion);
-        llamadas.darDeAlta(entradaDatosNIF(),nuevaLlamada);// por que no me deja utilizar llamadas.darDeAlta(nif,llamada)
-                                                    //si la coleccion esta declarada e inicializada.
+        return new Llamada(telefono, fecha, duracion);
 
     }
 
 
-    private static  void listadoLlamadascliente(){
+    private static LinkedList listadoLlamadascliente(ColeccionLlamadas llamadas){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el NIF del cliente:  ");
         String nif = sc.next();
-        ColeccionLlamadas llamadasCliente = new ColeccionLlamadas();
-        ListIterator lista= llamadas.listarLlamadas(nif).listIterator();
-        while (lista.hasNext()) {
+        LinkedList llamadascli = llamadas.listarLlamadas(nif);
+        return llamadascli;
+    }
+    private static void imprimirLista( LinkedList listallamadas){
+        ListIterator lista = listallamadas.listIterator();
+        while(lista.hasNext()){
             System.out.println(lista.next().toString());
         }
-
     }
 
 }
