@@ -136,7 +136,7 @@ public class Menu {
                             break;
                         case 2:
                             ;
-                            imprimirLista(listadoLlamadascliente(llamadas))
+                            imprimirLista(listadoLlamadascliente(llamadas));
                             break;
                         default:
                             break;

@@ -38,7 +38,7 @@ public class Llamada implements Fecha{
 
     @Override
     public String toString(){
-        return("Llamada realizada al telefono:"+this.telefono+"con duración:"+ this.duracion+" a fecha de: "+this.fecha);
+        return("Llamada realizada al telefono: "+this.telefono+" con duración: "+ this.duracion+" a fecha de: "+this.fecha);
     }
 
 }
