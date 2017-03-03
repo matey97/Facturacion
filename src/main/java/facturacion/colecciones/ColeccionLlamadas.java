@@ -18,8 +18,9 @@ public class ColeccionLlamadas {
     }
 
     public void darDeAlta(String nif, Llamada llamada){
-        if (!llamadas.containsKey(nif))
-            llamadas.put(nif,new LinkedList<>());
+        if (!llamadas.containsKey(nif)) {
+            llamadas.put(nif, new LinkedList<>());
+        }
         llamadas.get(nif).add(llamada);
     }
 

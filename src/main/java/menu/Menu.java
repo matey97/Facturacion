@@ -1,16 +1,18 @@
 package menu;
 
-import entrada.OperacionesLlamadas;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.ColeccionClientes;
 import facturacion.colecciones.ColeccionEmpresas;
+import facturacion.colecciones.ColeccionLlamadas;
 import facturacion.colecciones.ColeccionParticulares;
+import facturacion.factura.Llamada;
 import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
+import java.util.ListIterator;
 import java.util.Scanner;
 /**
  * Created by al341802 on 21/02/17.
@@ -20,6 +22,7 @@ public class Menu {
     public static void main(String[] args) {
         ColeccionClientes particulares = new ColeccionParticulares();
         ColeccionClientes empresas= new ColeccionEmpresas();
+        ColeccionLlamadas llamadas = new ColeccionLlamadas();
         Scanner sc = new Scanner(System.in);
         int n;
         do {
@@ -122,16 +125,16 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    OperacionesLlamadas opLlamada = new OperacionesLlamadas();
+                    //OperacionesLlamadas opLlamada = new OperacionesLlamadas();
                     System.out.println("Introduce 1 para --> Dar de alta una llamada");
                     System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
-                            opLlamada.pedirDatosLlamada();
+                            pedirDatosLlamada();
                             break;
                         case 2:
-                            opLlamada.listadoLlamadascliente();
+                            listadoLlamadascliente();
                             break;
                         default:
                             break;
@@ -217,4 +220,34 @@ public class Menu {
         System.out.println("Introduce la nueva tarifa: ");
         return sc.nextInt();
     }
+
+    private static void pedirDatosLlamada() {
+        /*Scanner sc = new Scanner(System.in);
+        System.out.println("introduce NIF del cliente:  ");
+        String nif = sc.next();*/
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el telefono: ");
+        int telefono = sc.nextInt();
+        System.out.println("Introduce la duración: ");
+        int duracion = sc.nextInt();
+        LocalDateTime fecha = LocalDateTime.now();
+        Llamada nuevaLlamada = new Llamada(telefono, fecha, duracion);
+        llamadas.darDeAlta(entradaDatosNIF(),nuevaLlamada);// por que no me deja utilizar llamadas.darDeAlta(nif,llamada)
+                                                    //si la coleccion esta declarada e inicializada.
+
+    }
+
+
+    private static  void listadoLlamadascliente(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el NIF del cliente:  ");
+        String nif = sc.next();
+        ColeccionLlamadas llamadasCliente = new ColeccionLlamadas();
+        ListIterator lista= llamadas.listarLlamadas(nif).listIterator();
+        while (lista.hasNext()) {
+            System.out.println(lista.next().toString());
+        }
+
+    }
+
 }
