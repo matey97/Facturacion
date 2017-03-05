@@ -15,7 +15,7 @@ public class Llamada implements Fecha{
 
 
 
-    public Llamada(int telefon, LocalDateTime fecha, int duracion) {
+    public Llamada(int telefono, LocalDateTime fecha, int duracion) {
         this.telefono = telefono;
         this.fecha = fecha;
         this.duracion=duracion;

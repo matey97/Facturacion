@@ -135,8 +135,7 @@ public class Menu {
                             llamadas.darDeAlta(entradaDatosNIF(),pedirDatosLlamada());
                             break;
                         case 2:
-                            ;
-                            imprimirLista(listadoLlamadascliente(llamadas));
+                            imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
                             break;
                         default:
                             break;
@@ -238,13 +237,13 @@ public class Menu {
     }
 
 
-    private static LinkedList listadoLlamadascliente(ColeccionLlamadas llamadas){
+ /*   private static LinkedList listadoLlamadascliente(ColeccionLlamadas llamadas){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el NIF del cliente:  ");
         String nif = sc.next();
         LinkedList llamadascli = llamadas.listarLlamadas(nif);
         return llamadascli;
-    }
+    }*/
     private static void imprimirLista( LinkedList listallamadas){
         ListIterator lista = listallamadas.listIterator();
         while(lista.hasNext()){
