@@ -4,10 +4,7 @@ import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
-import facturacion.colecciones.ColeccionClientes;
-import facturacion.colecciones.ColeccionEmpresas;
-import facturacion.colecciones.ColeccionLlamadas;
-import facturacion.colecciones.ColeccionParticulares;
+import facturacion.colecciones.*;
 import facturacion.factura.Llamada;
 import facturacion.factura.Tarifa;
 
@@ -24,6 +21,7 @@ public class Menu {
         ColeccionClientes particulares = new ColeccionParticulares();
         ColeccionClientes empresas= new ColeccionEmpresas();
         ColeccionLlamadas llamadas = new ColeccionLlamadas();
+        ColeccionFacturas facturas= new ColeccionFacturas();
         Scanner sc = new Scanner(System.in);
         int n;
         do {
@@ -142,12 +140,14 @@ public class Menu {
                     }
                     break;
                 case 3:
+                    // operaciones con facturas
                     System.out.println("Introduce 1 para --> Emitir factura para un cliente");
                     System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
                     System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
+                            emitirFactura(entradaDatosNIF());
                             break;
                         case 2:
                             break;
@@ -250,5 +250,9 @@ public class Menu {
             System.out.println(lista.next().toString());
         }
     }
+   // private static void emitirFactura(String nif){
+
+   // }
+   Obtener datos de factura
 
 }
