@@ -3,6 +3,7 @@ package facturacion.colecciones;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Llamada;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 

@@ -266,21 +266,21 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("introduce mes en numero de la fecha de inicio: ");
         int mes = sc.nextInt();
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("introduce dia en numero de la fecha de inicio: ");
         int dia = sc.nextInt();
         LocalDateTime fechaInicial = LocalDateTime.of(año,mes,dia,0,0);
 
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("introduce año en numero de la fecha final: ");
         int año2 = sc.nextInt();
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("introduce mes en numero de la fecha final: ");
         int mes2 = sc.nextInt();
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("introduce dia en numero de la fecha final: ");
         int dia2 = sc.nextInt();
         LocalDateTime fechaFinal = LocalDateTime.of(año2,mes2,dia2,0,0);

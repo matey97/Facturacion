@@ -8,6 +8,7 @@ import facturacion.factura.PeriodoFacturacion;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -28,8 +29,11 @@ public class ColeccionFacturas {
         //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
         int importe=0;
 
-        for (Llamada llamada : llamadas){
-            importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
+        Iterator<Llamada> it = llamadas.iterator();
+        Llamada llamada;
+        while(it.hasNext()){
+            llamada=it.next();
+            importe+=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
         if (!facturas.containsKey(cliente.getNIF()))

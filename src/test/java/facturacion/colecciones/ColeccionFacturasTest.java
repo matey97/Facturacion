@@ -40,7 +40,6 @@ public class ColeccionFacturasTest {
 
     @Test
     public void emitirFacturaTest(){
-
     }
 
     @Test
@@ -49,6 +48,5 @@ public class ColeccionFacturasTest {
 
     @Test
     public void recuperarFacturasCliente(){
-
     }
 }
