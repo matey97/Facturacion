@@ -126,7 +126,6 @@ public class Menu {
                     }
                     break;
                 case 2:
-                    //OperacionesLlamadas opLlamada = new OperacionesLlamadas();
                     System.out.println("Introduce 1 para --> Dar de alta una llamada");
                     System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
                     n = sc.nextInt();
@@ -158,10 +157,6 @@ public class Menu {
                             }else{
                                     System.out.println("No se ha emitido la factura.");
                             }
-
-                            //emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
-                            //ColeccionClientes cliente = particulares.getDatosNIF(nif);
-                            //emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion)
                             break;
                         case 2:
                             System.out.println(facturas.recuperarDatosFactura(pedirCodFac()));
@@ -288,13 +283,4 @@ public class Menu {
         System.out.println("Introduce el codigo de factura:");
         return sc.nextInt();
     }
-    //private static Factura emisionDeFactura (LinkedList llamadas, PeriodoFacturacion periodo){
-
-
-
-
-
-   // }
-
-
 }
