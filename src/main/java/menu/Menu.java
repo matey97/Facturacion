@@ -5,6 +5,7 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.*;
+import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
@@ -160,8 +161,15 @@ public class Menu {
                             //emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion)
                             break;
                         case 2:
+                            System.out.println(facturas.recuperarDatosFactura(pedirCodFac()));
                             break;
                         case 3:
+                            System.out.println("Listado de facturas:");
+                            System.out.println("");
+                            for (Factura factura : facturas.recuperarFacturasCliente(entradaDatosNIF())){
+                                System.out.println(factura);
+                                System.out.println("");
+                            }
                             break;
                     }
                     break;
@@ -280,6 +288,12 @@ public class Menu {
 
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
 
+    }
+
+    private static int pedirCodFac(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el codigo de factura:");
+        return sc.nextInt();
     }
     //private static Factura emisionDeFactura (LinkedList llamadas, PeriodoFacturacion periodo){
 
