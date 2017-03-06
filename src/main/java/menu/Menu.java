@@ -5,6 +5,7 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.*;
+import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
@@ -148,7 +149,7 @@ public class Menu {
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
-                            emitirFactura(entradaDatosNIF());
+                            emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
                             break;
                         case 2:
                             break;
@@ -252,7 +253,7 @@ public class Menu {
         }
 
     }
-    private static PeriodoFacturacion entradaPeridoDeFacturacion(){
+    private static PeriodoFacturacion pedirDatosPeridoDeFacturacion(){
         Scanner sc = new Scanner(System.in);
         System.out.println("introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
@@ -278,11 +279,7 @@ public class Menu {
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
 
     }
-    
-    private static void emisionDeFactura (ColeccionLlamadas llamadas, Cliente cliente, PeriodoFacturacion periodo){
-
-
-
+    private static Factura emisionDeFactura (LinkedList llamadas, PeriodoFacturacion periodo){
 
 
 
