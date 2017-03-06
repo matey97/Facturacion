@@ -49,5 +49,11 @@ public class Factura implements Fecha{
     public void setImporte(int importe) {
         this.importe = importe;
     }
+    @Override
+    public String toString(){
+        return
+
+
+    }
 
 }

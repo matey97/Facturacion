@@ -1,12 +1,10 @@
 package menu;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.*;
-import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.Tarifa;
 
@@ -23,7 +21,7 @@ public class Menu {
         ColeccionClientes particulares = new ColeccionParticulares();
         ColeccionClientes empresas= new ColeccionEmpresas();
         ColeccionLlamadas llamadas = new ColeccionLlamadas();
-        ColeccionFacturas facturas = new ColeccionFacturas();
+        ColeccionFacturas facturas= new ColeccionFacturas();
         Scanner sc = new Scanner(System.in);
         int n;
         do {
@@ -137,29 +135,32 @@ public class Menu {
                         case 2:
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
                             break;
+                        default:
+                            break;
                     }
                     break;
                 case 3:
+                    // operaciones con facturas
                     System.out.println("Introduce 1 para --> Emitir factura para un cliente");
                     System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
                     System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
+                            emitirFactura(entradaDatosNIF());
                             break;
                         case 2:
-                            System.out.println(facturas.recuperarDatosFactura(entradaDatosCodFac()));
                             break;
                         case 3:
-                            System.out.println("Facturas del cliente:");
-                            for (Factura factura: facturas.recuperarFacturasCliente(entradaDatosNIF())){
-                                System.out.println(factura);
-                                System.out.println("");
-                            }
                             break;
-
+                        default:
+                            break;
                     }
                     break;
+                default:
+                    break;
+
+
             }
         }while(n!=0);
 
@@ -235,20 +236,25 @@ public class Menu {
 
     }
 
+
+ /*   private static LinkedList listadoLlamadascliente(ColeccionLlamadas llamadas){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el NIF del cliente:  ");
+        String nif = sc.next();
+        LinkedList llamadascli = llamadas.listarLlamadas(nif);
+        return llamadascli;
+    }*/
     private static void imprimirLista( LinkedList listallamadas){
         ListIterator lista = listallamadas.listIterator();
         while(lista.hasNext()){
             System.out.println(lista.next().toString());
         }
-    }
-
-    private static void entradaDatosFactura(){
 
     }
+    private static void emitirFactura(String nif){
 
-    private static int entradaDatosCodFac(){
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Introduce el código de factura:");
-        return sc.nextInt();
+
     }
+
+
 }
