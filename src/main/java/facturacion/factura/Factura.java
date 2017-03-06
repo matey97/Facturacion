@@ -2,7 +2,6 @@ package facturacion.factura;
 
 import facturacion.Fecha;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -12,12 +11,12 @@ public class Factura implements Fecha{
 
     private int codfac;
     private Tarifa tarifa;
-    private PeriodoFacturacion;
+    //private PeriodoFacturacion;
     private LocalDateTime fechaDeEmision;// periodo facturación
-    private LocalDateTime Periodofact;// periodo facturación
+    private PeriodoFacturacion Periodofact;// periodo facturación
     private int importe;
 
-    public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, LocalDateTime periodofact,int importe) {
+    public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
         this.codfac = codfac;
         this.tarifa = tarifa;
         this.fechaDeEmision = fechaDeEmision;
@@ -39,7 +38,7 @@ public class Factura implements Fecha{
         return fechaDeEmision;
     }
 
-    public LocalDateTime getPeriodofact() {
+    public PeriodoFacturacion getPeriodofact() {
         return Periodofact;
     }
 
