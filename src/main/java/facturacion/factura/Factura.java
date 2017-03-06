@@ -40,6 +40,8 @@ public class Factura implements Fecha{
 
     public PeriodoFacturacion getPeriodofact() {
         return Periodofact;
+
+
     }
 
     public int getImporte() {

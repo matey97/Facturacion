@@ -3,6 +3,7 @@ package facturacion.colecciones;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
+import facturacion.factura.PeriodoFacturacion;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -23,7 +24,7 @@ public class ColeccionFacturas {
     }
 
 
-    public Factura emitirFactura(Cliente cliente, LinkedList llamadas, LocalDateTime periodoFacturacion){
+    public Factura emitirFactura(Cliente cliente, LinkedList llamadas, PeriodoFacturacion periodoFacturacion){
         //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
         int importe=0;
 
