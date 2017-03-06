@@ -56,5 +56,6 @@ public class ColeccionFacturasTest {
     public void emitirFacturaTest(){
         Factura factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
         assertEquals(factura.getImporte(),140);
+        System.out.println(factura);
     }
 }

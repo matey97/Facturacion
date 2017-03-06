@@ -26,7 +26,7 @@ public class ColeccionFacturas {
 
 
     public Factura emitirFactura(Cliente cliente, LinkedList llamadas, PeriodoFacturacion periodoFacturacion){
-        //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
+
         int importe=0;
 
         Iterator<Llamada> it = llamadas.iterator();
@@ -35,7 +35,7 @@ public class ColeccionFacturas {
             llamada=it.next();
             importe+=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
-        Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
+        Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe);
         if (!facturas.containsKey(cliente.getNIF()))
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);

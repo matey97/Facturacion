@@ -27,6 +27,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         int n;
         do {
+            System.out.println("");
             System.out.println("¿Que tipo de gestión quieres realizar?");
             System.out.println("Introduce 0 para --> Salir");
             System.out.println("Introduce 1 para --> Gestión clientes");
@@ -35,6 +36,7 @@ public class Menu {
             n = sc.nextInt();
             switch (n) {
                 case 1:
+                    System.out.println("");
                     System.out.println("Introduce 1 para --> Dar de alta un cliente");
                     System.out.println("Introduce 2 para --> Borrar un cliente");
                     System.out.println("Introduce 3 para --> Cambiar tarifa de cliente");
@@ -126,6 +128,7 @@ public class Menu {
                     }
                     break;
                 case 2:
+                    System.out.println("");
                     System.out.println("Introduce 1 para --> Dar de alta una llamada");
                     System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
                     n = sc.nextInt();
@@ -139,7 +142,7 @@ public class Menu {
                     }
                     break;
                 case 3:
-                    // operaciones con facturas
+                    System.out.println("");
                     System.out.println("Introduce 1 para --> Emitir factura para un cliente");
                     System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
                     System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
@@ -162,7 +165,6 @@ public class Menu {
                             System.out.println(facturas.recuperarDatosFactura(pedirCodFac()));
                             break;
                         case 3:
-                            System.out.println("Listado de facturas:");
                             System.out.println("");
                             for (Factura factura : facturas.recuperarFacturasCliente(entradaDatosNIF())){
                                 System.out.println(factura);
@@ -176,7 +178,7 @@ public class Menu {
 
     }
 
-    private static Cliente entradaDatosCliente(int n){  //Pide por teclado los datos de un Cliente
+    private static Cliente entradaDatosCliente(int n){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce nombre del cliente: ");
         String nombre=sc.nextLine();
@@ -220,13 +222,13 @@ public class Menu {
         return cliente;
     }
 
-    private static String entradaDatosNIF(){ //Pide por teclado un NIF
+    private static String entradaDatosNIF(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce NIF del cliente: ");
         return sc.nextLine();
     }
 
-    private static int entradaDatosPrecioMinuto(){ //Pide por teclado un precioPorMinuto
+    private static int entradaDatosPrecioMinuto(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce la nueva tarifa: ");
         return sc.nextInt();
