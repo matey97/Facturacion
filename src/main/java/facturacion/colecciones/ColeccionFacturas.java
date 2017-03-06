@@ -28,7 +28,7 @@ public class ColeccionFacturas {
         //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
         int importe=0;
 
-        for (Llamada llamada : llamadas){
+        for (llamadas llamada : llamadas){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
