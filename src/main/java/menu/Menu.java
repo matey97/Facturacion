@@ -255,29 +255,28 @@ public class Menu {
     }
     private static PeriodoFacturacion pedirDatosPeridoDeFacturacion(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("introduce año en numero de la fecha de inicio: ");
+        System.out.println("Introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
 
-        System.out.println("introduce mes en numero de la fecha de inicio: ");
+        System.out.println("Introduce mes en numero de la fecha de inicio: ");
         int mes = sc.nextInt();
 
-        System.out.println("introduce dia en numero de la fecha de inicio: ");
+        System.out.println("Introduce dia en numero de la fecha de inicio: ");
         int dia = sc.nextInt();
         LocalDateTime fechaInicial = LocalDateTime.of(año,mes,dia,0,0);
 
 
-        System.out.println("introduce año en numero de la fecha final: ");
+        System.out.println("Introduce año en numero de la fecha final: ");
         int año2 = sc.nextInt();
 
-        System.out.println("introduce mes en numero de la fecha final: ");
+        System.out.println("Introduce mes en numero de la fecha final: ");
         int mes2 = sc.nextInt();
 
-        System.out.println("introduce dia en numero de la fecha final: ");
+        System.out.println("Introduce dia en numero de la fecha final: ");
         int dia2 = sc.nextInt();
         LocalDateTime fechaFinal = LocalDateTime.of(año2,mes2,dia2,0,0);
 
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
-
     }
 
     private static int pedirCodFac(){
