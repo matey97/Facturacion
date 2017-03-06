@@ -136,8 +136,6 @@ public class Menu {
                         case 2:
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
                             break;
-                        default:
-                            break;
                     }
                     break;
                 case 3:
@@ -155,6 +153,7 @@ public class Menu {
                             }
                             if (particulares.existeCliente(nif)){
                                 Cliente cliente = particulares.getDatosCliente(nif);
+                                facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion());
                             }
                             //emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
                             //ColeccionClientes cliente = particulares.getDatosNIF(nif);
@@ -164,14 +163,8 @@ public class Menu {
                             break;
                         case 3:
                             break;
-                        default:
-                            break;
                     }
                     break;
-                default:
-                    break;
-
-
             }
         }while(n!=0);
 
