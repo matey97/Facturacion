@@ -249,11 +249,12 @@ public class Menu {
         while(lista.hasNext()){
             System.out.println(lista.next().toString());
         }
-        LocalDateTime.now().
-    }
-   // private static void emitirFactura(String nif){
 
-   // }
-   Obtener datos de factura
+    }
+    private static void emitirFactura(String nif){
+
+
+    }
+
 
 }

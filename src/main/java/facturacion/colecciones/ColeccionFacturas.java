@@ -21,7 +21,7 @@ public class ColeccionFacturas {
         contador=1;
     }
 
-    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
+    public Factura emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
         int importe=0;
         for (Llamada llamada : llamadas.listarLlamadas(cliente.getNIF())){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
@@ -41,9 +41,9 @@ public class ColeccionFacturas {
         return null;
     }
 
-    public Collection<Factura> recuperarFacturasCliente(Cliente cliente){
-        if (facturas.containsKey(cliente.getNIF()))
-            return facturas.get(cliente.getNIF()).values();
+    public Collection<Factura> recuperarFacturasCliente(String nif){
+        if (facturas.containsKey(nif))
+            return facturas.get(nif).values();
         return null;
     }
 }

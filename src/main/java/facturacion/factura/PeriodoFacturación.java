@@ -1,38 +1,38 @@
 package facturacion.factura;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
 
 /**
  * Created by sergiojimenez on 6/3/17.
  */
 public class PeriodoFacturación  {   // por implementar
-    private LocalDate fechaInicial;
-    private LocalDate fechaFinal;
+    private LocalDateTime fechaInicial;
+    private LocalDateTime fechaFinal;
 
-    public PeriodoFacturación(LocalDate fechaInicial, LocalDate fechaFinal) {
+    public PeriodoFacturación(LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
     }
 
-    public LocalDate getFechaInicial() {
+    public LocalDateTime getFechaInicial() {
         return fechaInicial;
     }
 
-    public LocalDate getFechaFinal() {
+    public LocalDateTime getFechaFinal() {
         return fechaFinal;
     }
 
-    public void setFechaInicial(LocalDate fechaInicial) {
+    public void setFechaInicial(LocalDateTime fechaInicial) {
         this.fechaInicial = fechaInicial;
     }
 
-    public void setFechaFinal(LocalDate fechaFinal) {
+    public void setFechaFinal(LocalDateTime fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
 
-    public Period diasTranscurridos(PeriodoFacturación periodo){
-        return Period.between(periodo.getFechaFinal(),periodo.fechaInicial);
+    public int diasTranscurridos(PeriodoFacturación periodo){
+        return (LocalDateTime.from(getFechaFinal()).compareTo(periodo.fechaInicial));
 
     }
     public void toString (Period periodo ){
