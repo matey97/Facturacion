@@ -36,7 +36,7 @@ public class PeriodoFacturacion {   // por implementar
 
     }
     public String toString (){
-        System.out.println(this.diasTranscurridos()+"");
+        return (this.diasTranscurridos()+"");
 
 
     }
