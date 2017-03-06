@@ -150,12 +150,15 @@ public class Menu {
                             String nif = entradaDatosNIF();
                             if (empresas.existeCliente(nif)){
                                 Cliente cliente = empresas.getDatosCliente(nif);
-                                facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion());
+                                System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion()));
+                            }else
+                                if (particulares.existeCliente(nif)) {
+                                    Cliente cliente = particulares.getDatosCliente(nif);
+                                    System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion()));
+                            }else{
+                                    System.out.println("No se ha emitido la factura.");
                             }
-                            if (particulares.existeCliente(nif)){
-                                Cliente cliente = particulares.getDatosCliente(nif);
-                                facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion());
-                            }
+
                             //emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
                             //ColeccionClientes cliente = particulares.getDatosNIF(nif);
                             //emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion)
