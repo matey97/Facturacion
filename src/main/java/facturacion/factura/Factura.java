@@ -12,6 +12,7 @@ public class Factura implements Fecha{
 
     private int codfac;
     private Tarifa tarifa;
+    private PeriodoFacturacion;
     private LocalDateTime fechaDeEmision;// periodo facturación
     private LocalDateTime Periodofact;// periodo facturación
     private int importe;

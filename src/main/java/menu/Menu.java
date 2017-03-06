@@ -5,7 +5,6 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.*;
-import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
@@ -149,7 +148,17 @@ public class Menu {
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
-                            emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
+                            String nif = entradaDatosNIF();
+                            if (empresas.existeCliente(nif)){
+                                Cliente cliente = empresas.getDatosCliente(nif);
+                                facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion());
+                            }
+                            if (particulares.existeCliente(nif)){
+                                Cliente cliente = particulares.getDatosCliente(nif);
+                            }
+                            //emisionDeFactura(llamadas.listarLlamadas(entradaDatosNIF()),pedirDatosPeridoDeFacturacion());
+                            //ColeccionClientes cliente = particulares.getDatosNIF(nif);
+                            //emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion)
                             break;
                         case 2:
                             break;
@@ -279,13 +288,13 @@ public class Menu {
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
 
     }
-    private static Factura emisionDeFactura (LinkedList llamadas, PeriodoFacturacion periodo){
+    //private static Factura emisionDeFactura (LinkedList llamadas, PeriodoFacturacion periodo){
 
 
 
 
 
-    }
+   // }
 
 
 }

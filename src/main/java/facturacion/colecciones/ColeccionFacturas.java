@@ -7,6 +7,7 @@ import facturacion.factura.Llamada;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 /**
  * Created by user on 27/02/17.
@@ -21,10 +22,12 @@ public class ColeccionFacturas {
         contador=1;
     }
 
-    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
+
+    public Factura emitirFactura(Cliente cliente, LinkedList llamadas, LocalDateTime periodoFacturacion){
+        //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
         int importe=0;
 
-        for (Llamada llamada : llamadas.listarLlamadas(cliente.getNIF())){
+        for (Llamada llamada : llamadas){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
