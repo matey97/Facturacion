@@ -21,9 +21,10 @@ public class ColeccionFacturas {
         contador=1;
     }
 
-    public Factura emitirFactura(String nif, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
+    public Factura emitirFactura(Cliente cliente, ColeccionLlamadas llamadas, LocalDateTime periodoFacturacion){
         int importe=0;
-        for (Llamada llamada : llamadas.listarLlamadas(cliente.getNIF())){
+
+        for (Llamada llamada : llamadas.listarLlamadas(nif)){
             importe=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
         }
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?

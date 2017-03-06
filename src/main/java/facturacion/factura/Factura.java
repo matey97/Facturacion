@@ -12,8 +12,8 @@ public class Factura implements Fecha{
 
     private int codfac;
     private Tarifa tarifa;
-    private LocalDateTime fechaDeEmision;
-    private LocalDateTime Periodofact;
+    private LocalDateTime fechaDeEmision;// periodo facturación
+    private LocalDateTime Periodofact;// periodo facturación
     private int importe;
 
     public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, LocalDateTime periodofact,int importe) {
@@ -51,8 +51,8 @@ public class Factura implements Fecha{
     }
     @Override
     public String toString(){
-        return
-
+        return 'El codigo de factura es: ?'+this.codfac+'con la trarifa : '+ this.tarifa+ 'con fecha de inicio:'+
+                this.fechaDeEmision+'con fecha de fin: '+ getPeriodofact()+' con un importe total de : 'this.importe;
 
     }
 
