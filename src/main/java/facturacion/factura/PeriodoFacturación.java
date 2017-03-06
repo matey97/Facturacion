@@ -6,7 +6,7 @@ import java.time.Period;
 /**
  * Created by sergiojimenez on 6/3/17.
  */
-public class PeriodoFacturación {   // por implementar
+public class PeriodoFacturación  {   // por implementar
     private LocalDate fechaInicial;
     private LocalDate fechaFinal;
 
@@ -33,6 +33,11 @@ public class PeriodoFacturación {   // por implementar
 
     public Period diasTranscurridos(PeriodoFacturación periodo){
         return Period.between(periodo.getFechaFinal(),periodo.fechaInicial);
+
+    }
+    public void toString (Period periodo ){
+        System.out.println(periodo.getDays()+' ');
+
 
     }
 
