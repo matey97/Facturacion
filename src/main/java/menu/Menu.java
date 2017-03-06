@@ -276,10 +276,11 @@ public class Menu {
         LocalDateTime fechaFinal = LocalDateTime.of(año2,mes2,dia2,0,0);
 
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
-        }
 
     }
+    
     private static void emisionDeFactura (ColeccionLlamadas llamadas, Cliente cliente, PeriodoFacturacion periodo){
+
 
 
 
