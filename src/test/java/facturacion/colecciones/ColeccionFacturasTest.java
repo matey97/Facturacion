@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by user on 1/03/17.
  */
@@ -33,11 +35,11 @@ public class ColeccionFacturasTest {
         cliente=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),new Tarifa(5));
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
-        llamada2=new Llamada(695968097, LocalDateTime.now(),24);
+        llamada3=new Llamada(695968097, LocalDateTime.now(),10);
         llamadas.darDeAlta("73402320M",llamada1);
         llamadas.darDeAlta("73402320M",llamada2);
         llamadas.darDeAlta("73402320M",llamada3);
-        pfact=new PeriodoFacturacion(LocalDateTime.MIN,LocalDateTime.MAX);
+        pfact=new PeriodoFacturacion(LocalDateTime.of(2000,1,1,0,0),LocalDateTime.of(2020,1,1,0,0));
     }
 
     @AfterClass
@@ -45,20 +47,14 @@ public class ColeccionFacturasTest {
         facturas=null;
         llamadas=null;
         llamada1=llamada2=llamada3=null;
+        pfact=null;
+        cliente=null;
+        tarifa=null;
     }
 
     @Test
     public void emitirFacturaTest(){
         Factura factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
-        System.out.println(factura);
-    }
-
-    @Test
-    public void recuperarDatosFacturaTest(){
-
-    }
-
-    @Test
-    public void recuperarFacturasCliente(){
+        assertEquals(factura.getImporte(),140);
     }
 }
