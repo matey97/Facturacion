@@ -6,11 +6,11 @@ import java.time.Period;
 /**
  * Created by sergiojimenez on 6/3/17.
  */
-public class PeriodoFacturación  {   // por implementar
+public class PeriodoFacturacion {   // por implementar
     private LocalDateTime fechaInicial;
     private LocalDateTime fechaFinal;
 
-    public PeriodoFacturación(LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
+    public PeriodoFacturacion(LocalDateTime fechaInicial, LocalDateTime fechaFinal) {
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
     }
@@ -31,7 +31,7 @@ public class PeriodoFacturación  {   // por implementar
         this.fechaFinal = fechaFinal;
     }
 
-    public int diasTranscurridos(PeriodoFacturación periodo){
+    public int diasTranscurridos(PeriodoFacturacion periodo){
         return (LocalDateTime.from(getFechaFinal()).compareTo(periodo.fechaInicial));
 
     }
