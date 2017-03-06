@@ -52,9 +52,8 @@ public class Factura implements Fecha{
     @Override
     public String toString(){
         return "El codigo de factura es: ?"+this.codfac+"con la trarifa : "+ this.tarifa+ "con fecha de inicio:"+
-                this.fechaDeEmision+"con fecha de fin: "+ getPeriodofact() +" con un importe total de : "+ this.importe;
+                this.fechaDeEmision+"con fecha de fin: "+ getPeriodofact()+" con un importe total de : "+this.importe;
 
     }
-
 
 }
