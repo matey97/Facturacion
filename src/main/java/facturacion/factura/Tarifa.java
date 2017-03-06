@@ -17,4 +17,10 @@ public class Tarifa {
     public void setPrecioMinuto(int precioMinuto) {
         this.precioMinuto = precioMinuto;
     }
+
+
+    public String toString(){
+        return this.precioMinuto+"";
+
+    }
 }

@@ -31,14 +31,15 @@ public class PeriodoFacturacion {   // por implementar
         this.fechaFinal = fechaFinal;
     }
 
-    public int diasTranscurridos(PeriodoFacturacion periodo){
-        return (LocalDateTime.from(getFechaFinal()).compareTo(periodo.fechaInicial));
+    public int diasTranscurridos(){
+        return (LocalDateTime.from(getFechaFinal()).compareTo(this.fechaInicial));
 
     }
-    public void toString (Period periodo ){
-        System.out.println(periodo.getDays()+' ');
+    public String toString (){
+        System.out.println(this.diasTranscurridos()+"");
 
 
     }
+
 
 }

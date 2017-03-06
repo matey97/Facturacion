@@ -238,9 +238,7 @@ public class Menu {
     }
 
     private static Llamada pedirDatosLlamada() {
-        /*Scanner sc = new Scanner(System.in);
-        System.out.println("introduce NIF del cliente:  ");
-        String nif = sc.next();*/
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el telefono: ");
         int telefono = sc.nextInt();
@@ -251,14 +249,6 @@ public class Menu {
 
     }
 
-
- /*   private static LinkedList listadoLlamadascliente(ColeccionLlamadas llamadas){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el NIF del cliente:  ");
-        String nif = sc.next();
-        LinkedList llamadascli = llamadas.listarLlamadas(nif);
-        return llamadascli;
-    }*/
     private static void imprimirLista( LinkedList listallamadas){
         ListIterator lista = listallamadas.listIterator();
         while(lista.hasNext()){
