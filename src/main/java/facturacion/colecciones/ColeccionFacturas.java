@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 /**
  * Created by user on 27/02/17.
@@ -25,7 +24,7 @@ public class ColeccionFacturas {
     }
 
 
-    public Factura emitirFactura(Cliente cliente, LinkedList llamadas, PeriodoFacturacion periodoFacturacion){
+    public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion){
 
         int importe=0;
 

@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Llamada;
 
@@ -25,7 +26,13 @@ public class ColeccionLlamadas {
         llamadas.get(nif).add(llamada);
     }
 
-    public LinkedList<Llamada> listarLlamadas(String nif){
-        return llamadas.get(nif);
+    public LinkedList<Llamada> listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas{
+        LinkedList llamadasNif =llamadas.get(nif);
+        if (llamadasNif!=null){
+
+        return llamadasNif;
+        }else{
+            throw new ExcepcionClienteSinLlamadas("no hay llamadas");
+        }
+        }
     }
-}
