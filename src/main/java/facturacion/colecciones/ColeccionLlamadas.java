@@ -25,7 +25,7 @@ public class ColeccionLlamadas {
         llamadas.get(nif).add(llamada);
     }
 
-    public LinkedList<Llamada> listarLlamadas(String nif){
+    public Collection<Llamada> listarLlamadas(String nif){
         return llamadas.get(nif);
     }
 }

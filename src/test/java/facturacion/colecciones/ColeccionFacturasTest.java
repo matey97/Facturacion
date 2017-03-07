@@ -22,7 +22,7 @@ public class ColeccionFacturasTest {
 
     private static ColeccionFacturas facturas;
     private static ColeccionLlamadas llamadas;
-    private static Llamada llamada1,llamada2,llamada3;
+    private static Llamada llamada1,llamada2,llamada3, llamada4;
     private static Tarifa tarifa;
     private static Cliente cliente;
     private static PeriodoFacturacion pfact;
@@ -36,6 +36,7 @@ public class ColeccionFacturasTest {
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
         llamada3=new Llamada(695968097, LocalDateTime.now(),10);
+        llamada4=new Llamada(695968097, LocalDateTime.of(2021,1,1,0,0),20);
         llamadas.darDeAlta("73402320M",llamada1);
         llamadas.darDeAlta("73402320M",llamada2);
         llamadas.darDeAlta("73402320M",llamada3);
@@ -57,5 +58,14 @@ public class ColeccionFacturasTest {
         Factura factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
         assertEquals(factura.getImporte(),140);
         System.out.println(factura);
+        llamadas.darDeAlta("73402320M",llamada4);
+        factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
+        assertEquals(factura.getImporte(),140);
+        pfact=new PeriodoFacturacion(LocalDateTime.of(2000,1,1,0,0),LocalDateTime.of(2022,1,1,0,0));
+        factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
+        assertEquals(factura.getImporte(),240);
+        System.out.println(factura);
+
+
     }
 }

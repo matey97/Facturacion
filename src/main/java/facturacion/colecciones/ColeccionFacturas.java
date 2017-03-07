@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
@@ -25,21 +26,18 @@ public class ColeccionFacturas {
     }
 
 
-    public Factura emitirFactura(Cliente cliente, LinkedList llamadas, PeriodoFacturacion periodoFacturacion){
+    public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion){
 
         int importe=0;
 
-
-        Iterator<Llamada> it = llamadas.iterator();
+        Collection<Llamada> col=Utiles.entreDosFechas(llamadas,periodoFacturacion.getFechaInicial(),periodoFacturacion.getFechaFinal());
+        Iterator<Llamada> it=col.iterator();
         Llamada llamada;
-        while(it.hasNext()){
+        while(it.hasNext()) {
             llamada=it.next();
-            if (periodoFacturacion.getFechaInicial().isAfter(llamada.getFecha()) &&
-                    periodoFacturacion.getFechaFinal().isBefore(llamada.getFecha())){
-
-                importe+=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
-            }
+            importe += llamada.getDuración() * cliente.getTarifa().getPrecioMinuto();
         }
+
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe);
         if (!facturas.containsKey(cliente.getNIF()))
             facturas.put(cliente.getNIF(),new HashMap<>());

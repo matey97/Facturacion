@@ -31,9 +31,8 @@ public class PeriodoFacturacion {
         this.fechaFinal = fechaFinal;
     }
 
-    public int diasTranscurridos(){
-        return (LocalDateTime.from(getFechaFinal()).compareTo(this.fechaInicial));
-
+    public String diasTranscurridos(){
+        return "Desde "+fechaInicial.toString()+" hasta "+fechaFinal.toString();
     }
     public String toString (){
         return (this.diasTranscurridos()+"");

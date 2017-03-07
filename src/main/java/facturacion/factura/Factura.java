@@ -53,7 +53,7 @@ public class Factura implements Fecha{
     @Override
     public String toString(){
         return "Codigo factura: "+this.codfac+"\nTarifa : "+ this.tarifa+ "\nFecha emisión:"+
-                this.fechaDeEmision+"\nDias de facturación: "+ getPeriodofact()+"\nImporte total de : "+this.importe;
+                this.fechaDeEmision+"\nFecha de facturación: "+ getPeriodofact()+"\nImporte total de : "+this.importe;
 
     }
 

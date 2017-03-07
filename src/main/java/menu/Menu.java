@@ -11,9 +11,8 @@ import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Scanner;
+import java.util.*;
+
 /**
  * Created by al341802 on 21/02/17.
  */
@@ -246,8 +245,8 @@ public class Menu {
 
     }
 
-    private static void imprimirLista( LinkedList listallamadas){
-        ListIterator lista = listallamadas.listIterator();
+    private static void imprimirLista( Collection listallamadas){
+        Iterator lista = listallamadas.iterator();
         while(lista.hasNext()){
             System.out.println(lista.next().toString());
         }
