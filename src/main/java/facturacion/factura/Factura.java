@@ -11,9 +11,8 @@ public class Factura implements Fecha{
 
     private int codfac;
     private Tarifa tarifa;
-    //private PeriodoFacturacion;
-    private LocalDateTime fechaDeEmision;// periodo facturación
-    private PeriodoFacturacion Periodofact;// periodo facturación
+    private LocalDateTime fechaDeEmision;
+    private PeriodoFacturacion Periodofact;
     private int importe;
 
     public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
@@ -53,8 +52,8 @@ public class Factura implements Fecha{
     }
     @Override
     public String toString(){
-        return "El codigo: "+this.codfac+"\nTarifa : "+ this.tarifa+ "\n Inicio:"+
-                this.fechaDeEmision+"\nFecha de fin: "+ getPeriodofact()+"\nImporte total de : "+this.importe;
+        return "Codigo factura: "+this.codfac+"\nTarifa : "+ this.tarifa+ "\nFecha emisión:"+
+                this.fechaDeEmision+"\nDias de facturación: "+ getPeriodofact()+"\nImporte total de : "+this.importe;
 
     }
 

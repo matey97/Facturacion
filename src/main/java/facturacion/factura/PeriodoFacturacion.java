@@ -6,7 +6,7 @@ import java.time.Period;
 /**
  * Created by sergiojimenez on 6/3/17.
  */
-public class PeriodoFacturacion {   // por implementar
+public class PeriodoFacturacion {
     private LocalDateTime fechaInicial;
     private LocalDateTime fechaFinal;
 
