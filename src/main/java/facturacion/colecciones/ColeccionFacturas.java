@@ -29,11 +29,16 @@ public class ColeccionFacturas {
         //Cliente cliente = ColeccionParticulares.getDatosCliente(nif);
         int importe=0;
 
+
         Iterator<Llamada> it = llamadas.iterator();
         Llamada llamada;
         while(it.hasNext()){
             llamada=it.next();
-            importe+=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
+            if (periodoFacturacion.getFechaInicial().isAfter(llamada.getFecha()) &&
+                    periodoFacturacion.getFechaFinal().isBefore(llamada.getFecha())){
+
+                importe+=llamada.getDuración()*cliente.getTarifa().getPrecioMinuto();
+            }
         }
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe); //Fecha facturacion?
         if (!facturas.containsKey(cliente.getNIF()))
