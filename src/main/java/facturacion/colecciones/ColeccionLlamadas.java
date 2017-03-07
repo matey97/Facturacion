@@ -26,13 +26,12 @@ public class ColeccionLlamadas {
         llamadas.get(nif).add(llamada);
     }
 
-    public LinkedList<Llamada> listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas{
-        LinkedList llamadasNif =llamadas.get(nif);
+    public Collection<Llamada> listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas{
+        Collection<Llamada> llamadasNif =llamadas.get(nif);
         if (llamadasNif!=null){
-
-        return llamadasNif;
+            return llamadasNif;
         }else{
             throw new ExcepcionClienteSinLlamadas("no hay llamadas");
         }
-        }
     }
+}

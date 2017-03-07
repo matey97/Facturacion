@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.factura.Llamada;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -33,7 +34,7 @@ public class ColeccionLlamadasTest {
     }
 
     @Test
-    public void listarLlamadasTest(){
+    public void listarLlamadasTest() throws ExcepcionClienteSinLlamadas {
         llamadas.darDeAlta("100",llamada1);
         llamadas.darDeAlta("100",llamada2);
         llamadas.darDeAlta("200",llamada3);

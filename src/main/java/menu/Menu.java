@@ -1,6 +1,7 @@
 package menu;
 
 import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
@@ -42,6 +43,7 @@ public class Menu {
                     System.out.println("Introduce 3 para --> Cambiar tarifa de cliente");
                     System.out.println("Introduce 4 para --> Obtener datos de cliente a partir de DNI");
                     System.out.println("Introduce 5 para --> Listado de clientes");
+                    System.out.println("Introduce 6 para --> Listado de clientes dados de alta entre dos fechas");
                     n = sc.nextInt();
                     int m;
                     switch (n) {
@@ -125,24 +127,40 @@ public class Menu {
                                 System.out.println("");
                             }
                             break;
+                        case 6:
+                            System.out.println("Listado de particulares:");
+                            System.out.println("");
+                            imprimirLista(Utiles.entreDosFechas(particulares.getListadoClientes(),pedirFechaInical(),pedirFechaFinal()));
+                            System.out.println("Listado de empresas:");
+                            System.out.println("");
+                            imprimirLista(Utiles.entreDosFechas(empresas.getListadoClientes(),pedirFechaInical(),pedirFechaFinal()));
+                            break;
                     }
                     break;
                 case 2:
                     System.out.println("");
                     System.out.println("Introduce 1 para --> Dar de alta una llamada");
                     System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
+                    System.out.println("Introduce 3 para --> Listado de llamadas de un cliente realizadas entre dos fechas");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
                             llamadas.darDeAlta(entradaDatosNIF(),pedirDatosLlamada());
                             break;
-                        case 2:try{
-
+                        case 2:
+                            try{
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
-                        }catch(ExcepcionClienteSinLlamadas e) {
-                            e.printStackTrace();
+                            }catch(ExcepcionClienteSinLlamadas e) {
+                                e.printStackTrace();
 
-                        }
+                            }
+                            break;
+                        case 3:
+                            try{
+                            imprimirLista(Utiles.entreDosFechas(llamadas.listarLlamadas(entradaDatosNIF()),pedirFechaInical(),pedirFechaFinal()));
+                            } catch (ExcepcionClienteSinLlamadas e) {
+                                e.printStackTrace();
+                            }
                             break;
                     }
                     break;
@@ -151,17 +169,26 @@ public class Menu {
                     System.out.println("Introduce 1 para --> Emitir factura para un cliente");
                     System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
                     System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
+                    System.out.println("Introduce 4 para --> Obtener facturas de un cliente emitidas entre dos fechas");
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
                             String nif = entradaDatosNIF();
                             if (empresas.existeCliente(nif)){
                                 Cliente cliente = empresas.getDatosCliente(nif);
-                                System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion()));
+                                try {
+                                    System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
+                                }catch(ExcepcionClienteSinLlamadas e) {
+                                    e.printStackTrace();
+                                }
                             }else
                                 if (particulares.existeCliente(nif)) {
                                     Cliente cliente = particulares.getDatosCliente(nif);
-                                    System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), pedirDatosPeridoDeFacturacion()));
+                                    try {
+                                        System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
+                                    }catch (ExcepcionClienteSinLlamadas e) {
+                                        e.printStackTrace();
+                                    }
                             }else{
                                     System.out.println("No se ha emitido la factura.");
                             }
@@ -175,6 +202,9 @@ public class Menu {
                                 System.out.println(factura);
                                 System.out.println("");
                             }
+                            break;
+                        case 4:
+                            imprimirLista(Utiles.entreDosFechas(facturas.recuperarFacturasCliente(entradaDatosNIF()),pedirFechaInical(),pedirFechaFinal()));
                             break;
                     }
                     break;
@@ -251,14 +281,42 @@ public class Menu {
 
     }
 
-    private static void imprimirLista( Collection listallamadas){
-        Iterator lista = listallamadas.iterator();
+    private static void imprimirLista( Collection col){
+        Iterator lista = col.iterator();
         while(lista.hasNext()){
             System.out.println(lista.next().toString());
+            System.out.println("");
         }
 
     }
-    private static PeriodoFacturacion pedirDatosPeridoDeFacturacion(){
+
+    private static LocalDateTime pedirFechaInical(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce año en numero de la fecha de inicio: ");
+        int año = sc.nextInt();
+
+        System.out.println("Introduce mes en numero de la fecha de inicio: ");
+        int mes = sc.nextInt();
+
+        System.out.println("Introduce dia en numero de la fecha de inicio: ");
+        int dia = sc.nextInt();
+        return LocalDateTime.of(año,mes,dia,0,0);
+    }
+
+    private static LocalDateTime pedirFechaFinal(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce año en numero de la fecha final: ");
+        int año2 = sc.nextInt();
+
+        System.out.println("Introduce mes en numero de la fecha final: ");
+        int mes2 = sc.nextInt();
+
+        System.out.println("Introduce dia en numero de la fecha final: ");
+        int dia2 = sc.nextInt();
+        return LocalDateTime.of(año2,mes2,dia2,0,0);
+    }
+
+ /*   private static PeriodoFacturacion pedirDatosPeridoDeFacturacion(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
@@ -282,7 +340,7 @@ public class Menu {
         LocalDateTime fechaFinal = LocalDateTime.of(año2,mes2,dia2,0,0);
 
         return new PeriodoFacturacion(fechaInicial,fechaFinal);
-    }
+    }*/
 
     private static int pedirCodFac(){
         Scanner sc = new Scanner(System.in);

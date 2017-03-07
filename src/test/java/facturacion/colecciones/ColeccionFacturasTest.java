@@ -1,5 +1,7 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
@@ -12,8 +14,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by user on 1/03/17.
@@ -54,18 +58,17 @@ public class ColeccionFacturasTest {
     }
 
     @Test
-    public void emitirFacturaTest(){
-        Factura factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
-        assertEquals(factura.getImporte(),140);
+    public void emitirFacturaTest() throws ExcepcionClienteSinLlamadas{
+        Factura factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
+        assertEquals(factura.getImporte(), 140);
         System.out.println(factura);
-        llamadas.darDeAlta("73402320M",llamada4);
-        factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
-        assertEquals(factura.getImporte(),140);
-        pfact=new PeriodoFacturacion(LocalDateTime.of(2000,1,1,0,0),LocalDateTime.of(2022,1,1,0,0));
-        factura=facturas.emitirFactura(cliente,llamadas.listarLlamadas("73402320M"),pfact);
-        assertEquals(factura.getImporte(),240);
+        llamadas.darDeAlta("73402320M", llamada4);
+        factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
+        assertEquals(factura.getImporte(), 140);
+        pfact = new PeriodoFacturacion(LocalDateTime.of(2000, 1, 1, 0, 0), LocalDateTime.of(2022, 1, 1, 0, 0));
+        factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
+        assertEquals(factura.getImporte(), 240);
         System.out.println(factura);
-
-
     }
+
 }
