@@ -1,5 +1,6 @@
 package menu;
 
+import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
@@ -135,8 +136,13 @@ public class Menu {
                         case 1:
                             llamadas.darDeAlta(entradaDatosNIF(),pedirDatosLlamada());
                             break;
-                        case 2:
+                        case 2:try{
+
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
+                        }catch(ExcepcionClienteSinLlamadas e) {
+                            e.printStackTrace();
+
+                        }
                             break;
                     }
                     break;

@@ -34,6 +34,7 @@ public class PeriodoFacturacion {
     public String diasTranscurridos(){
         return "Desde "+fechaInicial.toString()+" hasta "+fechaFinal.toString();
     }
+
     public String toString (){
         return (this.diasTranscurridos()+"");
 
