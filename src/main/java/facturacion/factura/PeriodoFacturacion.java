@@ -35,6 +35,7 @@ public class PeriodoFacturacion {
         return (LocalDateTime.from(getFechaFinal()).compareTo(this.fechaInicial));
 
     }
+
     public String toString (){
         return (this.diasTranscurridos()+"");
 
