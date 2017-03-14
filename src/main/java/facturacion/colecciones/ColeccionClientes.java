@@ -2,12 +2,13 @@ package facturacion.colecciones;
 
 import facturacion.cliente.Cliente;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * Created by user on 26/02/17.
  */
-public interface ColeccionClientes {
+public interface ColeccionClientes{
     public boolean existeCliente(String NIF);
     public boolean añadirCliente(Cliente cliente);
     public boolean borrarCliente(String NIF);

@@ -6,6 +6,7 @@ import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.Iterator;
 /**
  * Created by user on 27/02/17.
  */
-public class ColeccionFacturas {
+public class ColeccionFacturas implements Serializable{
 
     private HashMap<String,HashMap<Integer,Factura>> facturas;
     private static int contador;

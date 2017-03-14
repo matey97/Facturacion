@@ -3,12 +3,13 @@ package facturacion.cliente;
 import facturacion.Fecha;
 import facturacion.factura.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by al341802 on 21/02/17.
  */
-public abstract class Cliente implements Fecha{
+public abstract class Cliente implements Fecha, Serializable{
     private String nombre;
     private String NIF;
     private Direccion direccion;

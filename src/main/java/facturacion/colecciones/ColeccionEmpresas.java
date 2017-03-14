@@ -3,6 +3,7 @@ package facturacion.colecciones;
 import facturacion.cliente.Cliente;
 
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.StringJoiner;
@@ -10,7 +11,7 @@ import java.util.StringJoiner;
 /**
  * Created by user on 26/02/17.
  */
-public class ColeccionEmpresas implements ColeccionClientes {
+public class ColeccionEmpresas implements ColeccionClientes, Serializable{
 
     private HashMap<String,Cliente> empresas;
 

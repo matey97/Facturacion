@@ -2,12 +2,13 @@ package facturacion.factura;
 
 import facturacion.Fecha;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 21/2/17.
  */
-public class Factura implements Fecha{
+public class Factura implements Fecha, Serializable{
 
     private int codfac;
     private Tarifa tarifa;

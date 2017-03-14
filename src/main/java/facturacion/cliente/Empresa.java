@@ -2,6 +2,7 @@ package facturacion.cliente;
 
 import facturacion.factura.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**

@@ -4,6 +4,7 @@ import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Llamada;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ import java.util.LinkedList;
 /**
  * Created by user on 27/02/17.
  */
-public class ColeccionLlamadas {
+public class ColeccionLlamadas implements  Serializable{
 
     private HashMap<String,LinkedList<Llamada>> llamadas;
 
