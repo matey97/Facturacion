@@ -1,5 +1,6 @@
 package facturacion.factura;
 
+import facturacion.Excepciones.DuracionNoValida;
 import facturacion.Fecha;
 
 import java.time.LocalDateTime;
@@ -15,7 +16,10 @@ public class Llamada implements Fecha{
 
 
 
-    public Llamada(int telefono, LocalDateTime fecha, int duracion) {
+    public Llamada(int telefono, LocalDateTime fecha, int duracion) throws DuracionNoValida {
+        if(duracion <= 0){
+            throw new DuracionNoValida("la duración de una llamada no puede ser negativa");
+        }
         this.telefono = telefono;
         this.fecha = fecha;
         this.duracion=duracion;

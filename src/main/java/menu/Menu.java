@@ -1,6 +1,7 @@
 package menu;
 
 import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.Excepciones.FechaInicialMayorQueFinal;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -180,6 +181,8 @@ public class Menu {
                                     System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
                                 }catch(ExcepcionClienteSinLlamadas e) {
                                     e.printStackTrace();
+                                }catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
+                                    fechaInicialMayorQueFinal.printStackTrace();
                                 }
                             }else
                                 if (particulares.existeCliente(nif)) {
@@ -188,8 +191,10 @@ public class Menu {
                                         System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
                                     }catch (ExcepcionClienteSinLlamadas e) {
                                         e.printStackTrace();
+                                    }catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
+                                        fechaInicialMayorQueFinal.printStackTrace();
                                     }
-                            }else{
+                                }else{
                                     System.out.println("No se ha emitido la factura.");
                             }
                             break;
