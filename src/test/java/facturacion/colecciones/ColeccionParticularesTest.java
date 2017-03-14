@@ -1,6 +1,6 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -13,7 +13,6 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;

@@ -1,10 +1,9 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.DuracionNoValida;
-import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
-import facturacion.Excepciones.PrecioTarifaNoValido;
-import facturacion.Utiles;
+import facturacion.excepciones.DuracionNoValida;
+import facturacion.excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
@@ -17,7 +16,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

@@ -1,6 +1,6 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;

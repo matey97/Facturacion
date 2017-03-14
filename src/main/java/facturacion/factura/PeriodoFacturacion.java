@@ -1,10 +1,9 @@
 package facturacion.factura;
 
 import java.io.Serializable;
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
 
 import java.time.LocalDateTime;
-import java.time.Period;
 
 /**
  * Created by sergiojimenez on 6/3/17.
@@ -41,7 +40,7 @@ public class PeriodoFacturacion implements Serializable{
 
     public void setFechaFinal(LocalDateTime fechaFinal)throws FechaInicialMayorQueFinal {
         if(fechaInicial.isBefore(fechaInicial)){
-            throw new FechaInicialMayorQueFinal("la fecha inicial no puede ser posterior a la fecha final");
+            throw new FechaInicialMayorQueFinal("la fecha final no puede ser anterior a la fecha final");
 
         }
         this.fechaFinal = fechaFinal;

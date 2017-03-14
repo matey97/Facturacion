@@ -1,7 +1,7 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.DuracionNoValida;
-import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.excepciones.DuracionNoValida;
+import facturacion.excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.Utiles;
 import facturacion.factura.Llamada;
 import org.junit.AfterClass;

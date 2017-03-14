@@ -1,9 +1,9 @@
 package menu;
 
-import facturacion.Excepciones.DuracionNoValida;
-import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
-import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.DuracionNoValida;
+import facturacion.excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -182,7 +182,7 @@ public class Menu {
                             try{
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
                             }catch(ExcepcionClienteSinLlamadas e) {
-                                e.printStackTrace();
+                                e.getMessage();
 
                             }
                             break;
@@ -190,7 +190,7 @@ public class Menu {
                             try{
                             imprimirLista(Utiles.entreDosFechas(llamadas.listarLlamadas(entradaDatosNIF()),pedirFechaInical(),pedirFechaFinal()));
                             } catch (ExcepcionClienteSinLlamadas e) {
-                                e.printStackTrace();
+                                e.getMessage();
                             }
                             break;
                     }
@@ -210,9 +210,9 @@ public class Menu {
                                 try {
                                     System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
                                 }catch(ExcepcionClienteSinLlamadas e) {
-                                    e.printStackTrace();
+                                    e.getMessage();
                                 }catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
-                                    fechaInicialMayorQueFinal.printStackTrace();
+                                    fechaInicialMayorQueFinal.getMessage();
                                 }
                             }else
                                 if (particulares.existeCliente(nif)) {
@@ -220,9 +220,9 @@ public class Menu {
                                     try {
                                         System.out.println(facturas.emitirFactura(cliente, llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(),pedirFechaFinal())));
                                     }catch (ExcepcionClienteSinLlamadas e) {
-                                        e.printStackTrace();
+                                        e.getMessage();
                                     }catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
-                                        fechaInicialMayorQueFinal.printStackTrace();
+                                        fechaInicialMayorQueFinal.getMessage();
                                     }
                                 }else{
                                     System.out.println("No se ha emitido la factura.");
@@ -303,7 +303,7 @@ public class Menu {
         try{
             tarifa=new Tarifa(sc.nextInt());
         } catch (PrecioTarifaNoValido precioTarifaNoValido) {
-            precioTarifaNoValido.printStackTrace();
+            precioTarifaNoValido.getMessage();
         }
 
         sc.nextLine();
@@ -344,7 +344,7 @@ public class Menu {
         try {
             llamada= new Llamada(telefono, fecha, duracion);
         } catch (DuracionNoValida duracionNoValida) {
-            duracionNoValida.printStackTrace();
+            duracionNoValida.getMessage();
         }
         return llamada;
 

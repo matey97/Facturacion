@@ -1,4 +1,4 @@
-package facturacion.Excepciones;
+package facturacion.excepciones;
 
 /**
  * Created by sergiojimenez on 14/3/17.

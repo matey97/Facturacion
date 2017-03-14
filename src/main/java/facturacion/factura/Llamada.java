@@ -1,6 +1,6 @@
 package facturacion.factura;
 
-import facturacion.Excepciones.DuracionNoValida;
+import facturacion.excepciones.DuracionNoValida;
 import facturacion.Fecha;
 
 import java.io.Serializable;

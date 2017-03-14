@@ -1,7 +1,6 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
-import facturacion.cliente.Cliente;
+import facturacion.excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.factura.Llamada;
 
 import java.io.Serializable;
@@ -20,9 +19,10 @@ public class ColeccionLlamadas implements  Serializable{
         llamadas=new HashMap<>();
     }
 
-    public void darDeAlta(String nif, Llamada llamada){
+    public void darDeAlta(String nif, Llamada llamada)throws NoExisteCliente{
         if (!llamadas.containsKey(nif)) {
-            llamadas.put(nif, new LinkedList<>());
+            trhow new NoExisteCliente("El Cliente introducido no existe");
+            //llamadas.put(nif, new LinkedList<>());
         }
         llamadas.get(nif).add(llamada);
     }

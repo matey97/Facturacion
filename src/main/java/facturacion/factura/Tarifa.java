@@ -2,7 +2,7 @@ package facturacion.factura;
 
 import java.io.Serializable;
 
-import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.PrecioTarifaNoValido;
 
 /**
  * Created by al341802 on 21/02/17.
