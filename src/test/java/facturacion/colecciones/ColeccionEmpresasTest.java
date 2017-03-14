@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.PrecioTarifaNoValido;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
@@ -24,7 +25,7 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
     private static Cliente empresa1, empresa2;
 
     @BeforeClass
-    public static void init(){
+    public static void init() throws PrecioTarifaNoValido{
         empresas=new ColeccionEmpresas();
         empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.now(),new Tarifa(5));
         empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.now(),new Tarifa(3));

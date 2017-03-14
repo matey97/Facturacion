@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.DuracionNoValida;
 import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.factura.Llamada;
 import org.junit.AfterClass;
@@ -20,7 +21,7 @@ public class ColeccionLlamadasTest {
     private static Llamada llamada1,llamada2,llamada3;
 
     @BeforeClass
-    public static void init(){
+    public static void init() throws DuracionNoValida{
         llamadas=new ColeccionLlamadas();
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
