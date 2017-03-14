@@ -1,6 +1,7 @@
 package facturacion.colecciones;
 
 import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
@@ -11,6 +12,7 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -27,8 +29,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
     @BeforeClass
     public static void init() throws PrecioTarifaNoValido{
         empresas=new ColeccionEmpresas();
-        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.now(),new Tarifa(5));
-        empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.now(),new Tarifa(3));
+        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,1,0,0),new Tarifa(5));
+        empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),new Tarifa(3));
     }
 
     @AfterClass
@@ -40,6 +42,7 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void añadirClienteTest(){
+
         assertTrue(empresas.añadirCliente(empresa1));
 
         assertTrue(empresas.añadirCliente(empresa2));

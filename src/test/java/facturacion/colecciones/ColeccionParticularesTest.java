@@ -44,6 +44,7 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void añadirClienteTest(){
+        particulares=new ColeccionParticulares();;
         assertTrue(particulares.añadirCliente(cliente1));
 
         assertTrue(particulares.añadirCliente(cliente2));
@@ -89,10 +90,9 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
     public void clientesEntreDosFechasTest(){
         particulares.añadirCliente(cliente1);
         particulares.añadirCliente(cliente2);
-        Collection<Cliente> col = Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0));
-        for (Cliente cliente : col){
-            System.out.println(cliente);
-        }
+        assertTrue(Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0)).contains(cliente1));
+        assertTrue(!Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0)).contains(cliente2));
+
     }
 
 
