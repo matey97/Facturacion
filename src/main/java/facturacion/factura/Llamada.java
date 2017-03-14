@@ -2,12 +2,13 @@ package facturacion.factura;
 
 import facturacion.Fecha;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 21/2/17.
  */
-public class Llamada implements Fecha{
+public class Llamada implements Fecha, Serializable{
 
     private int telefono;
     private LocalDateTime fecha;

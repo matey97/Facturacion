@@ -1,9 +1,11 @@
 package facturacion.factura;
 
+import java.io.Serializable;
+
 /**
  * Created by al341802 on 21/02/17.
  */
-public class Tarifa {
+public class Tarifa implements Serializable{
     private int precioMinuto;
 
     public Tarifa(int precioMinuto) {

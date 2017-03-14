@@ -1,13 +1,15 @@
 package facturacion.colecciones;
 
 import facturacion.cliente.Cliente;
+
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;
 
 /**
  * Created by user on 26/02/17.
  */
-public class ColeccionParticulares implements ColeccionClientes {
+public class ColeccionParticulares implements ColeccionClientes, Serializable{
 
     private HashMap<String,Cliente> particulares;
 

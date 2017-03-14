@@ -2,12 +2,13 @@ package facturacion.cliente;
 
 import facturacion.factura.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by al341802 on 21/02/17.
  */
-public class Particular extends Cliente {
+public class Particular extends Cliente{
 
     private String apellidos;
 

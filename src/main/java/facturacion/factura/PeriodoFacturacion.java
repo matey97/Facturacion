@@ -1,12 +1,13 @@
 package facturacion.factura;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Period;
 
 /**
  * Created by sergiojimenez on 6/3/17.
  */
-public class PeriodoFacturacion {
+public class PeriodoFacturacion implements Serializable{
     private LocalDateTime fechaInicial;
     private LocalDateTime fechaFinal;
 

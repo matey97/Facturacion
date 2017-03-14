@@ -1,9 +1,11 @@
 package facturacion.cliente;
 
+import java.io.Serializable;
+
 /**
  * Created by al341802 on 21/02/17.
  */
-public class Direccion {
+public class Direccion implements Serializable{
     private int codPostal;
     private String provincia;
     private String poblacion;
