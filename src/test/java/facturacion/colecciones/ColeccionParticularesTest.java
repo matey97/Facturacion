@@ -87,8 +87,12 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void clientesEntreDosFechasTest(){
+        particulares.añadirCliente(cliente1);
+        particulares.añadirCliente(cliente2);
         Collection<Cliente> col = Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0));
-        assertTrue(col.contains(cliente1));
+        for (Cliente cliente : col){
+            System.out.println(cliente);
+        }
     }
 
 
