@@ -1,6 +1,9 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.DuracionNoValida;
 import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
+import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.Excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -32,7 +35,7 @@ public class ColeccionFacturasTest {
     private static PeriodoFacturacion pfact;
 
     @BeforeClass
-    public static void init(){
+    public static void init() throws PrecioTarifaNoValido,DuracionNoValida, FechaInicialMayorQueFinal{
         facturas=new ColeccionFacturas();
         llamadas=new ColeccionLlamadas();
         tarifa=new Tarifa(5);
@@ -58,7 +61,7 @@ public class ColeccionFacturasTest {
     }
 
     @Test
-    public void emitirFacturaTest() throws ExcepcionClienteSinLlamadas{
+    public void emitirFacturaTest() throws ExcepcionClienteSinLlamadas, FechaInicialMayorQueFinal{
         Factura factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
         assertEquals(factura.getImporte(), 140);
         System.out.println(factura);

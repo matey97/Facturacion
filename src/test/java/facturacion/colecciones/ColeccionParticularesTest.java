@@ -1,5 +1,7 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
@@ -27,10 +29,10 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
     private static Cliente cliente1, cliente2;
 
     @BeforeClass
-    public static void init(){
+    public static void init() throws PrecioTarifaNoValido{
         particulares=new ColeccionParticulares();
-        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),new Tarifa(5));
-        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.now(),new Tarifa(3));
+        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.of(2017,2,1,0,0),new Tarifa(5));
+        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.of(2017,4,1,0,0),new Tarifa(3));
     }
 
     @AfterClass
@@ -81,6 +83,12 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
         for (Cliente particular : particulares.getListadoClientes()){
             assertEquals(particular,l.get(i++));
         }
+    }
+
+    @Test
+    public void clientesEntreDosFechasTest(){
+        Collection<Cliente> col = Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0));
+        assertTrue(col.contains(cliente1));
     }
 
 
