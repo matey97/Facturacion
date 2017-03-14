@@ -1,7 +1,9 @@
 package menu;
 
+import facturacion.Excepciones.DuracionNoValida;
 import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.Excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -13,7 +15,6 @@ import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
 
-import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -24,36 +25,9 @@ public class Menu {
 
     public static void main(String[] args) {
         ColeccionClientes particulares = new ColeccionParticulares();
-        ColeccionClientes empresas = new ColeccionEmpresas();
+        ColeccionClientes empresas= new ColeccionEmpresas();
         ColeccionLlamadas llamadas = new ColeccionLlamadas();
-        ColeccionFacturas facturas = new ColeccionFacturas();
-        try{
-            FileInputStream fichParticulares = new FileInputStream("particulares.bin");
-            FileInputStream fichEmpresas = new FileInputStream("empresas.bin");
-            FileInputStream fichLlamadas = new FileInputStream("llamadas.bin");
-            FileInputStream fichFacturas = new FileInputStream("facturas.bin");
-            ObjectInputStream objParticulares = new ObjectInputStream(fichParticulares);
-            ObjectInputStream objEmpresas = new ObjectInputStream(fichEmpresas);
-            ObjectInputStream objLlamadas = new ObjectInputStream(fichLlamadas);
-            ObjectInputStream objFacturas = new ObjectInputStream(fichFacturas);
-            particulares = (ColeccionClientes) objParticulares.readObject();
-            empresas = (ColeccionClientes) objEmpresas.readObject();
-            llamadas = (ColeccionLlamadas) objLlamadas.readObject();
-            facturas = (ColeccionFacturas) objFacturas.readObject();
-            objParticulares.close();
-            objEmpresas.close();
-            objLlamadas.close();
-            objFacturas.close();
-        } catch(FileNotFoundException e){
-            System.out.println("Error del fichero.");
-            System.out.println(e);
-        } catch(IOException e){
-            System.out.println("Error en ObjectInputStream.");
-            System.out.println(e);
-        } catch(ClassNotFoundException e){
-            System.out.println("Error al recuperar datos del fichero.");
-            System.out.println(e);
-        }
+        ColeccionFacturas facturas= new ColeccionFacturas();
         Scanner sc = new Scanner(System.in);
         int n;
         do {
@@ -244,62 +218,42 @@ public class Menu {
             }
         }while(n!=0);
 
-        try{
-            FileOutputStream fichParticulares = new FileOutputStream("particulares.bin");
-            FileOutputStream fichEmpresas = new FileOutputStream("empresas.bin");
-            FileOutputStream fichLlamadas = new FileOutputStream("llamadas.bin");
-            FileOutputStream fichFacturas = new FileOutputStream("facturas.bin");
-            ObjectOutputStream objParticulares = new ObjectOutputStream(fichParticulares);
-            ObjectOutputStream objEmpresas = new ObjectOutputStream(fichEmpresas);
-            ObjectOutputStream objLlamadas = new ObjectOutputStream(fichLlamadas);
-            ObjectOutputStream objFacturas = new ObjectOutputStream(fichFacturas);
-            objParticulares.writeObject(particulares);
-            objEmpresas.writeObject(empresas);
-            objLlamadas.writeObject(llamadas);
-            objFacturas.writeObject(facturas);
-            objParticulares.close();
-            objEmpresas.close();
-            objLlamadas.close();
-            objFacturas.close();
-        }catch (FileNotFoundException e){
-            System.out.println("Error al intentar abrir el fichero.");
-            System.out.println(e);
-        }catch (IOException e){
-            System.out.println("Error en ObjectOutputStream");
-            System.out.println(e);
-        }
-
     }
 
     private static Cliente entradaDatosCliente(int n){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce nombre del cliente: ");
+        System.out.println("Introduce nombre del cliente: ");
         String nombre=sc.nextLine();
         String apellidos=null;
         if (n==1){
-            System.out.print("Introduce apellidos del cliente: ");
+            System.out.println("Introduce apellidos del cliente: ");
             apellidos=sc.nextLine();
         }
 
         String NIF=entradaDatosNIF();
 
-        System.out.print("Introduce el codigo postal: ");
+        System.out.println("Introduce el codigo postal: ");
         int codPostal=sc.nextInt();
 
-        System.out.print("Introduce la población: ");
+        System.out.println("Introduce la población: ");
         sc.nextLine();
         String poblacion=sc.nextLine();
 
-        System.out.print("Introduce la provincia: ");
+        System.out.println("Introduce la provincia: ");
         String provincia=sc.nextLine();
 
         Direccion direccion=new Direccion(codPostal,provincia,poblacion);
 
-        System.out.print("Introduce E-mail del cliente: ");
+        System.out.println("Introduce E-mail del cliente: ");
         String email=sc.nextLine();
 
-        System.out.print("Introduce la tarifa del cliente: ");
-        Tarifa tarifa=new Tarifa(sc.nextInt());
+        System.out.println("Introduce la tarifa del cliente: ");
+        Tarifa tarifa =null;
+        try{
+            tarifa=new Tarifa(sc.nextInt());
+        } catch (PrecioTarifaNoValido precioTarifaNoValido) {
+            precioTarifaNoValido.printStackTrace();
+        }
 
         sc.nextLine();
 
@@ -317,25 +271,31 @@ public class Menu {
 
     private static String entradaDatosNIF(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce NIF del cliente: ");
+        System.out.println("Introduce NIF del cliente: ");
         return sc.nextLine();
     }
 
     private static int entradaDatosPrecioMinuto(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce la nueva tarifa: ");
+        System.out.println("Introduce la nueva tarifa: ");
         return sc.nextInt();
     }
 
     private static Llamada pedirDatosLlamada() {
 
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce el telefono: ");
+        System.out.println("Introduce el telefono: ");
         int telefono = sc.nextInt();
-        System.out.print("Introduce la duración: ");
+        System.out.println("Introduce la duración: ");
         int duracion = sc.nextInt();
         LocalDateTime fecha = LocalDateTime.now();
-        return new Llamada(telefono, fecha, duracion);
+        Llamada llamada= null;
+        try {
+            llamada= new Llamada(telefono, fecha, duracion);
+        } catch (DuracionNoValida duracionNoValida) {
+            duracionNoValida.printStackTrace();
+        }
+        return llamada;
 
     }
 
@@ -350,32 +310,6 @@ public class Menu {
 
     private static LocalDateTime pedirFechaInical(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce año en numero de la fecha de inicio: ");
-        int año = sc.nextInt();
-
-        System.out.print("Introduce mes en numero de la fecha de inicio: ");
-        int mes = sc.nextInt();
-
-        System.out.print("Introduce dia en numero de la fecha de inicio: ");
-        int dia = sc.nextInt();
-        return LocalDateTime.of(año,mes,dia,0,0);
-    }
-
-    private static LocalDateTime pedirFechaFinal(){
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce año en numero de la fecha final: ");
-        int año2 = sc.nextInt();
-
-        System.out.print("Introduce mes en numero de la fecha final: ");
-        int mes2 = sc.nextInt();
-
-        System.out.print("Introduce dia en numero de la fecha final: ");
-        int dia2 = sc.nextInt();
-        return LocalDateTime.of(año2,mes2,dia2,0,0);
-    }
-
- /*   private static PeriodoFacturacion pedirDatosPeridoDeFacturacion(){
-        Scanner sc = new Scanner(System.in);
         System.out.println("Introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
 
@@ -384,9 +318,11 @@ public class Menu {
 
         System.out.println("Introduce dia en numero de la fecha de inicio: ");
         int dia = sc.nextInt();
-        LocalDateTime fechaInicial = LocalDateTime.of(año,mes,dia,0,0);
+        return LocalDateTime.of(año,mes,dia,0,0);
+    }
 
-
+    private static LocalDateTime pedirFechaFinal(){
+        Scanner sc = new Scanner(System.in);
         System.out.println("Introduce año en numero de la fecha final: ");
         int año2 = sc.nextInt();
 
@@ -395,14 +331,13 @@ public class Menu {
 
         System.out.println("Introduce dia en numero de la fecha final: ");
         int dia2 = sc.nextInt();
-        LocalDateTime fechaFinal = LocalDateTime.of(año2,mes2,dia2,0,0);
+        return LocalDateTime.of(año2,mes2,dia2,0,0);
+    }
 
-        return new PeriodoFacturacion(fechaInicial,fechaFinal);
-    }*/
 
     private static int pedirCodFac(){
         Scanner sc = new Scanner(System.in);
-        System.out.print("Introduce el codigo de factura:");
+        System.out.println("Introduce el codigo de factura:");
         return sc.nextInt();
     }
 }
