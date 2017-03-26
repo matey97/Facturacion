@@ -5,6 +5,7 @@ import facturacion.Excepciones.ExcepcionClienteSinLlamadas;
 import facturacion.Utiles;
 import facturacion.factura.Llamada;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -23,7 +24,6 @@ public class ColeccionLlamadasTest {
 
     @BeforeClass
     public static void init() throws DuracionNoValida{
-        llamadas=new ColeccionLlamadas();
         llamada1=new Llamada(669318017, LocalDateTime.of(2017,1,2,0,0),13);
         llamada2=new Llamada(612317002, LocalDateTime.of(2017,2,1,0,0),5);
         llamada2=new Llamada(695968097, LocalDateTime.of(2017,3,1,0,0),24);
@@ -33,6 +33,11 @@ public class ColeccionLlamadasTest {
     public static void end(){
         llamadas=null;
         llamada1=llamada2=llamada3=null;
+    }
+
+    @Before
+    public void antesDeTest(){
+        llamadas=new ColeccionLlamadas();
     }
 
     @Test
@@ -54,6 +59,5 @@ public class ColeccionLlamadasTest {
         llamadas.darDeAlta("200",llamada3);
         assertTrue(Utiles.entreDosFechas(llamadas.listarLlamadas("100"),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,1,20,0,0)).contains(llamada1));
         assertTrue(!Utiles.entreDosFechas(llamadas.listarLlamadas("100"),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,1,20,0,0)).contains(llamada2));
-        llamadas=new ColeccionLlamadas();
     }
 }

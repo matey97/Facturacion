@@ -1,5 +1,6 @@
 package facturacion.colecciones;
 
+import facturacion.Excepciones.FechaInicialMayorQueFinal;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Factura;
@@ -26,7 +27,7 @@ public class ColeccionFacturas implements Serializable{
     }
 
 
-    public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion){
+    public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
 
         int importe=0;
 

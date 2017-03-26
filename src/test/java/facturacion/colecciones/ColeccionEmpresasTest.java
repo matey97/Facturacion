@@ -7,6 +7,7 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.factura.Tarifa;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -28,8 +29,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @BeforeClass
     public static void init() throws PrecioTarifaNoValido{
-        empresas=new ColeccionEmpresas();
-        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,1,0,0),new Tarifa(5));
+
+        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),new Tarifa(5));
         empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),new Tarifa(3));
     }
 
@@ -38,6 +39,11 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
         empresas=null;
         empresa1 =null;
 
+    }
+
+    @Before
+    public void antesDeTest(){
+        empresas=new ColeccionEmpresas();
     }
 
     @Test
@@ -50,6 +56,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void existeClienteTest(){
+        empresas.añadirCliente(empresa1);
+        empresas.añadirCliente(empresa2);
         assertTrue(empresas.existeCliente("120"));
         assertTrue(!empresas.existeCliente("0000"));
         assertTrue(empresas.existeCliente("130"));
@@ -57,6 +65,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void getDatosClienteTest(){
+        empresas.añadirCliente(empresa1);
+        empresas.añadirCliente(empresa2);
         assertEquals(empresas.getDatosCliente("120"), empresa1);
         assertNotEquals(empresas.getDatosCliente("120"), empresa2);
         assertEquals(empresas.getDatosCliente("130"), empresa2);
@@ -66,6 +76,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
     @Test
     public void cambiarTarifaTest(){
         int n=3;
+        empresas.añadirCliente(empresa1);
+        empresas.añadirCliente(empresa2);
         empresas.cambiarTarifa("120",n);
         empresas.cambiarTarifa("130",n+3);
 
@@ -75,16 +87,25 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void getListadoClientesTest(){
+        empresas.añadirCliente(empresa1);
+        empresas.añadirCliente(empresa2);
         int i=0;
         List<Cliente> l = new ArrayList<>();
-        l.add(empresa1);
         l.add(empresa2);
+        l.add(empresa1);
         for (Cliente empresa : empresas.getListadoClientes()){
             assertEquals(empresa,l.get(i++));
         }
     }
 
-
+    @Test
+    public void empresasEntreDosFechas(){
+        empresas.añadirCliente(empresa1);
+        empresas.añadirCliente(empresa2);
+        assertTrue(Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,5,1,0,0)).contains(empresa2));
+        assertTrue(!Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,5,1,0,0)).contains(empresa1));
+        assertTrue(Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2016,1,1,0,0),LocalDateTime.of(2016,2,1,0,0)).contains(empresa1));
+    }
 }
 
 

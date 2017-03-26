@@ -159,12 +159,14 @@ public class Menu {
                             }
                             break;
                         case 6:
+
                             System.out.println("Listado de particulares:");
                             System.out.println("");
-                            imprimirLista(Utiles.entreDosFechas(particulares.getListadoClientes(),pedirFechaInical(),pedirFechaFinal()));
+                            imprimirLista(Utiles.entreDosFechas(particulares.getListadoClientes(), pedirFechaInical(), pedirFechaFinal()));
                             System.out.println("Listado de empresas:");
                             System.out.println("");
-                            imprimirLista(Utiles.entreDosFechas(empresas.getListadoClientes(),pedirFechaInical(),pedirFechaFinal()));
+                            imprimirLista(Utiles.entreDosFechas(empresas.getListadoClientes(), pedirFechaInical(), pedirFechaFinal()));
+
                             break;
                     }
                     break;
@@ -239,7 +241,8 @@ public class Menu {
                             }
                             break;
                         case 4:
-                            imprimirLista(Utiles.entreDosFechas(facturas.recuperarFacturasCliente(entradaDatosNIF()),pedirFechaInical(),pedirFechaFinal()));
+
+                            imprimirLista(Utiles.entreDosFechas(facturas.recuperarFacturasCliente(entradaDatosNIF()), pedirFechaInical(), pedirFechaFinal()));
                             break;
                     }
                     break;
