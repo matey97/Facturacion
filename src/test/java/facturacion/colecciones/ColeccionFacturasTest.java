@@ -12,6 +12,7 @@ import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.factura.Tarifa;
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,7 +35,6 @@ public class ColeccionFacturasTest {
 
     @BeforeClass
     public static void init() throws PrecioTarifaNoValido,DuracionNoValida, FechaInicialMayorQueFinal{
-        facturas=new ColeccionFacturas();
         llamadas=new ColeccionLlamadas();
         tarifa=new Tarifa(5);
         cliente=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),new Tarifa(5));
@@ -58,6 +58,11 @@ public class ColeccionFacturasTest {
         tarifa=null;
     }
 
+    @Before
+    public void antesDeTest(){
+        facturas=new ColeccionFacturas();
+    }
+
     @Test
     public void emitirFacturaTest() throws ExcepcionClienteSinLlamadas, FechaInicialMayorQueFinal{
         Factura factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
@@ -71,5 +76,6 @@ public class ColeccionFacturasTest {
         assertEquals(factura.getImporte(), 240);
         System.out.println(factura);
     }
+    
 
 }
