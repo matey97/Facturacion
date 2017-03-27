@@ -1,6 +1,6 @@
 package facturacion.excepciones;
 
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
 import facturacion.factura.PeriodoFacturacion;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,9 +1,6 @@
 package menu;
 
-import facturacion.excepciones.DuracionNoValida;
-import facturacion.excepciones.ExcepcionClienteSinLlamadas;
-import facturacion.excepciones.FechaInicialMayorQueFinal;
-import facturacion.excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.*;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
@@ -178,14 +175,13 @@ public class Menu {
                     n = sc.nextInt();
                     switch (n) {
                         case 1:
-                            llamadas.darDeAlta(entradaDatosNIF(),pedirDatosLlamada());
+                            llamadas.darDeAlta(entradaDatosNIF(), pedirDatosLlamada());
                             break;
                         case 2:
                             try{
                             imprimirLista(llamadas.listarLlamadas(entradaDatosNIF()));
                             }catch(ExcepcionClienteSinLlamadas e) {
                                 e.getMessage();
-
                             }
                             break;
                         case 3:

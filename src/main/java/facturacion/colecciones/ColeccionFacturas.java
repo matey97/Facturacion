@@ -1,6 +1,6 @@
 package facturacion.colecciones;
 
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.factura.Factura;

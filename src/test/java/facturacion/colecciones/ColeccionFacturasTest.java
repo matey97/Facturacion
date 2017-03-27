@@ -1,9 +1,6 @@
 package facturacion.colecciones;
 
-import facturacion.excepciones.DuracionNoValida;
-import facturacion.excepciones.ExcepcionClienteSinLlamadas;
-import facturacion.excepciones.FechaInicialMayorQueFinal;
-import facturacion.excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.*;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
@@ -76,6 +73,6 @@ public class ColeccionFacturasTest {
         assertEquals(factura.getImporte(), 240);
         System.out.println(factura);
     }
-    
+
 
 }

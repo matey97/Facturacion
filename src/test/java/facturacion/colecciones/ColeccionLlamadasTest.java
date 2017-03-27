@@ -41,7 +41,7 @@ public class ColeccionLlamadasTest {
     }
 
     @Test
-    public void listarLlamadasTest() throws ExcepcionClienteSinLlamadas {
+    public void listarLlamadasTest() throws ExcepcionClienteSinLlamadas{
         llamadas.darDeAlta("100",llamada1);
         llamadas.darDeAlta("100",llamada2);
         llamadas.darDeAlta("200",llamada3);

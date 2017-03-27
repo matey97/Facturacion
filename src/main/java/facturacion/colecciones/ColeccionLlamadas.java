@@ -19,10 +19,9 @@ public class ColeccionLlamadas implements  Serializable{
         llamadas=new HashMap<>();
     }
 
-    public void darDeAlta(String nif, Llamada llamada)throws NoExisteCliente{
+    public void darDeAlta(String nif, Llamada llamada){
         if (!llamadas.containsKey(nif)) {
-            trhow new NoExisteCliente("El Cliente introducido no existe");
-            //llamadas.put(nif, new LinkedList<>());
+            llamadas.put(nif, new LinkedList<>());
         }
         llamadas.get(nif).add(llamada);
     }

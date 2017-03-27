@@ -1,6 +1,6 @@
 package facturacion.excepciones;
 
-import facturacion.Excepciones.PrecioTarifaNoValido;
+import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.factura.Tarifa;
 import org.junit.Before;
 import org.junit.Test;

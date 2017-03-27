@@ -1,6 +1,6 @@
 package facturacion;
 
-import facturacion.Excepciones.FechaInicialMayorQueFinal;
+import facturacion.excepciones.FechaInicialMayorQueFinal;
 
 import java.time.LocalDateTime;
 import java.util.Collection;

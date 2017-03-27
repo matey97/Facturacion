@@ -1,6 +1,6 @@
 package facturacion.excepciones;
 
-import facturacion.Excepciones.DuracionNoValida;
+import facturacion.excepciones.DuracionNoValida;
 import facturacion.factura.Llamada;
 import org.junit.Before;
 import org.junit.Test;
