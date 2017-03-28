@@ -298,11 +298,9 @@ public class Menu {
         System.out.println("Introduce E-mail del cliente: ");
         String email=sc.nextLine();
 
-        System.out.println("Introduce la tarifa del cliente: ");
-        Tarifa tarifa =new TarifaBasica();
+        Tarifa tarifa = new TarifaBasica();
 
         sc.nextLine();
-
 
         Cliente cliente;
 
