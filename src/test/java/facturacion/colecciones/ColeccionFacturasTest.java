@@ -7,7 +7,7 @@ import facturacion.cliente.Particular;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
-import facturacion.factura.Tarifa;
+import facturacion.tarifa.Tarifa;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;

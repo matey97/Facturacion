@@ -10,7 +10,8 @@ import facturacion.colecciones.*;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
-import facturacion.factura.Tarifa;
+import facturacion.tarifa.Tarifa;
+import facturacion.tarifa.TarifaBasica;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -298,12 +299,7 @@ public class Menu {
         String email=sc.nextLine();
 
         System.out.println("Introduce la tarifa del cliente: ");
-        Tarifa tarifa =null;
-        try{
-            tarifa=new Tarifa(sc.nextInt());
-        } catch (PrecioTarifaNoValido precioTarifaNoValido) {
-            precioTarifaNoValido.getMessage();
-        }
+        Tarifa tarifa =new TarifaBasica();
 
         sc.nextLine();
 

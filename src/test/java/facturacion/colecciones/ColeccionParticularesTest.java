@@ -5,7 +5,7 @@ import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
-import facturacion.factura.Tarifa;
+import facturacion.tarifa.Tarifa;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
