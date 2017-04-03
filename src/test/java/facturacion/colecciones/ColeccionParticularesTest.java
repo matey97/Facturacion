@@ -1,11 +1,10 @@
 package facturacion.colecciones;
 
-import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
-import facturacion.tarifa.Tarifa;
+import facturacion.tarifa.TarifaBasica;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -28,9 +27,9 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
     private static Cliente cliente1, cliente2;
 
     @BeforeClass
-    public static void init() throws PrecioTarifaNoValido{
-        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.of(2017,2,1,0,0),new Tarifa(5));
-        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.of(2017,4,1,0,0),new Tarifa(3));
+    public static void init(){
+        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.of(2017,2,1,0,0),new TarifaBasica());
+        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.of(2017,4,1,0,0),new TarifaBasica());
     }
 
     @AfterClass
@@ -69,18 +68,6 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
         assertNotEquals(particulares.getDatosCliente("73402320M"),cliente2);
         assertEquals(particulares.getDatosCliente("53649080T"),cliente2);
 
-    }
-
-    @Test
-    public void cambiarTarifaTest(){
-        int n=7;
-        particulares.añadirCliente(cliente1);
-        particulares.añadirCliente(cliente2);
-        particulares.cambiarTarifa("73402320M",n);
-        particulares.cambiarTarifa("53649080T",n+3);
-
-        assertThat(particulares.getDatosCliente("53649080T").getTarifa().getPrecioMinuto(),is(n+3));
-        assertThat(particulares.getDatosCliente("73402320M").getTarifa().getPrecioMinuto(),is(n));
     }
 
     @Test

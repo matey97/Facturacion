@@ -1,11 +1,10 @@
 package facturacion.colecciones;
 
-import facturacion.excepciones.PrecioTarifaNoValido;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
-import facturacion.tarifa.Tarifa;
+import facturacion.tarifa.TarifaBasica;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -27,10 +26,10 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
     private static Cliente empresa1, empresa2;
 
     @BeforeClass
-    public static void init() throws PrecioTarifaNoValido{
+    public static void init(){
 
-        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),new Tarifa(5));
-        empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),new Tarifa(3));
+        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),new TarifaBasica());
+        empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),new TarifaBasica());
     }
 
     @AfterClass
@@ -70,18 +69,6 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
         assertNotEquals(empresas.getDatosCliente("120"), empresa2);
         assertEquals(empresas.getDatosCliente("130"), empresa2);
 
-    }
-
-    @Test
-    public void cambiarTarifaTest(){
-        int n=3;
-        empresas.añadirCliente(empresa1);
-        empresas.añadirCliente(empresa2);
-        empresas.cambiarTarifa("120",n);
-        empresas.cambiarTarifa("130",n+3);
-
-        assertThat(empresas.getDatosCliente("130").getTarifa().getPrecioMinuto(),is(n+3));
-        assertThat(empresas.getDatosCliente("120").getTarifa().getPrecioMinuto(),is(n));
     }
 
     @Test

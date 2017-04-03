@@ -8,6 +8,7 @@ import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
 import facturacion.tarifa.Tarifa;
+import facturacion.tarifa.TarifaBasica;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -31,10 +32,10 @@ public class ColeccionFacturasTest {
     private static PeriodoFacturacion pfact;
 
     @BeforeClass
-    public static void init() throws PrecioTarifaNoValido,DuracionNoValida, FechaInicialMayorQueFinal{
+    public static void init() throws DuracionNoValida, FechaInicialMayorQueFinal{
         llamadas=new ColeccionLlamadas();
-        tarifa=new Tarifa(5);
-        cliente=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),new Tarifa(5));
+        tarifa=new TarifaBasica();
+        cliente=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),tarifa);
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
         llamada3=new Llamada(695968097, LocalDateTime.now(),10);
@@ -63,14 +64,14 @@ public class ColeccionFacturasTest {
     @Test
     public void emitirFacturaTest() throws ExcepcionClienteSinLlamadas, FechaInicialMayorQueFinal{
         Factura factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
-        assertEquals(factura.getImporte(), 140);
+        assertEquals(factura.getImporte(), 420);
         System.out.println(factura);
         llamadas.darDeAlta("73402320M", llamada4);
         factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
-        assertEquals(factura.getImporte(), 140);
+        assertEquals(factura.getImporte(), 420);
         pfact = new PeriodoFacturacion(LocalDateTime.of(2000, 1, 1, 0, 0), LocalDateTime.of(2022, 1, 1, 0, 0));
         factura = facturas.emitirFactura(cliente, llamadas.listarLlamadas("73402320M"), pfact);
-        assertEquals(factura.getImporte(), 240);
+        assertEquals(factura.getImporte(), 720);
         System.out.println(factura);
     }
 

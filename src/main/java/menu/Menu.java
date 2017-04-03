@@ -10,6 +10,8 @@ import facturacion.colecciones.*;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
+import facturacion.tarifa.PromocionDomingos;
+import facturacion.tarifa.PromocionTardes;
 import facturacion.tarifa.Tarifa;
 import facturacion.tarifa.TarifaBasica;
 
@@ -117,16 +119,10 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    if(particulares.cambiarTarifa(entradaDatosNIF(),entradaDatosPrecioMinuto()))
-                                        System.out.println("Tarifa actualizada con exito.");
-                                    else
-                                        System.out.println("No se pudo acutalizar la tarifa.");
+                                    cambioTarifa(particulares.getDatosCliente(entradaDatosNIF()));
                                     break;
                                 case 2:
-                                    if(empresas.cambiarTarifa(entradaDatosNIF(),entradaDatosPrecioMinuto()))
-                                        System.out.println("Tarifa actualizada con exito.");
-                                    else
-                                        System.out.println("No se pudo acutalizar la tarifa.");
+                                    cambioTarifa(empresas.getDatosCliente(entradaDatosNIF()));
                                     break;
                             }
                             break;
@@ -319,11 +315,21 @@ public class Menu {
         return sc.nextLine();
     }
 
-    private static int entradaDatosPrecioMinuto(){
+    private static boolean cambioTarifa(Cliente cliente){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce la nueva tarifa: ");
-        return sc.nextInt();
+        System.out.println("Introduce 1 para --> Tarifa reducida de tardes.");
+        System.out.println("Introduce 2 para --> Tarifa domingos gratis.");
+        int n=sc.nextInt();
+        if(n==1) {
+            cliente.setTarifa(new PromocionTardes(cliente.getTarifa(), 5));
+            return true;
+        }else if(n==2){
+            cliente.setTarifa(new PromocionDomingos(cliente.getTarifa()));
+            return true;
+        }
+        return false;
     }
+
 
     private static Llamada pedirDatosLlamada() {
 

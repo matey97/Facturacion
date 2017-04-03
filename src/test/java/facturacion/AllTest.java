@@ -8,7 +8,7 @@ import facturacion.colecciones.ColeccionParticularesTest;
 import facturacion.excepciones.DuracionNoValidaTest;
 import facturacion.excepciones.ExcepcionClienteSinLlamadasTest;
 import facturacion.excepciones.FechaInicialMayorQueFinalTest;
-import facturacion.excepciones.PrecioTarifaNoValidoTest;
+import facturacion.tarifa.TarifasTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -19,7 +19,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ DireccionTest.class, ColeccionEmpresasTest.class, ColeccionFacturasTest.class,
         ColeccionLlamadasTest.class, ColeccionParticularesTest.class, DuracionNoValidaTest.class,
-        PrecioTarifaNoValidoTest.class, FechaInicialMayorQueFinalTest.class, ExcepcionClienteSinLlamadasTest.class
+        FechaInicialMayorQueFinalTest.class, ExcepcionClienteSinLlamadasTest.class, TarifasTest.class
 })
 
 public class AllTest {

@@ -40,14 +40,14 @@ public abstract class ColeccionClientes{
         return false;
     }
 
-    public boolean cambiarTarifa(String NIF, int precioMinuto) {
+/*    public boolean cambiarTarifa(String NIF, int precioMinuto) {
         if(clientes.containsKey(NIF)){
             Cliente aux = clientes.get(NIF);
             aux.getTarifa().setPrecioMinuto(precioMinuto);
             return true;
         }
         return false;
-    }
+    }*/
 
     public Cliente getDatosCliente(String NIF) {
         if(clientes.containsKey(NIF))

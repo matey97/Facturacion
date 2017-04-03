@@ -28,15 +28,13 @@ public class ColeccionFacturas implements Serializable{
 
 
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
-
         int importe=0;
-
         Collection<Llamada> col=Utiles.entreDosFechas(llamadas,periodoFacturacion.getFechaInicial(),periodoFacturacion.getFechaFinal());
         Iterator<Llamada> it=col.iterator();
         Llamada llamada;
         while(it.hasNext()) {
             llamada=it.next();
-            importe += llamada.getDuración() * cliente.getTarifa().getPrecioMinuto();
+            importe += cliente.getTarifa().costeLlamada(llamada);
         }
 
         Factura aux=new Factura(contador++,cliente.getTarifa(),LocalDateTime.now(),periodoFacturacion,importe);

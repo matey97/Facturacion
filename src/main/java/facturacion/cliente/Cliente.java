@@ -54,6 +54,10 @@ public abstract class Cliente implements Fecha, Serializable{
         return tarifa;
     }
 
+    public void setTarifa(Tarifa tarifa) {
+        this.tarifa=tarifa;
+    }
+
     public String toString() {
         return  "Nombre: "+ getNombre()+"\n" +
                 "NIF: "+ getNIF()+"\n"+
