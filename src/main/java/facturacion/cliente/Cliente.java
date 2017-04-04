@@ -64,7 +64,7 @@ public abstract class Cliente implements Fecha, Serializable{
                 "Dirección: "+getDireccion()+"\n"+
                 "Email: "+ getEmail()+"\n"+
                 "Fecha: "+ getFecha()+"\n"+
-                "Tarifa: "+ getTarifa().getPrecioMinuto();
+                "Tarifa: "+ getTarifa();
     }
 
 }
