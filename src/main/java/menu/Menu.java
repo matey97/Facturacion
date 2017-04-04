@@ -83,7 +83,7 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    if(particulares.anyadirCliente(entradaDatosCliente(m)))
+                                    if(particulares.anyadirCliente(fabricaclientes.crearcliente(m)))//
                                         System.out.println("Cliente añadido con exito.");
                                     else
                                         System.out.println("No se ha añadido el cliente.");
@@ -266,7 +266,6 @@ public class Menu {
             System.out.println(e);
         }
     }
-
     private static Cliente entradaDatosCliente(int n){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce nombre del cliente: ");
@@ -296,8 +295,6 @@ public class Menu {
 
         Tarifa tarifa = new TarifaBasica();
 
-        sc.nextLine();
-
         Cliente cliente;
 
         if (n==1) {
@@ -308,6 +305,7 @@ public class Menu {
 
         return cliente;
     }
+
 
     private static String entradaDatosNIF(){
         Scanner sc = new Scanner(System.in);
