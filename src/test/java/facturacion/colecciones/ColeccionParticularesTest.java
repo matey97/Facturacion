@@ -46,15 +46,15 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void añadirClienteTest(){
-        assertTrue(particulares.añadirCliente(cliente1));
+        assertTrue(particulares.anyadirCliente(cliente1));
 
-        assertTrue(particulares.añadirCliente(cliente2));
+        assertTrue(particulares.anyadirCliente(cliente2));
     }
 
     @Test
     public void existeClienteTest(){
-        particulares.añadirCliente(cliente1);
-        particulares.añadirCliente(cliente2);
+        particulares.anyadirCliente(cliente1);
+        particulares.anyadirCliente(cliente2);
         assertTrue(particulares.existeCliente("73402320M"));
         assertTrue(!particulares.existeCliente("0000"));
         assertTrue(particulares.existeCliente("53649080T"));
@@ -62,8 +62,8 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void getDatosClienteTest(){
-        particulares.añadirCliente(cliente1);
-        particulares.añadirCliente(cliente2);
+        particulares.anyadirCliente(cliente1);
+        particulares.anyadirCliente(cliente2);
         assertEquals(particulares.getDatosCliente("73402320M"),cliente1);
         assertNotEquals(particulares.getDatosCliente("73402320M"),cliente2);
         assertEquals(particulares.getDatosCliente("53649080T"),cliente2);
@@ -72,8 +72,8 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void getListadoClientesTest(){
-        particulares.añadirCliente(cliente1);
-        particulares.añadirCliente(cliente2);
+        particulares.anyadirCliente(cliente1);
+        particulares.anyadirCliente(cliente2);
         int i=0;
         List<Cliente> l = new ArrayList<>();
         l.add(cliente1);
@@ -85,8 +85,8 @@ public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
     @Test
     public void clientesEntreDosFechasTest(){
-        particulares.añadirCliente(cliente1);
-        particulares.añadirCliente(cliente2);
+        particulares.anyadirCliente(cliente1);
+        particulares.anyadirCliente(cliente2);
         assertTrue(Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0)).contains(cliente1));
         assertTrue(!Utiles.entreDosFechas(particulares.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,3,1,0,0)).contains(cliente2));
 

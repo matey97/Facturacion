@@ -47,15 +47,15 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
     @Test
     public void añadirClienteTest(){
 
-        assertTrue(empresas.añadirCliente(empresa1));
+        assertTrue(empresas.anyadirCliente(empresa1));
 
-        assertTrue(empresas.añadirCliente(empresa2));
+        assertTrue(empresas.anyadirCliente(empresa2));
     }
 
     @Test
     public void existeClienteTest(){
-        empresas.añadirCliente(empresa1);
-        empresas.añadirCliente(empresa2);
+        empresas.anyadirCliente(empresa1);
+        empresas.anyadirCliente(empresa2);
         assertTrue(empresas.existeCliente("120"));
         assertTrue(!empresas.existeCliente("0000"));
         assertTrue(empresas.existeCliente("130"));
@@ -63,8 +63,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void getDatosClienteTest(){
-        empresas.añadirCliente(empresa1);
-        empresas.añadirCliente(empresa2);
+        empresas.anyadirCliente(empresa1);
+        empresas.anyadirCliente(empresa2);
         assertEquals(empresas.getDatosCliente("120"), empresa1);
         assertNotEquals(empresas.getDatosCliente("120"), empresa2);
         assertEquals(empresas.getDatosCliente("130"), empresa2);
@@ -73,8 +73,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void getListadoClientesTest(){
-        empresas.añadirCliente(empresa1);
-        empresas.añadirCliente(empresa2);
+        empresas.anyadirCliente(empresa1);
+        empresas.anyadirCliente(empresa2);
         int i=0;
         List<Cliente> l = new ArrayList<>();
         l.add(empresa2);
@@ -86,8 +86,8 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @Test
     public void empresasEntreDosFechas(){
-        empresas.añadirCliente(empresa1);
-        empresas.añadirCliente(empresa2);
+        empresas.anyadirCliente(empresa1);
+        empresas.anyadirCliente(empresa2);
         assertTrue(Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,5,1,0,0)).contains(empresa2));
         assertTrue(!Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2017,1,1,0,0),LocalDateTime.of(2017,5,1,0,0)).contains(empresa1));
         assertTrue(Utiles.entreDosFechas(empresas.getListadoClientes(),LocalDateTime.of(2016,1,1,0,0),LocalDateTime.of(2016,2,1,0,0)).contains(empresa1));

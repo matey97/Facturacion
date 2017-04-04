@@ -83,13 +83,13 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    if(particulares.añadirCliente(entradaDatosCliente(m)))
+                                    if(particulares.anyadirCliente(entradaDatosCliente(m)))
                                         System.out.println("Cliente añadido con exito.");
                                     else
                                         System.out.println("No se ha añadido el cliente.");
                                     break;
                                 case 2:
-                                    if(empresas.añadirCliente(entradaDatosCliente(m)))
+                                    if(empresas.anyadirCliente(entradaDatosCliente(m)))
                                         System.out.println("Cliente añadido con exito.");
                                     else
                                         System.out.println("No se ha añadido el cliente.");

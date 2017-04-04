@@ -24,7 +24,7 @@ public abstract class ColeccionClientes{
         return false;
     }
 
-    public boolean añadirCliente(Cliente cliente) {
+    public boolean anyadirCliente(Cliente cliente) {
         if (!existeCliente(cliente.getNIF())){
             clientes.put(cliente.getNIF(),cliente);
             return true;
