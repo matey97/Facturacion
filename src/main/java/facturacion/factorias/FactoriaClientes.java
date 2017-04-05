@@ -2,23 +2,16 @@ package facturacion.factorias;
 
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
-import facturacion.cliente.Empresa;
-import facturacion.cliente.Particular;
 import facturacion.tarifa.Tarifa;
-import facturacion.tarifa.TarifaBasica;
+import nombres.NIF;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 /**
  * Created by sergiojimenez on 4/4/17.
  */
-public class FactoriaClientes {
-
-    public Cliente crearCliente(){
-    Cliente nuevoCliente = new Cliente() {
-    }
-            return nuevoCliente;
-    }
+public interface FactoriaClientes {
+    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa);
+    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa);
 
 }
