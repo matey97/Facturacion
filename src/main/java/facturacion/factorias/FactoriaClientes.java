@@ -5,20 +5,23 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.tarifa.Tarifa;
-import facturacion.tarifa.TarifaBasica;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 /**
- * Created by sergiojimenez on 4/4/17.
+ * Created by al341802 on 11/04/17.
  */
-public class FactoriaClientes {
+public class FactoriaClientes implements FactoriaCliente {
 
-    public Cliente crearCliente(){
-    Cliente nuevoCliente = new Cliente() {
-    }
-            return nuevoCliente;
+    @Override
+    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
+        Cliente nuevoCliente = new Particular(nombre, apellidos, NIF, direccion, email, fecha, tarifa);
+        return nuevoCliente;
     }
 
+    @Override
+    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
+        Cliente nuevoCliente = new Empresa(nombre, NIF, direccion, email, fecha, tarifa);
+        return nuevoCliente;
+    }
 }

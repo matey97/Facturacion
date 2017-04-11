@@ -4,6 +4,10 @@ import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
+import facturacion.factorias.FactoriaCliente;
+import facturacion.factorias.FactoriaClientes;
+import facturacion.factorias.FactoriaTarifa;
+import facturacion.factorias.FactoriaTarifas;
 import facturacion.tarifa.TarifaBasica;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,21 +26,25 @@ import static org.junit.Assert.*;
  */
 public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
+    private static FactoriaCliente fabricaEmpresas;
+    private static FactoriaTarifa fabricaTarifas;
     private static ColeccionEmpresas empresas;
     private static Cliente empresa1, empresa2;
 
     @BeforeClass
     public static void init(){
 
-        empresa1 =new Empresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),new TarifaBasica());
-        empresa2 =new Empresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),new TarifaBasica());
+        fabricaEmpresas=new FactoriaClientes();
+        fabricaTarifas=new FactoriaTarifas();
+        empresa1 =fabricaEmpresas.crearClienteEmpresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),fabricaTarifas.getTarifaBasica());
+        empresa2 =fabricaEmpresas.crearClienteEmpresa("Mariscos Recio","130", new Direccion(12567,"Castellon", "Castellon"),"recio@gmail.es",LocalDateTime.of(2017,4,1,0,0),fabricaTarifas.getTarifaBasica());
     }
 
     @AfterClass
     public static void end(){
         empresas=null;
         empresa1 =null;
-
+        empresa2=null;
     }
 
     @Before

@@ -7,6 +7,7 @@ import facturacion.cliente.Direccion;
 import facturacion.cliente.Empresa;
 import facturacion.cliente.Particular;
 import facturacion.colecciones.*;
+import facturacion.factorias.*;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
@@ -83,7 +84,7 @@ public class Menu {
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
-                                    if(particulares.anyadirCliente(fabricaclientes.crearcliente(m)))//
+                                    if(particulares.anyadirCliente(entradaDatosCliente(m)))
                                         System.out.println("Cliente añadido con exito.");
                                     else
                                         System.out.println("No se ha añadido el cliente.");
@@ -267,6 +268,8 @@ public class Menu {
         }
     }
     private static Cliente entradaDatosCliente(int n){
+        FactoriaCliente factoriaCliente = new FactoriaClientes();
+        FactoriaTarifa factoriaTarifa = new FactoriaTarifas();
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce nombre del cliente: ");
         String nombre=sc.nextLine();
@@ -293,14 +296,14 @@ public class Menu {
         System.out.println("Introduce E-mail del cliente: ");
         String email=sc.nextLine();
 
-        Tarifa tarifa = new TarifaBasica();
+        Tarifa tarifa = factoriaTarifa.getTarifaBasica();
 
         Cliente cliente;
 
         if (n==1) {
-            cliente = new Particular(nombre, apellidos, NIF, direccion, email, LocalDateTime.now(), tarifa);
+            cliente = factoriaCliente.crearClienteParticular(nombre, apellidos, NIF, direccion, email, LocalDateTime.now(), tarifa);
         }else{
-            cliente = new Empresa(nombre,NIF,direccion,email,LocalDateTime.now(),tarifa);
+            cliente = factoriaCliente.crearClienteEmpresa(nombre,NIF,direccion,email,LocalDateTime.now(),tarifa);
         }
 
         return cliente;
@@ -314,16 +317,17 @@ public class Menu {
     }
 
     private static boolean cambioTarifa(Cliente cliente){
+        FactoriaTarifa factoriaTarifa = new FactoriaTarifas();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce 1 para --> Tarifa reducida de tardes.");
-        System.out.println("Introduce 2 para --> Tarifa domingos gratis.");
+        TipoPromocion.opciones();
         int n=sc.nextInt();
-        if(n==1) {
-            cliente.setTarifa(new PromocionTardes(cliente.getTarifa(), 5));
-            return true;
-        }else if(n==2){
-            cliente.setTarifa(new PromocionDomingos(cliente.getTarifa()));
-            return true;
+        switch (TipoPromocion.enteroATipo(n)){
+            case TARDES:
+                cliente.setTarifa(factoriaTarifa.getTarifaPromocion(cliente.getTarifa(),TipoPromocion.TARDES));
+                return true;
+            case DOMINGOS:
+                cliente.setTarifa(factoriaTarifa.getTarifaPromocion(cliente.getTarifa(),TipoPromocion.DOMINGOS));
+                return true;
         }
         return false;
     }

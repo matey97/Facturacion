@@ -4,6 +4,10 @@ import facturacion.Utiles;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
+import facturacion.factorias.FactoriaCliente;
+import facturacion.factorias.FactoriaClientes;
+import facturacion.factorias.FactoriaTarifa;
+import facturacion.factorias.FactoriaTarifas;
 import facturacion.tarifa.TarifaBasica;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,13 +27,17 @@ import static org.junit.Assert.*;
  */
 public class ColeccionParticularesTest { //Test de ColeccionParticulares
 
+    private static FactoriaCliente fabricaClientes;
+    private static FactoriaTarifa fabricaTarifas;
     private static ColeccionParticulares particulares;
     private static Cliente cliente1, cliente2;
 
     @BeforeClass
     public static void init(){
-        cliente1=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.of(2017,2,1,0,0),new TarifaBasica());
-        cliente2=new Particular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.of(2017,4,1,0,0),new TarifaBasica());
+        fabricaClientes=new FactoriaClientes();
+        fabricaTarifas=new FactoriaTarifas();
+        cliente1=fabricaClientes.crearClienteParticular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.of(2017,2,1,0,0),fabricaTarifas.getTarifaBasica());
+        cliente2=fabricaClientes.crearClienteParticular("Sergio","Jimenez Chovares","53649080T", new Direccion(12567,"Castellon", "Castellon"),"al341933@uji.es",LocalDateTime.of(2017,4,1,0,0),fabricaTarifas.getTarifaBasica());
     }
 
     @AfterClass

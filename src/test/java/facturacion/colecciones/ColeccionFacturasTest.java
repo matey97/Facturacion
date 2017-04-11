@@ -4,6 +4,10 @@ import facturacion.excepciones.*;
 import facturacion.cliente.Cliente;
 import facturacion.cliente.Direccion;
 import facturacion.cliente.Particular;
+import facturacion.factorias.FactoriaCliente;
+import facturacion.factorias.FactoriaClientes;
+import facturacion.factorias.FactoriaTarifa;
+import facturacion.factorias.FactoriaTarifas;
 import facturacion.factura.Factura;
 import facturacion.factura.Llamada;
 import facturacion.factura.PeriodoFacturacion;
@@ -24,6 +28,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class ColeccionFacturasTest {
 
+    private static FactoriaCliente fabricaClientes;
+    private static FactoriaTarifa fabricaTarifas;
     private static ColeccionFacturas facturas;
     private static ColeccionLlamadas llamadas;
     private static Llamada llamada1,llamada2,llamada3, llamada4;
@@ -33,9 +39,11 @@ public class ColeccionFacturasTest {
 
     @BeforeClass
     public static void init() throws DuracionNoValida, FechaInicialMayorQueFinal{
+        fabricaClientes=new FactoriaClientes();
+        fabricaTarifas=new FactoriaTarifas();
         llamadas=new ColeccionLlamadas();
-        tarifa=new TarifaBasica();
-        cliente=new Particular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),tarifa);
+        tarifa=fabricaTarifas.getTarifaBasica();
+        cliente=fabricaClientes.crearClienteParticular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),tarifa);
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
         llamada3=new Llamada(695968097, LocalDateTime.now(),10);
