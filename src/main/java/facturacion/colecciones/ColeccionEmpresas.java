@@ -11,7 +11,7 @@ import java.util.StringJoiner;
 /**
  * Created by user on 26/02/17.
  */
-public class ColeccionEmpresas extends ColeccionClientes implements Serializable{
+public class ColeccionEmpresas extends ColeccionClientes{
 
     public ColeccionEmpresas(){
         super();

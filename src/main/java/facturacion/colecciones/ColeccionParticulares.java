@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public class ColeccionParticulares extends ColeccionClientes implements Serializable {
+public class ColeccionParticulares extends ColeccionClientes{
 
     public ColeccionParticulares(){
         super();
