@@ -26,7 +26,7 @@ public abstract class Tarifa implements Serializable{
 
 
     public String toString(){
-        return this.precioMinuto+" cent/min.";
+        return this.precioMinuto+" cent/min";
 
     }
 }

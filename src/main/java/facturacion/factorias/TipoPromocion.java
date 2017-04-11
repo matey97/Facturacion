@@ -16,7 +16,7 @@ public enum TipoPromocion {
     public static String opciones(){
         StringBuilder sb = new StringBuilder();
         for(TipoPromocion tipo : values())
-            sb.append(tipo.ordinal()+".- "+tipo.descrip+"\n");
+            sb.append(tipo.ordinal()+" --> "+tipo.descrip+"\n");
         return sb.toString();
     }
 

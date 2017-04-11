@@ -25,6 +25,6 @@ public class PromocionTardes extends Promociones {
 
     @Override
     public String toString(){
-        return tarifa.toString()+", tardes de 16:00 a 20:00 a "+super.toString();
+        return tarifa.toString()+", tardes de 16:00 a 20:00 a "+super.toString(); //super.toString devuelve los cent/min de la tarifa reducida.
     }
 }

@@ -23,6 +23,6 @@ public class PromocionDomingos extends Promociones{
 
     @Override
     public String toString(){
-        return tarifa.toString()+", domingos gratis.";
+        return tarifa.toString()+", domingos gratis";
     }
 }

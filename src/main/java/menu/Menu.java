@@ -1,5 +1,6 @@
 package menu;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import facturacion.excepciones.*;
 import facturacion.Utiles;
 import facturacion.cliente.Cliente;
@@ -80,7 +81,7 @@ public class Menu {
                     int m;
                     switch (n) {
                         case 1:
-                            System.out.println("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa");
+                            System.out.print("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa: ");
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
@@ -98,7 +99,7 @@ public class Menu {
                             }
                             break;
                         case 2:
-                            System.out.println("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa");
+                            System.out.print("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa: ");
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
@@ -116,7 +117,7 @@ public class Menu {
                             }
                             break;
                         case 3:
-                            System.out.println("Introduce 1 si quieres cambiar la tarifa a un particular, o 2 si a una empresa");
+                            System.out.print("Introduce 1 si quieres cambiar la tarifa a un particular, o 2 si a una empresa: ");
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
@@ -128,7 +129,7 @@ public class Menu {
                             }
                             break;
                         case 4:
-                            System.out.println("Introduce 1 si quieres obtener los datos de  un particular, o 2 si a una empresa");
+                            System.out.print("Introduce 1 si quieres obtener los datos de  un particular, o 2 si a una empresa: ");
                             m = sc.nextInt();
                             switch (m) {
                                 case 1:
@@ -271,29 +272,29 @@ public class Menu {
         FactoriaCliente factoriaCliente = new FactoriaClientes();
         FactoriaTarifa factoriaTarifa = new FactoriaTarifas();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce nombre del cliente: ");
+        System.out.print("Introduce nombre del cliente: ");
         String nombre=sc.nextLine();
         String apellidos=null;
         if (n==1){
-            System.out.println("Introduce apellidos del cliente: ");
+            System.out.print("Introduce apellidos del cliente: ");
             apellidos=sc.nextLine();
         }
 
         String NIF=entradaDatosNIF();
 
-        System.out.println("Introduce el codigo postal: ");
+        System.out.print("Introduce el codigo postal: ");
         int codPostal=sc.nextInt();
 
-        System.out.println("Introduce la población: ");
+        System.out.print("Introduce la población: ");
         sc.nextLine();
         String poblacion=sc.nextLine();
 
-        System.out.println("Introduce la provincia: ");
+        System.out.print("Introduce la provincia: ");
         String provincia=sc.nextLine();
 
         Direccion direccion=new Direccion(codPostal,provincia,poblacion);
 
-        System.out.println("Introduce E-mail del cliente: ");
+        System.out.print("Introduce E-mail del cliente: ");
         String email=sc.nextLine();
 
         Tarifa tarifa = factoriaTarifa.getTarifaBasica();
@@ -312,14 +313,14 @@ public class Menu {
 
     private static String entradaDatosNIF(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce NIF del cliente: ");
-        return sc.nextLine();
+        System.out.print("Introduce NIF del cliente: ");
+        return sc.next();
     }
 
     private static boolean cambioTarifa(Cliente cliente){
         FactoriaTarifa factoriaTarifa = new FactoriaTarifas();
         Scanner sc = new Scanner(System.in);
-        TipoPromocion.opciones();
+        System.out.println(TipoPromocion.opciones());
         int n=sc.nextInt();
         switch (TipoPromocion.enteroATipo(n)){
             case TARDES:
@@ -336,9 +337,9 @@ public class Menu {
     private static Llamada pedirDatosLlamada() {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el telefono: ");
+        System.out.print("Introduce el telefono: ");
         int telefono = sc.nextInt();
-        System.out.println("Introduce la duración: ");
+        System.out.print("Introduce la duración: ");
         int duracion = sc.nextInt();
         LocalDateTime fecha = LocalDateTime.now();
         Llamada llamada= null;
@@ -362,26 +363,26 @@ public class Menu {
 
     private static LocalDateTime pedirFechaInical(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce año en numero de la fecha de inicio: ");
+        System.out.print("Introduce año en numero de la fecha de inicio: ");
         int año = sc.nextInt();
 
-        System.out.println("Introduce mes en numero de la fecha de inicio: ");
+        System.out.print("Introduce mes en numero de la fecha de inicio: ");
         int mes = sc.nextInt();
 
-        System.out.println("Introduce dia en numero de la fecha de inicio: ");
+        System.out.print("Introduce dia en numero de la fecha de inicio: ");
         int dia = sc.nextInt();
         return LocalDateTime.of(año,mes,dia,0,0);
     }
 
     private static LocalDateTime pedirFechaFinal(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce año en numero de la fecha final: ");
+        System.out.print("Introduce año en numero de la fecha final: ");
         int año2 = sc.nextInt();
 
-        System.out.println("Introduce mes en numero de la fecha final: ");
+        System.out.print("Introduce mes en numero de la fecha final: ");
         int mes2 = sc.nextInt();
 
-        System.out.println("Introduce dia en numero de la fecha final: ");
+        System.out.print("Introduce dia en numero de la fecha final: ");
         int dia2 = sc.nextInt();
         return LocalDateTime.of(año2,mes2,dia2,0,0);
     }
@@ -389,7 +390,7 @@ public class Menu {
 
     private static int pedirCodFac(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el codigo de factura:");
+        System.out.print("Introduce el codigo de factura:");
         return sc.nextInt();
     }
 }
