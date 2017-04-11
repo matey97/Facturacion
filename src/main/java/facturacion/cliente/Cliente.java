@@ -58,6 +58,7 @@ public abstract class Cliente implements Fecha, Serializable{
         this.tarifa=tarifa;
     }
 
+    @Override
     public String toString() {
         return  "Nombre: "+ getNombre()+"\n" +
                 "NIF: "+ getNIF()+"\n"+
@@ -66,5 +67,4 @@ public abstract class Cliente implements Fecha, Serializable{
                 "Fecha: "+ getFecha()+"\n"+
                 "Tarifa: "+ getTarifa();
     }
-
 }
