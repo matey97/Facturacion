@@ -8,20 +8,25 @@ import java.util.Scanner;
  * Created by sergiojimenez on 4/4/17.
  */
 public class Main {
-    private GestionDatos datos = new GestionDatos();
     private Scanner sc = new Scanner(System.in);
 
+
     public static void main(String[] args) {
-        new Main().arranque();
+       // new Main().arranque();
+        GestionDatos Datos = new GestionDatos();
+        Datos.cargarDatos();
+        MenuEnum menu = new MenuEnum();
+        menu.arranque();
+
 
 
     }
 
-    private Main() {
+    //private Main() {
 
-    }
+    //}
 
-    private void arranque() {
+ /*   private void arranque() {
 
         cargar();
         System.out.println(MenuEnumPrincipal.mostrarMenu());
@@ -49,7 +54,7 @@ public class Main {
 
     }
 
-    /* private void arranqueLlamadas(){
+    *//* private void arranqueLlamadas(){
          System.out.println(MenuEnumLlamadas.mostrarMenu());
          MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
          switchOpciones(n);
@@ -60,7 +65,7 @@ public class Main {
          MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
          switchOpciones(n);
 
-     }*/
+     }*//*
     //_____________________________________________________________
     //metodo muestra sub menu clientes empresa particular al añadi
     private void arranqueClientesPE() {
@@ -159,4 +164,4 @@ public class Main {
 
 
     }
-}
+*/}

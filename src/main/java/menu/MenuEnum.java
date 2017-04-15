@@ -2,20 +2,26 @@ package menu;
 
 import enums.*;
 
+import java.util.Scanner;
+
 /**
  * Created by sergiojimenez on 5/4/17.
  */
+
+
+// Nos falta opción salir y guardar.
 public class MenuEnum {
 
-}
-//codigo repetido en Main
+//GestionDatos datos= new GestionDatos();
+
+    Scanner sc = new Scanner(System.in);
 
 
 
-/*
     public void arranque() {
 
-        cargar();
+
+        //cargar();
         System.out.println(MenuEnumPrincipal.mostrarMenu());
         MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
         switchOpciones(n);
@@ -25,13 +31,15 @@ public class MenuEnum {
 
     }
 
+  /* Innecesario, desacople de menu del sistema de
+  gestion de estructuras de datos.
     public void cargar() {
         datos.cargarDatos();
     }
 
-    public void guardar() {
+     public void guardar() {
         datos.guardarDatos();
-    }
+    }*/
 
     //______________________________________________________
     private void arranqueClientes() {
@@ -41,8 +49,8 @@ public class MenuEnum {
 
     }
 
-    */
-/* private void arranqueLlamadas(){
+
+ private void arranqueLlamadas(){
          System.out.println(MenuEnumLlamadas.mostrarMenu());
          MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
          switchOpciones(n);
@@ -53,7 +61,7 @@ public class MenuEnum {
          MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
          switchOpciones(n);
 
-     }*//*
+     }
 
     //_____________________________________________________________
     //metodo muestra sub menu clientes empresa particular al añadi
@@ -155,4 +163,4 @@ public class MenuEnum {
     }
 
 }
-*/
+
