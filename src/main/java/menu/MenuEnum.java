@@ -141,8 +141,12 @@ public class MenuEnum {
     private void switchOpcionesClientes(MenuEnumClientes opcion) {
         switch (opcion) {
             case DAR_DE_ALTA_UN_CLIENTE:
-                if (arranqueClientesPE().equals("particular")) {
-                    datos.particulares.anyadirCliente(consola.entradaDatosCliente(1));
+                if (arranqueClientesPE().equals("particular") &&
+                    datos.particulares.anyadirCliente(consola.entradaDatosCliente(1))){
+                    System.out.println("Cliente añadido con exito.");
+                }
+                else if (arranqueClientesPE().equals("empresa") &&
+                    datos.empresas.anyadirCliente(consola.entradaDatosCliente(1))){
                     System.out.println("Cliente añadido con exito.");
                 }
                 else
@@ -152,7 +156,7 @@ public class MenuEnum {
 
 
             case BORRAR_UN_CLIENTE:
-                arranqueClientesPE();
+                if(arranqueClientesPE().equals("particular"));
                 break;
 
 
