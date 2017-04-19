@@ -60,8 +60,8 @@ public class MenuEnum {
     Scanner sc = new Scanner(System.in);
     EntradaDatosConsola consola = new EntradaDatosConsola();
     GestionDatos datos = new GestionDatos();
-    FabricaCliente cliente = new FabricaCliente();
-    FactoriaTarifas tarifa = new FactoriaTarifas;
+    FabricaCliente fabricaclientes = new FabricaCliente();
+    FactoriaTarifas tarifa = new FactoriaTarifas();
 
 
 
@@ -141,14 +141,13 @@ public class MenuEnum {
     private void switchOpcionesClientes(MenuEnumClientes opcion) {
         switch (opcion) {
             case DAR_DE_ALTA_UN_CLIENTE:
-                arranqueClientesPE();
-                if (arranqueClientesPE().equals("particular")){
-                    if (datos.getParticulares().anyadirCliente(fabricaclientes.crearclienteParticular(m)))
-                        System.out.println("Cliente añadido con exito.");
-                    else
-                        System.out.println("No se ha añadido el cliente.");
-                    break;
+                if (arranqueClientesPE().equals("particular")) {
+                    datos.particulares.anyadirCliente(consola.entradaDatosCliente(1));
+                    System.out.println("Cliente añadido con exito.");
                 }
+                else
+                    System.out.println("No se ha añadido el cliente.");
+
                 break;
 
 
@@ -196,6 +195,7 @@ public class MenuEnum {
                 String e = "particular";
                 return e ;
         }
+        return null;
     }
 
     private void switchOpcionesLlamadas(MenuEnumLlamadas opcion) {
