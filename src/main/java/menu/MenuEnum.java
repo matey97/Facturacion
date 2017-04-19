@@ -9,6 +9,8 @@ package menu;
         import facturacion.cliente.Empresa;
         import facturacion.cliente.Particular;
         import facturacion.colecciones.*;
+        import facturacion.factorias.FabricaCliente;
+        import facturacion.factorias.FactoriaTarifas;
         import facturacion.factura.Factura;
         import facturacion.factura.Llamada;
         import facturacion.factura.PeriodoFacturacion;
@@ -57,6 +59,9 @@ public class MenuEnum {
 
     Scanner sc = new Scanner(System.in);
     EntradaDatosConsola consola = new EntradaDatosConsola();
+    GestionDatos datos = new GestionDatos();
+    FabricaCliente cliente = new FabricaCliente();
+    FactoriaTarifas tarifa = new FactoriaTarifas;
 
 
 
@@ -138,7 +143,7 @@ public class MenuEnum {
             case DAR_DE_ALTA_UN_CLIENTE:
                 arranqueClientesPE();
                 if (arranqueClientesPE().equals("particular")){
-                    if (particulares.anyadirCliente(fabricaclientes.crearcliente(m)))
+                    if (datos.getParticulares().anyadirCliente(fabricaclientes.crearclienteParticular(m)))
                         System.out.println("Cliente añadido con exito.");
                     else
                         System.out.println("No se ha añadido el cliente.");

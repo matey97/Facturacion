@@ -75,6 +75,21 @@ public class GestionDatos {
 
     }
 
+    public ColeccionClientes getParticulares() {
+        return particulares;
+    }
+
+    public ColeccionClientes getEmpresas() {
+        return empresas;
+    }
+
+    public ColeccionLlamadas getLlamadas() {
+        return llamadas;
+    }
+
+    public ColeccionFacturas getFacturas() {
+        return facturas;
+    }
 }
 
 
