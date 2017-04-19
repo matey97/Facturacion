@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public abstract class ColeccionClientes{
+public abstract class ColeccionClientes implements Serializable{
 
     private HashMap<String,Cliente> clientes;
 

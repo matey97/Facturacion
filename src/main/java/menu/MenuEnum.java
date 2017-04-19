@@ -1,8 +1,49 @@
 package menu;
 
+
+
+        import facturacion.excepciones.*;
+        import facturacion.Utiles;
+        import facturacion.cliente.Cliente;
+        import facturacion.cliente.Direccion;
+        import facturacion.cliente.Empresa;
+        import facturacion.cliente.Particular;
+        import facturacion.colecciones.*;
+        import facturacion.factura.Factura;
+        import facturacion.factura.Llamada;
+        import facturacion.factura.PeriodoFacturacion;
+        import facturacion.tarifa.PromocionDomingos;
+        import facturacion.tarifa.PromocionTardes;
+        import facturacion.tarifa.Tarifa;
+        import facturacion.tarifa.TarifaBasica;
+
+        import java.io.*;
+        import java.time.LocalDateTime;
+        import java.util.*;
+
+/**
+ * Created by al341802 on 21/02/17.
+ */
+
+
+        import java.util.Scanner;
+
+/**
+ * Created by sergiojimenez on 4/4/17.
+ */
+
+
+
 import enums.*;
+import facturacion.cliente.Cliente;
 
 import java.util.Scanner;
+
+import static enums.MenuEnumClientesPE.EMPRESA;
+import static enums.MenuEnumClientesPE.PARTICULAR;
+import static enums.MenuEnumPrincipal.GESTION_CLIENTES;
+import static enums.MenuEnumPrincipal.GESTION_FACTURAS;
+import static enums.MenuEnumPrincipal.GESTION_LLAMADAS;
 
 /**
  * Created by sergiojimenez on 5/4/17.
@@ -15,6 +56,7 @@ public class MenuEnum {
 //GestionDatos datos= new GestionDatos();
 
     Scanner sc = new Scanner(System.in);
+    EntradaDatosConsola consola = new EntradaDatosConsola();
 
 
 
@@ -52,23 +94,23 @@ public class MenuEnum {
 
  private void arranqueLlamadas(){
          System.out.println(MenuEnumLlamadas.mostrarMenu());
-         MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
-         switchOpciones(n);
+         MenuEnumLlamadas n = MenuEnumLlamadas.getOpcion(sc.nextInt());
+         switchOpcionesLlamadas(n);
 
      }
-     private void arranqueTarifas(){
+     private void arranqueFacturas(){
          System.out.println(MenuEnumFacturas.mostrarMenu());
-         MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
-         switchOpciones(n);
+         MenuEnumFacturas n = MenuEnumFacturas.getOpcion(sc.nextInt());
+         switchOpcionesFacturas(n);
 
      }
 
     //_____________________________________________________________
     //metodo muestra sub menu clientes empresa particular al añadi
-    private void arranqueClientesPE() {
+    private String arranqueClientesPE() {
         System.out.println(MenuEnumClientesPE.mostrarMenu());
-        MenuEnumPrincipal n = MenuEnumPrincipal.getOpcion(sc.nextInt());
-        //switchOpciones(n);
+        MenuEnumClientesPE n = MenuEnumClientesPE.getOpcion(sc.nextInt());
+        return switchOpcionesClientesPE(n);
 
     }
 
@@ -76,13 +118,16 @@ public class MenuEnum {
         switch (opcion) {
             case GESTION_CLIENTES:
                 arranqueClientes();
+                break;
 
 
             case GESTION_FACTURAS:
                 System.out.println(MenuEnumFacturas.mostrarMenu());
+                break;
 
             case GESTION_LLAMADAS:
                 System.out.println(MenuEnumLlamadas.mostrarMenu());
+                break;
         }
 
 
@@ -92,17 +137,37 @@ public class MenuEnum {
         switch (opcion) {
             case DAR_DE_ALTA_UN_CLIENTE:
                 arranqueClientesPE();
+                if (arranqueClientesPE().equals("particular")){
+                    if (particulares.anyadirCliente(fabricaclientes.crearcliente(m)))
+                        System.out.println("Cliente añadido con exito.");
+                    else
+                        System.out.println("No se ha añadido el cliente.");
+                    break;
+                }
+                break;
 
 
             case BORRAR_UN_CLIENTE:
+                arranqueClientesPE();
+                break;
+
+
 
                 //LLamada a borrar Cliente
 
+
             case CAMBIAR_TARIFA_CLIENTE:
+                arranqueClientesPE();
                 //llamada a cambiar tarifa
+                //Cliente cliente = new Cliente();
+                //consola.cambioTarifa(cliente.getdnif);
+                break;
 
             case OBTENER_DATOS_CLIENTE:
+                arranqueClientesPE();
                 //obtener datos cliente
+                break;
+
 
             case LISTADO_CLIENTES:
                 //listado cliente
@@ -113,12 +178,18 @@ public class MenuEnum {
 
     }
 
-    private void switchOpcionesClientesPE(MenuEnumClientesPE opcion) {
+    private String switchOpcionesClientesPE(MenuEnumClientesPE opcion) {
         switch (opcion) {
             case PARTICULAR:
                 // LLAMADA para Crear un cliente particular
+
+                String p= "particular";
+                return p ;
+                
             case EMPRESA:
                 //llamada a crear empresa
+                String e = "particular";
+                return e ;
         }
     }
 
@@ -126,14 +197,17 @@ public class MenuEnum {
         switch (opcion) {
             case ALTA_LLAMADA:
                 //alta Llamada
+                break;
 
 
             case LISTADO_LLAMADAS_CLIENTE:
 
                 //Listado llamadas
+                break;
 
             case LISTADO_LLAMADAS_CLIENTE_ENTRE_FECHAS:
                 //llistado llamadas fechas
+                break;
 
 
         }
@@ -143,18 +217,22 @@ public class MenuEnum {
         switch (opcion) {
             case EMITIR_FACTURA_CLIENTE:
                 arranqueClientesPE();
+                break;
 
 
             case OBTENER_DATOS_FACTURA_DESDE_CODIGO:
 
                 //LLamada a factura desdecodigo
+                break;
 
             case OBTENER_FACTURAS_CLIENTE:
                 //facturas cliente
+                break;
 
             case OBTENER_FACTURAS_CLIENTE_EMITIDAS_ENTRE_DOS_FECHAS:
 
                 //obtener facturas entredos fechas
+                break;
 
 
         }

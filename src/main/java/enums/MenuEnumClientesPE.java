@@ -5,8 +5,8 @@ package enums;
  */
 public enum MenuEnumClientesPE {
 
-    PARTICULAR("Añadir un cliente Particular"),
-    EMPRESA("Añadir una Cliente Empresa");
+    PARTICULAR("Particular"),
+    EMPRESA("Empresa");
 
 
 
