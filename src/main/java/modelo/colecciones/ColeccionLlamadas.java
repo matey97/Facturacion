@@ -1,7 +1,9 @@
 package modelo.colecciones;
 
+import modelo.ModeloLlamadaParaVista;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
+import vista.VistaImplementacion;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -11,7 +13,7 @@ import java.util.LinkedList;
 /**
  * Created by user on 27/02/17.
  */
-public class ColeccionLlamadas implements  Serializable{
+public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista{
 
     private HashMap<String,LinkedList<Llamada>> llamadas;
 
@@ -19,11 +21,18 @@ public class ColeccionLlamadas implements  Serializable{
         llamadas=new HashMap<>();
     }
 
-    public void darDeAlta(String nif, Llamada llamada){
+    private VistaImplementacion vista;
+
+    public void setVista(VistaImplementacion vista) {
+        this.vista = vista;
+    }
+
+    public void darDeAlta(String nif, Llamada llamada) throws ExcepcionClienteSinLlamadas {
         if (!llamadas.containsKey(nif)) {
             llamadas.put(nif, new LinkedList<>());
         }
         llamadas.get(nif).add(llamada);
+        vista.llamadaDadaDeAlta();
     }
 
     public Collection<Llamada> listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas{
