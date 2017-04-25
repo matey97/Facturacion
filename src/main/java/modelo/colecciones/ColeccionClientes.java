@@ -1,5 +1,6 @@
 package modelo.colecciones;
 
+import modelo.ModeloParaVista;
 import modelo.cliente.Cliente;
 import vista.VistaImplementacion;
 import vista.VistaParaModelo;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public abstract class ColeccionClientes implements Serializable{
+public abstract class ColeccionClientes implements Serializable, ModeloParaVista{
     private VistaParaModelo vista;
 
     private HashMap<String,Cliente> clientes;

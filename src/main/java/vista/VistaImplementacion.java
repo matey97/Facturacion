@@ -1,5 +1,6 @@
 package vista;
 
+import modelo.ModeloParaVista;
 import modelo.colecciones.ColeccionClientes;
 import modelo.colecciones.ColeccionFacturas;
 
@@ -11,6 +12,12 @@ public class VistaImplementacion implements VistaParaModelo, VistaParaControlado
     private ColeccionClientes clientes;
     private ColeccionFacturas facturas;
 
+    private ModeloParaVista modelo;
+
+    public void setModelo(ModeloParaVista modelo){
+        this.modelo=modelo;
+    }
+
     @Override
     public void nuevoClienteAnyadido() {
         clientes.getListadoClientes();
@@ -18,16 +25,6 @@ public class VistaImplementacion implements VistaParaModelo, VistaParaControlado
 
     @Override
     public void clienteBorrado() {
-        clientes.getListadoClientes();
-    }
-
-    @Override
-    public void datosCliente() {
-        clientes.getDatosCliente("123");
-    }
-
-    @Override
-    public void listadoClientes() {
         clientes.getListadoClientes();
     }
 
