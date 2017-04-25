@@ -1,21 +1,17 @@
 package menu;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-import facturacion.excepciones.*;
-import facturacion.Utiles;
-import facturacion.cliente.Cliente;
-import facturacion.cliente.Direccion;
-import facturacion.cliente.Empresa;
-import facturacion.cliente.Particular;
-import facturacion.colecciones.*;
-import facturacion.factorias.*;
-import facturacion.factura.Factura;
-import facturacion.factura.Llamada;
-import facturacion.factura.PeriodoFacturacion;
-import facturacion.tarifa.PromocionDomingos;
-import facturacion.tarifa.PromocionTardes;
-import facturacion.tarifa.Tarifa;
-import facturacion.tarifa.TarifaBasica;
+import modelo.excepciones.*;
+import modelo.Utiles;
+import modelo.cliente.Cliente;
+import modelo.cliente.Direccion;
+import modelo.colecciones.*;
+import modelo.factorias.*;
+import modelo.factura.Factura;
+import modelo.factura.Llamada;
+import modelo.factura.PeriodoFacturacion;
+import modelo.tarifa.Tarifa;
+import vista.VistaParaControlador;
+import vista.VistaParaModelo;
 
 import java.io.*;
 import java.time.LocalDateTime;
