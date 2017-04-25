@@ -141,13 +141,16 @@ public class MenuEnum {
     private void switchOpcionesClientes(MenuEnumClientes opcion) {
         switch (opcion) {
             case DAR_DE_ALTA_UN_CLIENTE:
-                if (arranqueClientesPE().equals("particular") &&
+                String tipo = arranqueClientesPE();
+                if (tipo.equals("particular") &&
                     datos.particulares.anyadirCliente(consola.entradaDatosCliente(1))){
                     System.out.println("Cliente añadido con exito.");
+                    break;
                 }
-                else if (arranqueClientesPE().equals("empresa") &&
-                    datos.empresas.anyadirCliente(consola.entradaDatosCliente(2))){
+                else if (tipo.equals("empresa") &&
+                    datos.empresas.anyadirCliente(consola.entradaDatosCliente(0))){
                     System.out.println("Cliente añadido con exito.");
+                    break;
                 }
                 else
                     System.out.println("No se ha añadido el cliente.");
@@ -156,11 +159,12 @@ public class MenuEnum {
 
 
             case BORRAR_UN_CLIENTE:
-                if(arranqueClientesPE().equals("particular")&&
+                String pe = arranqueClientesPE();
+                if(pe.equals("particular")&&
                         datos.particulares.borrarCliente(consola.entradaDatosNIF())) {
                     System.out.println("Cliente Particular borrado con exito.");
                 }
-                else if (arranqueClientesPE().equals("empresa") && datos.empresas.borrarCliente(consola.entradaDatosNIF())){
+                else if (pe.equals("empresa") && datos.empresas.borrarCliente(consola.entradaDatosNIF())){
                     System.out.println("Cliente Empresa borrada con exito.");
                 }
                 else
@@ -205,7 +209,7 @@ public class MenuEnum {
                 
             case EMPRESA:
                 //llamada a crear empresa
-                String e = "particular";
+                String e = "empresa";
                 return e ;
         }
         return null;
