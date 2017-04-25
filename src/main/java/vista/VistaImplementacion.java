@@ -11,11 +11,29 @@ public class VistaImplementacion implements VistaParaModelo, VistaParaControlado
     private ColeccionClientes clientes;
     private ColeccionFacturas facturas;
 
+    @Override
     public void nuevoClienteAnyadido() {
         clientes.getListadoClientes();
     }
 
+    @Override
+    public void clienteBorrado() {
+        clientes.getListadoClientes();
+    }
+
+    @Override
+    public void datosCliente() {
+        clientes.getDatosCliente("123");
+    }
+
+    @Override
+    public void listadoClientes() {
+        clientes.getListadoClientes();
+    }
+
+    @Override
     public void nuevaFacturaCreada() {
         facturas.recuperarFacturasCliente("123");
     }
+
 }

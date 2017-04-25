@@ -5,7 +5,9 @@ package vista;
  */
 public interface VistaParaModelo {
     void nuevoClienteAnyadido();
-    void nuevaFacturaCreada();
     void clienteBorrado();
+    void datosCliente();
+    void listadoClientes();
 
+    void nuevaFacturaCreada();
 }
