@@ -13,9 +13,13 @@ public class ControladorImplementacion {
          String nif = vista.getnif();
          modelo.borraCliente(nif);
      }
-     public void añadirCliente(){
-         Cliente cliente = vista.anyadirCliente();
+     public void añadiendoCliente(){
+         String nombre = vista.getnombre();
+         Strng
+                 String
+         modelo.anyadircliente(nombre);
 
      }
-     public void
+     public void añadiendofactura();
+
 }
