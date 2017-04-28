@@ -27,6 +27,7 @@ public class MenuConsola {
     int n;
     do{
 
+
         System.out.println("");
         System.out.println("¿Que tipo de gestión quieres realizar?");
         System.out.println("Introduce 0 para --> Salir");
