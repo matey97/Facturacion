@@ -3,7 +3,7 @@ package modelo.colecciones;
 import modelo.ModeloLlamadaParaVista;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
-import vista.VistaImplementacion;
+import vista.VistaParaModeloLlamada;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -16,14 +16,13 @@ import java.util.LinkedList;
 public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista{
 
     private HashMap<String,LinkedList<Llamada>> llamadas;
+    private VistaParaModeloLlamada vista;
 
     public ColeccionLlamadas(){
         llamadas=new HashMap<>();
     }
 
-    private VistaImplementacion vista;
-
-    public void setVista(VistaImplementacion vista) {
+    public void setVista(VistaParaModeloLlamada vista) {
         this.vista = vista;
     }
 

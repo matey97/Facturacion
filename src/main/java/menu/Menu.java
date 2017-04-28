@@ -10,8 +10,6 @@ import modelo.factura.Factura;
 import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
 import modelo.tarifa.Tarifa;
-import vista.VistaParaControlador;
-import vista.VistaParaModelo;
 
 import java.io.*;
 import java.time.LocalDateTime;
