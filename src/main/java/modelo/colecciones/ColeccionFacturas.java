@@ -1,5 +1,6 @@
 package modelo.colecciones;
 
+import modelo.ModeloFacturaParaVista;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
@@ -17,7 +18,7 @@ import java.util.Iterator;
 /**
  * Created by user on 27/02/17.
  */
-public class ColeccionFacturas implements Serializable{
+public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista{
     private VistaImplementacion vista;
 
     public void setVista(VistaImplementacion vista) {

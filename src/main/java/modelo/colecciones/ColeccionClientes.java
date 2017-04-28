@@ -1,6 +1,6 @@
 package modelo.colecciones;
 
-import modelo.ModeloParaVista;
+import modelo.ModeloClienteParaVista;
 import modelo.cliente.Cliente;
 import vista.VistaImplementacion;
 import vista.VistaParaModelo;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public abstract class ColeccionClientes implements Serializable, ModeloParaVista{
+public abstract class ColeccionClientes implements Serializable, ModeloClienteParaVista{
     private VistaParaModelo vista;
 
     private HashMap<String,Cliente> clientes;
@@ -44,6 +44,7 @@ public abstract class ColeccionClientes implements Serializable, ModeloParaVista
     public boolean borrarCliente(String NIF) {
         if( clientes.containsKey(NIF)){
             clientes.remove(NIF);
+            vista.clienteBorrado();
             return true;
         }
         return false;

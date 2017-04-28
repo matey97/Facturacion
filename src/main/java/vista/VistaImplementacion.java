@@ -1,36 +1,72 @@
 package vista;
 
-import modelo.ModeloParaVista;
+import modelo.ModeloClienteParaVista;
+
+import modelo.ModeloFacturaParaVista;
+import modelo.ModeloLlamadaParaVista;
 import modelo.colecciones.ColeccionClientes;
 import modelo.colecciones.ColeccionFacturas;
+import modelo.colecciones.ColeccionLlamadas;
+import modelo.excepciones.ExcepcionClienteSinLlamadas;
 
 /**
  * Created by al341802 on 25/04/17.
  */
 public class VistaImplementacion implements VistaParaModelo, VistaParaControlador {
 
-    private ColeccionClientes clientes;
-    private ColeccionFacturas facturas;
+    private ModeloClienteParaVista modeloCliente;
+    private ModeloFacturaParaVista modeloFactura;
+    private ModeloLlamadaParaVista modeloLlamada;
 
-    private ModeloParaVista modelo;
+    public void setModeloCliente(ModeloClienteParaVista modelo){
+        this.modeloCliente=modelo;
+    }
 
-    public void setModelo(ModeloParaVista modelo){
-        this.modelo=modelo;
+    public void setModeloFactura(ModeloFacturaParaVista modelo){
+        this.modeloFactura=modelo;
+    }
+
+    public void setModeloLlamada(ModeloLlamadaParaVista modelo){
+        this.modeloLlamada=modelo;
     }
 
     @Override
     public void nuevoClienteAnyadido() {
-        clientes.getListadoClientes();
+        modeloCliente.getListadoClientes();
     }
 
     @Override
     public void clienteBorrado() {
-        clientes.getListadoClientes();
+        modeloCliente.getListadoClientes();
     }
 
     @Override
     public void nuevaFacturaCreada() {
-        facturas.recuperarFacturasCliente("123");
+        modeloFactura.recuperarFacturasCliente("123");
     }
 
+    @Override
+    public void llamadaDadaDeAlta() throws ExcepcionClienteSinLlamadas {
+        modeloLlamada.listarLlamadas("123");
+    }
+
+    public void obtenDatosCliente(){
+        modeloCliente.getDatosCliente("123");
+    }
+
+    public void obtenListadoClientes(){
+        modeloCliente.getListadoClientes();
+    }
+
+    public void obtenDatosDeFactura(){
+        modeloFactura.recuperarDatosFactura(123);
+    }
+
+    public void obtenFacturasCliente(){
+        modeloFactura.recuperarFacturasCliente("123");
+    }
+
+    public void obtenLlamadasCliente() throws ExcepcionClienteSinLlamadas {
+        modeloLlamada.listarLlamadas("123");
+    }
 }
