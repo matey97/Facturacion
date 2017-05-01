@@ -22,6 +22,7 @@ public class Main {
     public static void main(String[] args) {
        GestionDatos datos = new GestionDatos();
        MenuConsola MenuConsola = new MenuConsola();
+       MenuConsola.muestraMenu();
 
     }
 

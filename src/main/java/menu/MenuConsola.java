@@ -25,197 +25,203 @@ public class MenuConsola {
     GestionDatos datos = new GestionDatos();
     Scanner sc = new Scanner(System.in);
     int n;
-    do{
+
+    public void muestraMenu() {
+        do
+
+        {
 
 
-        System.out.println("");
-        System.out.println("¿Que tipo de gestión quieres realizar?");
-        System.out.println("Introduce 0 para --> Salir");
-        System.out.println("Introduce 1 para --> Gestión clientes");
-        System.out.println("Introduce 2 para --> Gestión llamadas");
-        System.out.println("Introduce 3 para --> Gestión facturas");
-        n = sc.nextInt();
-        switch (n) {
-            case 1:
-                System.out.println("");
-                System.out.println("Introduce 1 para --> Dar de alta un cliente");
-                System.out.println("Introduce 2 para --> Borrar un cliente");
-                System.out.println("Introduce 3 para --> Cambiar tarifa de cliente");
-                System.out.println("Introduce 4 para --> Obtener datos de cliente a partir de DNI");
-                System.out.println("Introduce 5 para --> Listado de clientes");
-                System.out.println("Introduce 6 para --> Listado de clientes dados de alta entre dos fechas");
-                n = sc.nextInt();
-                int m;
-                switch (n) {
-                    case 1:
-                        System.out.print("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa: ");
-                        m = sc.nextInt();
-                        switch (m) {
-                            case 1:
-                                if (datos.particulares.anyadirCliente(datosconsola.entradaDatosCliente(m)))
-                                    System.out.println("Cliente añadido con exito.");
-                                else
-                                    System.out.println("No se ha añadido el cliente.");
-                                break;
-                            case 2:
-                                if (datos.empresas.anyadirCliente(datosconsola.entradaDatosCliente(m)))
-                                    System.out.println("Cliente añadido con exito.");
-                                else
-                                    System.out.println("No se ha añadido el cliente.");
-                                break;
-                        }
-                        break;
-                    case 2:
-                        System.out.print("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa: ");
-                        m = sc.nextInt();
-                        switch (m) {
-                            case 1:
-                                if (datos.particulares.borrarCliente(datosconsola.entradaDatosNIF()))
-                                    System.out.println("Cliente borrado con exito.");
-                                else
-                                    System.out.println("No se pudo borrar el cliente.");
-                                break;
-                            case 2:
-                                if (datos.particulares.borrarCliente(datosconsola.entradaDatosNIF()))
-                                    System.out.println("Cliente borrado con exito.");
-                                else
-                                    System.out.println("No se pudo borrar el cliente.");
-                                break;
-                        }
-                        break;
-                    case 3:
-                        System.out.print("Introduce 1 si quieres cambiar la tarifa a un particular, o 2 si a una empresa: ");
-                        m = sc.nextInt();
-                        switch (m) {
-                            case 1:
-                                datosconsola.cambioTarifa(datos.particulares.getDatosCliente(datosconsola.entradaDatosNIF()));
-                                break;
-                            case 2:
-                                datosconsola.cambioTarifa(datos.empresas.getDatosCliente(datosconsola.entradaDatosNIF()));
-                                break;
-                        }
-                        break;
-                    case 4:
-                        System.out.print("Introduce 1 si quieres obtener los datos de  un particular, o 2 si a una empresa: ");
-                        m = sc.nextInt();
-                        switch (m) {
-                            case 1:
-                                System.out.println(datos.particulares.getDatosCliente(datosconsola.entradaDatosNIF()));
-                                break;
-                            case 2:
-                                System.out.println(datos.empresas.getDatosCliente(datosconsola.entradaDatosNIF()));
-                                break;
-                        }
-                        break;
-                    case 5:
-                        System.out.println("Listado de particulares:");
-                        System.out.println("");
-                        for (Cliente cliente : datos.particulares.getListadoClientes()) {
-                            System.out.println(cliente);
+            System.out.println("");
+            System.out.println("¿Que tipo de gestión quieres realizar?");
+            System.out.println("Introduce 0 para --> Salir");
+            System.out.println("Introduce 1 para --> Gestión clientes");
+            System.out.println("Introduce 2 para --> Gestión llamadas");
+            System.out.println("Introduce 3 para --> Gestión facturas");
+            n = sc.nextInt();
+            switch (n) {
+                case 1:
+                    System.out.println("");
+                    System.out.println("Introduce 1 para --> Dar de alta un cliente");
+                    System.out.println("Introduce 2 para --> Borrar un cliente");
+                    System.out.println("Introduce 3 para --> Cambiar tarifa de cliente");
+                    System.out.println("Introduce 4 para --> Obtener datos de cliente a partir de DNI");
+                    System.out.println("Introduce 5 para --> Listado de clientes");
+                    System.out.println("Introduce 6 para --> Listado de clientes dados de alta entre dos fechas");
+                    n = sc.nextInt();
+                    int m;
+                    switch (n) {
+                        case 1:
+                            System.out.print("Introduce 1 si quieres dar de alta a un particular, o 2 si a una empresa: ");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    if (datos.particulares.anyadirCliente(datosconsola.entradaDatosCliente(m)))
+                                        System.out.println("Cliente añadido con exito.");
+                                    else
+                                        System.out.println("No se ha añadido el cliente.");
+                                    break;
+                                case 2:
+                                    if (datos.empresas.anyadirCliente(datosconsola.entradaDatosCliente(m)))
+                                        System.out.println("Cliente añadido con exito.");
+                                    else
+                                        System.out.println("No se ha añadido el cliente.");
+                                    break;
+                            }
+                            break;
+                        case 2:
+                            System.out.print("Introduce 1 si quieres borrar a un particular, o 2 si a una empresa: ");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    if (datos.particulares.borrarCliente(datosconsola.entradaDatosNIF()))
+                                        System.out.println("Cliente borrado con exito.");
+                                    else
+                                        System.out.println("No se pudo borrar el cliente.");
+                                    break;
+                                case 2:
+                                    if (datos.particulares.borrarCliente(datosconsola.entradaDatosNIF()))
+                                        System.out.println("Cliente borrado con exito.");
+                                    else
+                                        System.out.println("No se pudo borrar el cliente.");
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            System.out.print("Introduce 1 si quieres cambiar la tarifa a un particular, o 2 si a una empresa: ");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    datosconsola.cambioTarifa(datos.particulares.getDatosCliente(datosconsola.entradaDatosNIF()));
+                                    break;
+                                case 2:
+                                    datosconsola.cambioTarifa(datos.empresas.getDatosCliente(datosconsola.entradaDatosNIF()));
+                                    break;
+                            }
+                            break;
+                        case 4:
+                            System.out.print("Introduce 1 si quieres obtener los datos de  un particular, o 2 si a una empresa: ");
+                            m = sc.nextInt();
+                            switch (m) {
+                                case 1:
+                                    System.out.println(datos.particulares.getDatosCliente(datosconsola.entradaDatosNIF()));
+                                    break;
+                                case 2:
+                                    System.out.println(datos.empresas.getDatosCliente(datosconsola.entradaDatosNIF()));
+                                    break;
+                            }
+                            break;
+                        case 5:
+                            System.out.println("Listado de particulares:");
                             System.out.println("");
-                        }
-                        System.out.println("Listado de empresas:");
-                        System.out.println("");
-                        for (Cliente cliente : datos.empresas.getListadoClientes()) {
-                            System.out.println(cliente);
+                            for (Cliente cliente : datos.particulares.getListadoClientes()) {
+                                System.out.println(cliente);
+                                System.out.println("");
+                            }
+                            System.out.println("Listado de empresas:");
                             System.out.println("");
-                        }
-                        break;
-                    case 6:
+                            for (Cliente cliente : datos.empresas.getListadoClientes()) {
+                                System.out.println(cliente);
+                                System.out.println("");
+                            }
+                            break;
+                        case 6:
 
 
-                        System.out.println("Listado de particulares:");
-                        System.out.println("");
-                        datosconsola.imprimirLista(Utiles.entreDosFechas(datos.particulares.getListadoClientes(), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
-                        System.out.println("Listado de empresas:");
-                        System.out.println("");
-                        datosconsola.imprimirLista(Utiles.entreDosFechas(datos.empresas.getListadoClientes(), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
+                            System.out.println("Listado de particulares:");
+                            System.out.println("");
+                            datosconsola.imprimirLista(Utiles.entreDosFechas(datos.particulares.getListadoClientes(), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
+                            System.out.println("Listado de empresas:");
+                            System.out.println("");
+                            datosconsola.imprimirLista(Utiles.entreDosFechas(datos.empresas.getListadoClientes(), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
 
-                        break;
-                }
-                break;
-            case 2:
-                System.out.println("");
-                System.out.println("Introduce 1 para --> Dar de alta una llamada");
-                System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
-                System.out.println("Introduce 3 para --> Listado de llamadas de un cliente realizadas entre dos fechas");
-                n = sc.nextInt();
-                switch (n) {
-                    case 1:
-                        try {
-                            datos.llamadas.darDeAlta(datosconsola.entradaDatosNIF(), datosconsola.pedirDatosLlamada());
-                        } catch (ExcepcionClienteSinLlamadas excepcionClienteSinLlamadas) {
-                            excepcionClienteSinLlamadas.printStackTrace();
-                        }
-                        break;
-                    case 2:
-                        try {
-                            datosconsola.imprimirLista(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()));
-                        } catch (ExcepcionClienteSinLlamadas e) {
-                            e.getMessage();
-                        }
-                        break;
-                    case 3:
-                        try {
-                            datosconsola.imprimirLista(Utiles.entreDosFechas(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), pedirFechaFinal()));
-                        } catch (ExcepcionClienteSinLlamadas e) {
-                            e.getMessage();
-                        }
-                        break;
-                }
-                break;
-            case 3:
-                System.out.println("");
-                System.out.println("Introduce 1 para --> Emitir factura para un cliente");
-                System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
-                System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
-                System.out.println("Introduce 4 para --> Obtener facturas de un cliente emitidas entre dos fechas");
-                n = sc.nextInt();
-                switch (n) {
-                    case 1:
-                        String nif = datosconsola.entradaDatosNIF();
-                        if (datos.empresas.existeCliente(nif)) {
-                            Cliente cliente = datos.empresas.getDatosCliente(nif);
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("");
+                    System.out.println("Introduce 1 para --> Dar de alta una llamada");
+                    System.out.println("Introduce 2 para --> Listado de llamadas de un cliente");
+                    System.out.println("Introduce 3 para --> Listado de llamadas de un cliente realizadas entre dos fechas");
+                    n = sc.nextInt();
+                    switch (n) {
+                        case 1:
                             try {
-                                System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                datos.llamadas.darDeAlta(datosconsola.entradaDatosNIF(), datosconsola.pedirDatosLlamada());
+                            } catch (ExcepcionClienteSinLlamadas excepcionClienteSinLlamadas) {
+                                excepcionClienteSinLlamadas.printStackTrace();
+                            }
+                            break;
+                        case 2:
+                            try {
+                                datosconsola.imprimirLista(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()));
                             } catch (ExcepcionClienteSinLlamadas e) {
                                 e.getMessage();
-                            } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
-                                fechaInicialMayorQueFinal.getMessage();
                             }
-                        } else if (datos.particulares.existeCliente(nif)) {
-                            Cliente cliente = datos.particulares.getDatosCliente(nif);
+                            break;
+                        case 3:
                             try {
-                                System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                datosconsola.imprimirLista(Utiles.entreDosFechas(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), pedirFechaFinal()));
                             } catch (ExcepcionClienteSinLlamadas e) {
                                 e.getMessage();
-                            } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
-                                fechaInicialMayorQueFinal.getMessage();
                             }
-                        } else {
-                            System.out.println("No se ha emitido la factura.");
-                        }
-                        break;
-                    case 2:
-                        System.out.println(datos.facturas.recuperarDatosFactura(datosconsola.pedirCodFac()));
-                        break;
-                    case 3:
-                        System.out.println("");
-                        for (Factura factura : datos.facturas.recuperarFacturasCliente(datosconsola.entradaDatosNIF())) {
-                            System.out.println(factura);
+                            break;
+                    }
+                    break;
+                case 3:
+                    System.out.println("");
+                    System.out.println("Introduce 1 para --> Emitir factura para un cliente");
+                    System.out.println("Introduce 2 para --> Obtener datos de factura a partir de su codigo");
+                    System.out.println("Introduce 3 para --> Obtener facturas de un cliente");
+                    System.out.println("Introduce 4 para --> Obtener facturas de un cliente emitidas entre dos fechas");
+                    n = sc.nextInt();
+                    switch (n) {
+                        case 1:
+                            String nif = datosconsola.entradaDatosNIF();
+                            if (datos.empresas.existeCliente(nif)) {
+                                Cliente cliente = datos.empresas.getDatosCliente(nif);
+                                try {
+                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                } catch (ExcepcionClienteSinLlamadas e) {
+                                    e.getMessage();
+                                } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
+                                    fechaInicialMayorQueFinal.getMessage();
+                                }
+                            } else if (datos.particulares.existeCliente(nif)) {
+                                Cliente cliente = datos.particulares.getDatosCliente(nif);
+                                try {
+                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                } catch (ExcepcionClienteSinLlamadas e) {
+                                    e.getMessage();
+                                } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
+                                    fechaInicialMayorQueFinal.getMessage();
+                                }
+                            } else {
+                                System.out.println("No se ha emitido la factura.");
+                            }
+                            break;
+                        case 2:
+                            System.out.println(datos.facturas.recuperarDatosFactura(datosconsola.pedirCodFac()));
+                            break;
+                        case 3:
                             System.out.println("");
-                        }
-                        break;
-                    case 4:
+                            for (Factura factura : datos.facturas.recuperarFacturasCliente(datosconsola.entradaDatosNIF())) {
+                                System.out.println(factura);
+                                System.out.println("");
+                            }
+                            break;
+                        case 4:
 
 
-                        datosconsola.imprimirLista(Utiles.entreDosFechas(datos.facturas.recuperarFacturasCliente(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
-                        break;
-                }
-                break;
+                            datosconsola.imprimirLista(Utiles.entreDosFechas(datos.facturas.recuperarFacturasCliente(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
+                            break;
+                    }
+                    break;
+            }
         }
-    } while(n!=0);
-
+        while (n != 0);
+    }
+}
 /*
     private Cliente entradaDatosCliente(int n) {
         FactoriaCliente factoriaCliente = new FactoriaClientes();
@@ -342,4 +348,3 @@ public class MenuConsola {
         System.out.print("Introduce el codigo de factura:");
         return sc.nextInt();
     }*/
-}

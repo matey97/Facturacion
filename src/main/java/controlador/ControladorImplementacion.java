@@ -5,7 +5,8 @@ import modelo.cliente.Cliente;
 /**
  * Created by sergiojimenez on 25/4/17.
  */
-public class ControladorImplementacion {
+public class ControladorImplementacion implements ControladorParaModelo, ControladorParaVista
+{
     private modelo modelo;
     private vista vista;
 
@@ -15,9 +16,9 @@ public class ControladorImplementacion {
      }
      public void añadiendoCliente(){
          String nombre = vista.getnombre();
-         Strng
-                 String
+         Strng String;
          modelo.anyadircliente(nombre);
+
 
      }
      public void añadiendofactura();
