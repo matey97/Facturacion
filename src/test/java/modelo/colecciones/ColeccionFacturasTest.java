@@ -36,7 +36,7 @@ public class ColeccionFacturasTest {
     private static PeriodoFacturacion pfact;
 
     @BeforeClass
-    public static void init() throws DuracionNoValida, FechaInicialMayorQueFinal{
+    public static void init() throws DuracionNoValida, FechaInicialMayorQueFinal, ExcepcionClienteSinLlamadas{
         fabricaClientes=new FactoriaClientes();
         fabricaTarifas=new FactoriaTarifas();
         llamadas=new ColeccionLlamadas();

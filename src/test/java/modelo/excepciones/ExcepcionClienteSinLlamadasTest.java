@@ -19,7 +19,7 @@ public class ExcepcionClienteSinLlamadasTest {
     public static boolean lanzada;
 
     @BeforeClass
-    public static void init() throws DuracionNoValida{
+    public static void init() throws DuracionNoValida, ExcepcionClienteSinLlamadas{
         col=new ColeccionLlamadas();
         col.darDeAlta("100", new Llamada(695968097, LocalDateTime.now(), 6));
         col.darDeAlta("100", new Llamada(695968097, LocalDateTime.now(), 5));

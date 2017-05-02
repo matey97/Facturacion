@@ -9,7 +9,9 @@ import modelo.factura.Factura;
 import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
 import modelo.tarifa.Tarifa;
+import vista.InterfazGrafica;
 
+import javax.swing.*;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -20,10 +22,15 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-       GestionDatos datos = new GestionDatos();
+ /*       GestionDatos datos = new GestionDatos();
        MenuConsola MenuConsola = new MenuConsola();
        MenuConsola.muestraMenu();
-
+*/      SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new InterfazGrafica().ejecuta();
+            }
+        });
     }
 
 }

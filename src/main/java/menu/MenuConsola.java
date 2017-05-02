@@ -161,7 +161,7 @@ public class MenuConsola {
                             break;
                         case 3:
                             try {
-                                datosconsola.imprimirLista(Utiles.entreDosFechas(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), pedirFechaFinal()));
+                                datosconsola.imprimirLista(Utiles.entreDosFechas(datos.llamadas.listarLlamadas(datosconsola.entradaDatosNIF()), datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal()));
                             } catch (ExcepcionClienteSinLlamadas e) {
                                 e.getMessage();
                             }
@@ -181,7 +181,7 @@ public class MenuConsola {
                             if (datos.empresas.existeCliente(nif)) {
                                 Cliente cliente = datos.empresas.getDatosCliente(nif);
                                 try {
-                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal())));
                                 } catch (ExcepcionClienteSinLlamadas e) {
                                     e.getMessage();
                                 } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
@@ -190,7 +190,7 @@ public class MenuConsola {
                             } else if (datos.particulares.existeCliente(nif)) {
                                 Cliente cliente = datos.particulares.getDatosCliente(nif);
                                 try {
-                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(pedirFechaInical(), pedirFechaFinal())));
+                                    System.out.println(datos.facturas.emitirFactura(cliente, datos.llamadas.listarLlamadas(nif), new PeriodoFacturacion(datosconsola.pedirFechaInical(), datosconsola.pedirFechaFinal())));
                                 } catch (ExcepcionClienteSinLlamadas e) {
                                     e.getMessage();
                                 } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
