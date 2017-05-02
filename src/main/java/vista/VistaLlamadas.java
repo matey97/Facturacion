@@ -10,6 +10,10 @@ public class VistaLlamadas implements VistaParaModeloLlamada {
 
     private ModeloLlamadaParaVista modeloLlamada;
 
+    public VistaLlamadas() {
+        super();
+    }
+
     public void setModeloLlamada(ModeloLlamadaParaVista modeloLlamada) {
         this.modeloLlamada = modeloLlamada;
     }

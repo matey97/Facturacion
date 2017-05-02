@@ -5,9 +5,13 @@ import modelo.ModeloClienteParaVista;
 /**
  * Created by user on 28/04/17.
  */
-public class VistaCliente implements VistaParaModeloCliente {
+public abstract class VistaCliente implements VistaParaModeloCliente {
 
     private ModeloClienteParaVista modeloCliente;
+
+    public VistaCliente() {
+        super();
+    }
 
     public void setModeloCliente(ModeloClienteParaVista modeloCliente) {
         this.modeloCliente = modeloCliente;

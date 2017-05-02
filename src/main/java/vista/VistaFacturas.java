@@ -9,6 +9,10 @@ public class VistaFacturas implements VistaParaModeloFactura {
 
     private ModeloFacturaParaVista modeloFactura;
 
+    public VistaFacturas() {
+        super();
+    }
+
     public void setModeloFactura(ModeloFacturaParaVista modeloFactura) {
         this.modeloFactura = modeloFactura;
     }
