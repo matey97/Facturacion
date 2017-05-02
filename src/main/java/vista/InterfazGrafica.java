@@ -49,6 +49,7 @@ public class InterfazGrafica {
         camposClientes.add(new JTextField(),11);
         camposClientes.add(new JLabel("E-mail:"),12);
         camposClientes.add(new JTextField(),13);
+        panelClientes.add(new JTextArea(20,50),BorderLayout.SOUTH);
         panelClientes.add(camposClientes);
 
         pestanyas.add("Clientes",panelClientes);        //Añadimos subpanel al panel
@@ -67,7 +68,9 @@ public class InterfazGrafica {
         camposLlamadas.add(new JTextField(15));
         camposLlamadas.add(new JLabel("Duración:"));
         camposLlamadas.add(new JTextField(15));
+
         panelLlamadas.add(camposLlamadas);
+        panelLlamadas.add(new JTextArea(25,50),BorderLayout.SOUTH);
         pestanyas.add("Llamadas",panelLlamadas);
 
         JPanel panelFacturas=new JPanel();
@@ -78,9 +81,7 @@ public class InterfazGrafica {
         botonesFacturas.add(new JButton("Factura de cliente"));
         botonesFacturas.add(new JButton("Facturas de cliente entre fechas"));
         panelFacturas.add(botonesFacturas,BorderLayout.NORTH);
-        JPanel camposFacturas=new JPanel();
-        camposFacturas.add(new JTextArea());
-        panelFacturas.add(camposFacturas);
+        panelFacturas.add(new JTextArea(30,50));
         pestanyas.add("Facturas",panelFacturas);
 
 
