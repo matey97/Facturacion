@@ -2,6 +2,7 @@ package vista;
 
 import com.sun.jmx.remote.security.JMXPluggableAuthenticator;
 
+import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +22,7 @@ public class InterfazGrafica {
         Container contenedor = ventana.getContentPane();
 
         JTabbedPane pestanyas=new JTabbedPane();        //Panel con pestañas
+
         JPanel panelClientes=new JPanel();          //Subpanel de clientes
         panelClientes.setLayout(new BorderLayout());
         JPanel botonesClientes=new JPanel();        //Sub-Subpanel para botones
@@ -31,8 +33,9 @@ public class InterfazGrafica {
         botonesClientes.add(new JButton("Listado clientes"));
         botonesClientes.add(new JButton("Listado clientes entre fechas"));
         panelClientes.add(botonesClientes,BorderLayout.NORTH);  //añadimos botones al subpanes
-        JPanel camposClientes=new JPanel(new GridLayout(7,2));
-        camposClientes.add(new JLabel("NIF:"),0);
+        JPanel camposClientes=new JPanel();
+        camposClientes.setLayout(new GridLayout(8,2));
+        camposClientes.add(new JLabel("DNI:"),0);
         camposClientes.add(new JTextField(),1);
         camposClientes.add(new JLabel("Nombre:"),2);
         camposClientes.add(new JTextField(),3);
@@ -46,7 +49,6 @@ public class InterfazGrafica {
         camposClientes.add(new JTextField(),11);
         camposClientes.add(new JLabel("E-mail:"),12);
         camposClientes.add(new JTextField(),13);
-
         panelClientes.add(camposClientes);
 
         pestanyas.add("Clientes",panelClientes);        //Añadimos subpanel al panel
@@ -58,6 +60,14 @@ public class InterfazGrafica {
         botonesLlamadas.add(new JButton("Llamadas de cliente"));
         botonesLlamadas.add(new JButton("Llamadas de cliente entre fechas"));
         panelLlamadas.add(botonesLlamadas, BorderLayout.NORTH);
+        JPanel camposLlamadas=new JPanel();
+        camposLlamadas.add(new JLabel("NIF:"));
+        camposLlamadas.add(new JTextField(15));
+        camposLlamadas.add(new JLabel("Telefono:"));
+        camposLlamadas.add(new JTextField(15));
+        camposLlamadas.add(new JLabel("Duración:"));
+        camposLlamadas.add(new JTextField(15));
+        panelLlamadas.add(camposLlamadas);
         pestanyas.add("Llamadas",panelLlamadas);
 
         JPanel panelFacturas=new JPanel();
@@ -68,6 +78,9 @@ public class InterfazGrafica {
         botonesFacturas.add(new JButton("Factura de cliente"));
         botonesFacturas.add(new JButton("Facturas de cliente entre fechas"));
         panelFacturas.add(botonesFacturas,BorderLayout.NORTH);
+        JPanel camposFacturas=new JPanel();
+        camposFacturas.add(new JTextArea());
+        panelFacturas.add(camposFacturas);
         pestanyas.add("Facturas",panelFacturas);
 
 
