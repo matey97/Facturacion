@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorParaVista;
 import modelo.ModeloClienteParaVista;
 
 /**
@@ -8,6 +9,7 @@ import modelo.ModeloClienteParaVista;
 public abstract class VistaCliente implements VistaParaModeloCliente {
 
     private ModeloClienteParaVista modeloCliente;
+
 
     public VistaCliente() {
         super();

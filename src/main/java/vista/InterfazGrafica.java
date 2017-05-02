@@ -29,6 +29,8 @@ public class InterfazGrafica {
         botonesClientes.add(new JButton("Listado clientes"));
         botonesClientes.add(new JButton("Listado clientes entre fechas"));
         panelClientes.add(botonesClientes,BorderLayout.NORTH);  //añadimos botones al subpanes
+        JTextField nombre=new JTextField(10);
+        panelClientes.add(nombre);
         pestanyas.add("Clientes",panelClientes);        //Añadimos subpanel al panel
 
         JPanel panelLlamadas=new JPanel();
