@@ -2,8 +2,7 @@ package modelo.colecciones;
 
 import modelo.ModeloClienteParaVista;
 import modelo.cliente.Cliente;
-import vista.VistaImplementacion;
-import vista.VistaParaModelo;
+import vista.VistaParaModeloCliente;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -13,15 +12,15 @@ import java.util.HashMap;
  * Created by user on 26/02/17.
  */
 public abstract class ColeccionClientes implements Serializable, ModeloClienteParaVista{
-    private VistaParaModelo vista;
 
+    private VistaParaModeloCliente vista;
     private HashMap<String,Cliente> clientes;
 
     public ColeccionClientes() {
         clientes = new HashMap<String,Cliente>();
     }
 
-    public void setVista(VistaParaModelo vista) {
+    public void setVista(VistaParaModeloCliente vista) {
         this.vista = vista;
     }
 

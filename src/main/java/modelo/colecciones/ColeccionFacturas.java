@@ -7,7 +7,7 @@ import modelo.cliente.Cliente;
 import modelo.factura.Factura;
 import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
-import vista.VistaImplementacion;
+import vista.VistaParaModeloFactura;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -19,13 +19,8 @@ import java.util.Iterator;
  * Created by user on 27/02/17.
  */
 public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista{
-    private VistaImplementacion vista;
 
-    public void setVista(VistaImplementacion vista) {
-        this.vista = vista;
-    }
-
-
+    private VistaParaModeloFactura vista;
     private HashMap<String,HashMap<Integer,Factura>> facturas;
     private static int contador;
 
@@ -34,6 +29,9 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista{
         contador=1;
     }
 
+    public void setVista(VistaParaModeloFactura vista) {
+        this.vista = vista;
+    }
 
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
         int importe=0;
