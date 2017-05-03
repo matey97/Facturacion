@@ -44,7 +44,12 @@ public class VistaFacturas implements VistaParaModeloFactura {
         bFacClienteFechas.addActionListener(new EscuchadorBFacClienteFechas());
         botonesFacturas.add(bFacClienteFechas);
         panelFacturas.add(botonesFacturas,BorderLayout.NORTH);
-        panelFacturas.add(new JTextArea(30,50));
+        JTextArea areaTexto=new JTextArea(20,50);
+        areaTexto.setEditable(false);
+        JScrollPane scroll=new JScrollPane(areaTexto);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panelFacturas.add(scroll,BorderLayout.SOUTH);
         return panelFacturas;
     }
 

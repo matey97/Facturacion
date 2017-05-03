@@ -80,7 +80,12 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         camposClientes.add(new JLabel("E-mail:"),12);
         jtfEmail=new JTextField();
         camposClientes.add(jtfEmail,13);
-        panelClientes.add(new JTextArea(20,50),BorderLayout.SOUTH);
+        JTextArea areaTexto=new JTextArea(20,50);
+        areaTexto.setEditable(false);
+        JScrollPane scroll=new JScrollPane(areaTexto);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panelClientes.add(scroll,BorderLayout.SOUTH);
         panelClientes.add(camposClientes);
         return panelClientes;
     }

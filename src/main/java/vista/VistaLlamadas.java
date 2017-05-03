@@ -2,6 +2,7 @@ package vista;
 
 import modelo.ModeloLlamadaParaVista;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
+import sun.util.calendar.JulianCalendar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
 
     private ModeloLlamadaParaVista modeloLlamada;
     private JButton bAlta, bLlamadasCliente, bLlamadasFechas;
-    private JTextField jtfNIF, jtfTelefono, jtfDuracion;
+    private JTextField jtfNIF, jtfNIF2, jtfTelefono, jtfDuracion;
 
     public VistaLlamadas() {
         super();
@@ -52,9 +53,14 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         camposLlamadas.add(new JLabel("Duración:"));
         jtfDuracion=new JTextField(15);
         camposLlamadas.add(jtfDuracion);
-
+        JTextArea areaTexto=new JTextArea(20,50);
+        areaTexto.setEditable(false);
+        JScrollPane scroll=new JScrollPane(areaTexto);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        panelLlamadas.add(scroll,BorderLayout.SOUTH);
         panelLlamadas.add(camposLlamadas);
-        panelLlamadas.add(new JTextArea(25,50),BorderLayout.SOUTH);
+
         return panelLlamadas;
     }
 
@@ -95,7 +101,23 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     private class EscuchadorBLlamadasCliente implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            JDialog dialogoDatos=new JDialog();
+            JPanel panelDialogo=new JPanel();
+            panelDialogo.add(new JLabel("NIF del cliente:"));
+            jtfNIF2=new JTextField(20);
+            panelDialogo.add(jtfNIF2);
+            JButton aceptar=new JButton("Aceptar");
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Llamada controlador
+                    dialogoDatos.setVisible(false);
+                }
+            });
+            dialogoDatos.add(panelDialogo);
+            dialogoDatos.add(aceptar,BorderLayout.SOUTH);
+            dialogoDatos.pack();
+            dialogoDatos.setVisible(true);
         }
     }
 
