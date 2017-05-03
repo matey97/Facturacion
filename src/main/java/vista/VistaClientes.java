@@ -1,5 +1,6 @@
 package vista;
 
+import com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer;
 import modelo.ModeloClienteParaVista;
 
 import javax.swing.*;
@@ -8,20 +9,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by al341802 on 2/05/17.
+ * Created by User on 03/05/2017.
  */
-public class VistaParticular implements VistaParaModeloCliente, VistaParaControladorParticular{
-
+public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
     private ModeloClienteParaVista modeloParticular;
+    private ModeloClienteParaVista modeloEmpresa;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
-    private JTextField jtfNIF, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
+    private JTextField jtfNIF,jtfNIF2, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
 
-    public VistaParticular() {
+    public VistaClientes() {
         super();
     }
 
     public void setModeloParticular(ModeloClienteParaVista modeloParticular) {
         this.modeloParticular = modeloParticular;
+    }
+    public void setModeloEmpresa(ModeloClienteParaVista modeloEmpresa) {
+        this.modeloEmpresa = modeloEmpresa;
     }
 
     public JPanel cargaInterfaz(){
@@ -61,7 +65,7 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
         camposClientes.add(new JLabel("Nombre:"),2);
         jtfNombre=new JTextField();
         camposClientes.add(jtfNombre,3);
-        camposClientes.add(new JLabel("Apellidos:"),4);
+        camposClientes.add(new JLabel("Apellidos (solo particulares):"),4);
         jtfApellidos=new JTextField();
         camposClientes.add(jtfApellidos,5);
         camposClientes.add(new JLabel("Cod.Postal:"),6);
@@ -127,9 +131,37 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
     }
 
     //Escuchadores
-    private class EscuchadorBAnyadir implements ActionListener{
+    private class EscuchadorBAnyadir implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            JDialog dialogoAnyadir = new JDialog();
+            JPanel panel = new JPanel();
+            JRadioButton particular = new JRadioButton("Particular");
+            JRadioButton empresa =new JRadioButton("Empresa");
+            ButtonGroup grupo = new ButtonGroup();
+            grupo.add(particular);
+            grupo.add(empresa);
+            panel.add(particular);
+            panel.add(empresa);
+            dialogoAnyadir.add(new JLabel("Que tipo de cliente quieres añadir?"),BorderLayout.NORTH);
+            dialogoAnyadir.add(panel);
+            JButton aceptar=new JButton("Aceptar");
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (particular.isSelected()){
+                        //Por implementar
+                    }else if (empresa.isSelected()){
+                        //Por implementar
+                    }
+                    dialogoAnyadir.setVisible(false);
+                }
+            });
+            dialogoAnyadir.add(aceptar, BorderLayout.SOUTH);
+            dialogoAnyadir.pack();
+            dialogoAnyadir.setVisible(true);
+
+
 
         }
     }
@@ -151,7 +183,23 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
     private class EscuchadorBDatosCliente implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            JDialog dialogoDatos=new JDialog();
+            JPanel panelDialogo=new JPanel();
+            panelDialogo.add(new JLabel("NIF del cliente:"));
+            jtfNIF2=new JTextField(20);
+            panelDialogo.add(jtfNIF2);
+            JButton aceptar=new JButton("Aceptar");
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Llamada controlador
+                    dialogoDatos.setVisible(false);
+                }
+            });
+            dialogoDatos.add(panelDialogo);
+            dialogoDatos.add(aceptar,BorderLayout.SOUTH);
+            dialogoDatos.pack();
+            dialogoDatos.setVisible(true);
         }
     }
 
@@ -169,3 +217,4 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
         }
     }
 }
+
