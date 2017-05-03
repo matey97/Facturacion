@@ -41,6 +41,7 @@ public class VistaEmpresa implements VistaParaModeloCliente, VistaParaControlado
         panelClientes.add(botonesClientes,BorderLayout.NORTH);  //añadimos botones al subpanes
         JPanel camposClientes=new JPanel();
         camposClientes.setLayout(new GridLayout(8,2));
+        camposClientes.add(new JLabel("NIF"),0);
         jtfNIF=new JTextField();
         camposClientes.add(jtfNIF,1);
         camposClientes.add(new JLabel("Nombre:"),2);
