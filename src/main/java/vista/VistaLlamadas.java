@@ -5,6 +5,8 @@ import modelo.excepciones.ExcepcionClienteSinLlamadas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by user on 28/04/17.
@@ -28,11 +30,17 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         panelLlamadas.setLayout(new BorderLayout());
         JPanel botonesLlamadas=new JPanel();
         bAlta=new JButton("Dar de alta llamada");
+        bAlta.addActionListener(new EscuchadorBAlta());
         botonesLlamadas.add(bAlta);
+
         bLlamadasCliente=new JButton("Llamadas de cliente");
+        bLlamadasCliente.addActionListener(new EscuchadorBLlamadasCliente());
         botonesLlamadas.add(bLlamadasCliente);
+
         bLlamadasFechas=new JButton("Llamadas de cliente entre fechas");
+        bLlamadasFechas.addActionListener(new EscuchadorBLlamadasFechas());
         botonesLlamadas.add(bLlamadasFechas);
+
         panelLlamadas.add(botonesLlamadas, BorderLayout.NORTH);
         JPanel camposLlamadas=new JPanel();
         camposLlamadas.add(new JLabel("NIF:"));
@@ -74,5 +82,27 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     @Override
     public String getDuracion() {
         return jtfDuracion.getText();
+    }
+
+    //Escuchadores
+    private class EscuchadorBAlta implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBLlamadasCliente implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBLlamadasFechas implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 }

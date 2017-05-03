@@ -4,6 +4,8 @@ import modelo.ModeloFacturaParaVista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by user on 28/04/17.
@@ -11,6 +13,7 @@ import java.awt.*;
 public class VistaFacturas implements VistaParaModeloFactura {
 
     private ModeloFacturaParaVista modeloFactura;
+    private JButton bEmitir, bDatos, bFacCliente, bFacClienteFechas;
 
     public VistaFacturas() {
         super();
@@ -24,10 +27,22 @@ public class VistaFacturas implements VistaParaModeloFactura {
         JPanel panelFacturas=new JPanel();
         panelFacturas.setLayout(new BorderLayout());
         JPanel botonesFacturas=new JPanel();
-        botonesFacturas.add(new JButton("Emitir factura"));
-        botonesFacturas.add(new JButton("Datos de factura"));
-        botonesFacturas.add(new JButton("Factura de cliente"));
-        botonesFacturas.add(new JButton("Facturas de cliente entre fechas"));
+
+        bEmitir=new JButton("Emitir factura");
+        bEmitir.addActionListener(new EscuchadorBAlta());
+        botonesFacturas.add(bEmitir);
+
+        bDatos=new JButton("Datos de factura");
+        bDatos.addActionListener(new EscuchadorBDatos());
+        botonesFacturas.add(bDatos);
+
+        bFacCliente=new JButton("Factura de cliente");
+        bFacCliente.addActionListener(new EscuchadorBFacCliente());
+        botonesFacturas.add(bFacCliente);
+
+        bFacClienteFechas=new JButton("Facturas de cliente entre fechas");
+        bFacClienteFechas.addActionListener(new EscuchadorBFacClienteFechas());
+        botonesFacturas.add(bFacClienteFechas);
         panelFacturas.add(botonesFacturas,BorderLayout.NORTH);
         panelFacturas.add(new JTextArea(30,50));
         return panelFacturas;
@@ -44,5 +59,35 @@ public class VistaFacturas implements VistaParaModeloFactura {
 
     public void obtenFacturasCliente(){
         modeloFactura.recuperarFacturasCliente("123");
+    }
+
+
+    //Escuchadores
+    private class EscuchadorBAlta implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBDatos implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBFacCliente implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBFacClienteFechas implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 }

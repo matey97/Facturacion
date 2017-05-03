@@ -4,6 +4,8 @@ import modelo.ModeloClienteParaVista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by al341802 on 2/05/17.
@@ -27,17 +29,29 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
         panelClientes.setLayout(new BorderLayout());
         JPanel botonesClientes=new JPanel();        //Sub-Subpanel para botones
         bAnyadir=new JButton("Añadir cliente");
+        bAnyadir.addActionListener(new EscuchadorBAnyadir());
         botonesClientes.add(bAnyadir);
+
         bBorrar=new JButton("Borrar cliente");
+        bBorrar.addActionListener(new EscuchadorBBorrar());
         botonesClientes.add(bBorrar);
+
         bCambioTarifa=new JButton("Cambiar tarifa cliente");
+        bCambioTarifa.addActionListener(new EscuchadorBCambioTarifa());
         botonesClientes.add(bCambioTarifa);
+
         bDatosCliente=new JButton("Datos cliente");
+        bDatosCliente.addActionListener(new EscuchadorBDatosCliente());
         botonesClientes.add(bDatosCliente);
+
         bListado=new JButton("Listado clientes");
+        bListado.addActionListener(new EscuchadorBListado());
         botonesClientes.add(bListado);
+
         bListadoFechas=new JButton("Listado clientes entre fechas");
+        bListadoFechas.addActionListener(new EscuchadorBListadoFechas());
         botonesClientes.add(bListadoFechas);
+
         panelClientes.add(botonesClientes,BorderLayout.NORTH);  //añadimos botones al subpanes
         JPanel camposClientes=new JPanel();
         camposClientes.setLayout(new GridLayout(8,2));
@@ -110,5 +124,48 @@ public class VistaParticular implements VistaParaModeloCliente, VistaParaControl
     @Override
     public String getEmail() {
         return jtfEmail.getText();
+    }
+
+    //Escuchadores
+    private class EscuchadorBAnyadir implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBBorrar implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBCambioTarifa implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBDatosCliente implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBListado implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class EscuchadorBListadoFechas implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 }
