@@ -28,8 +28,8 @@ public class Main {
        MenuConsola.muestraMenu();
 
 */
-        VistaCliente vistaParticular=new VistaParticular();
-        VistaCliente vistaEmpresa=new VistaEmpresa();
+        VistaParticular vistaParticular=new VistaParticular();
+        VistaEmpresa vistaEmpresa=new VistaEmpresa();
         VistaFacturas vistaFacturas=new VistaFacturas();
         VistaLlamadas vistaLlamadas=new VistaLlamadas();
 
@@ -44,15 +44,20 @@ public class Main {
         facturas.setVista(vistaFacturas);
         llamadas.setVista(vistaLlamadas);
 
-        vistaParticular.setModeloCliente(particulares);  //Ponemos a cada vista su modelo
-        vistaEmpresa.setModeloCliente(empresas);
+        vistaParticular.setModeloParticular(particulares);  //Ponemos a cada vista su modelo
+        vistaEmpresa.setModeloEmpresa(empresas);
         vistaFacturas.setModeloFactura(facturas);
         vistaLlamadas.setModeloLlamada(llamadas);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new InterfazGrafica().ejecuta();
+                InterfazGrafica ig = new InterfazGrafica();
+                ig.setVistaParticular(vistaParticular);
+                ig.setVistaEmpresa(vistaEmpresa);
+                ig.setVistaLlamadas(vistaLlamadas);
+                ig.setVistaFacturas(vistaFacturas);
+                ig.ejecuta();
             }
         });
     }

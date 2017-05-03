@@ -13,8 +13,29 @@ import java.awt.event.ActionListener;
  */
 public class InterfazGrafica {
 
+    private VistaParticular vistaParticular;
+    private VistaEmpresa vistaEmpresa;
+    private VistaLlamadas vistaLlamadas;
+    private VistaFacturas vistaFacturas;
+
     public InterfazGrafica() {
         super();
+    }
+
+    public void setVistaParticular(VistaParticular v){
+        this.vistaParticular=v;
+    }
+
+    public void setVistaEmpresa(VistaEmpresa vistaEmpresa) {
+        this.vistaEmpresa = vistaEmpresa;
+    }
+
+    public void setVistaLlamadas(VistaLlamadas vistaLlamadas) {
+        this.vistaLlamadas = vistaLlamadas;
+    }
+
+    public void setVistaFacturas(VistaFacturas vistaFacturas) {
+        this.vistaFacturas = vistaFacturas;
     }
 
     public void ejecuta(){
@@ -22,7 +43,7 @@ public class InterfazGrafica {
         Container contenedor = ventana.getContentPane();
 
         JTabbedPane pestanyas=new JTabbedPane();        //Panel con pestañas
-
+/*
         JPanel panelClientes=new JPanel();          //Subpanel de clientes
         panelClientes.setLayout(new BorderLayout());
         JPanel botonesClientes=new JPanel();        //Sub-Subpanel para botones
@@ -50,11 +71,11 @@ public class InterfazGrafica {
         camposClientes.add(new JLabel("E-mail:"),12);
         camposClientes.add(new JTextField(),13);
         panelClientes.add(new JTextArea(20,50),BorderLayout.SOUTH);
-        panelClientes.add(camposClientes);
+        panelClientes.add(camposClientes);*/
 
-        pestanyas.add("Clientes",panelClientes);        //Añadimos subpanel al panel
-
-        JPanel panelLlamadas=new JPanel();
+        pestanyas.add("Particulares",vistaParticular.cargaInterfaz());
+        pestanyas.add("Empresas", vistaEmpresa.cargaInterfaz());
+  /*      JPanel panelLlamadas=new JPanel();
         panelLlamadas.setLayout(new BorderLayout());
         JPanel botonesLlamadas=new JPanel();
         botonesLlamadas.add(new JButton("Dar de alta llamada"));
@@ -70,10 +91,10 @@ public class InterfazGrafica {
         camposLlamadas.add(new JTextField(15));
 
         panelLlamadas.add(camposLlamadas);
-        panelLlamadas.add(new JTextArea(25,50),BorderLayout.SOUTH);
-        pestanyas.add("Llamadas",panelLlamadas);
+        panelLlamadas.add(new JTextArea(25,50),BorderLayout.SOUTH);*/
+        pestanyas.add("Llamadas",vistaLlamadas.cargaInterfaz());
 
-        JPanel panelFacturas=new JPanel();
+   /*     JPanel panelFacturas=new JPanel();
         panelFacturas.setLayout(new BorderLayout());
         JPanel botonesFacturas=new JPanel();
         botonesFacturas.add(new JButton("Emitir factura"));
@@ -81,8 +102,8 @@ public class InterfazGrafica {
         botonesFacturas.add(new JButton("Factura de cliente"));
         botonesFacturas.add(new JButton("Facturas de cliente entre fechas"));
         panelFacturas.add(botonesFacturas,BorderLayout.NORTH);
-        panelFacturas.add(new JTextArea(30,50));
-        pestanyas.add("Facturas",panelFacturas);
+        panelFacturas.add(new JTextArea(30,50));*/
+        pestanyas.add("Facturas",vistaFacturas.cargaInterfaz());
 
 
         JPanel panelBotones=new JPanel();
