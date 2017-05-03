@@ -3,7 +3,7 @@ package vista;
 /**
  * Created by User on 03/05/2017.
  */
-public interface VistaParaControladorParticular {
+public interface VistaParaControladorClientes {
     String getNIF();
     String getNombre();
     String getApellido();

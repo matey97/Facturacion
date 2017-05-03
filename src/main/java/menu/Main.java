@@ -1,21 +1,9 @@
 package menu;
 
 import modelo.colecciones.*;
-import modelo.excepciones.*;
-import modelo.Utiles;
-import modelo.cliente.Cliente;
-import modelo.cliente.Direccion;
-import modelo.factorias.*;
-import modelo.factura.Factura;
-import modelo.factura.Llamada;
-import modelo.factura.PeriodoFacturacion;
-import modelo.tarifa.Tarifa;
 import vista.*;
 
 import javax.swing.*;
-import java.io.*;
-import java.time.LocalDateTime;
-import java.util.*;
 
 /**
  * Created by al341802 on 21/02/17.
@@ -28,8 +16,7 @@ public class Main {
        MenuConsola.muestraMenu();
 
 */
-        VistaParticular vistaParticular=new VistaParticular();
-        VistaEmpresa vistaEmpresa=new VistaEmpresa();
+        VistaClientes vistaClientes=new VistaClientes();
         VistaFacturas vistaFacturas=new VistaFacturas();
         VistaLlamadas vistaLlamadas=new VistaLlamadas();
 
@@ -39,13 +26,13 @@ public class Main {
         ColeccionLlamadas llamadas=new ColeccionLlamadas();
 
 
-        particulares.setVista(vistaParticular);   //Ponemos a cada modelo su vista
-        empresas.setVista(vistaEmpresa);
+        particulares.setVista(vistaClientes);   //Ponemos a cada modelo su vista
+        empresas.setVista(vistaClientes);
         facturas.setVista(vistaFacturas);
         llamadas.setVista(vistaLlamadas);
 
-        vistaParticular.setModeloParticular(particulares);  //Ponemos a cada vista su modelo
-        vistaEmpresa.setModeloEmpresa(empresas);
+        vistaClientes.setModeloParticular(particulares);  //Ponemos a cada vista su modelo
+        vistaClientes.setModeloEmpresa(empresas);
         vistaFacturas.setModeloFactura(facturas);
         vistaLlamadas.setModeloLlamada(llamadas);
 
@@ -53,8 +40,7 @@ public class Main {
             @Override
             public void run() {
                 InterfazGrafica ig = new InterfazGrafica();
-                ig.setVistaParticular(vistaParticular);
-                ig.setVistaEmpresa(vistaEmpresa);
+                ig.setVistaClientes(vistaClientes);
                 ig.setVistaLlamadas(vistaLlamadas);
                 ig.setVistaFacturas(vistaFacturas);
                 ig.ejecuta();

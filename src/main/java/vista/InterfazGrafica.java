@@ -13,8 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class InterfazGrafica {
 
-    private VistaParticular vistaParticular;
-    private VistaEmpresa vistaEmpresa;
+    private VistaClientes vistaClientes;
     private VistaLlamadas vistaLlamadas;
     private VistaFacturas vistaFacturas;
 
@@ -22,12 +21,8 @@ public class InterfazGrafica {
         super();
     }
 
-    public void setVistaParticular(VistaParticular v){
-        this.vistaParticular=v;
-    }
-
-    public void setVistaEmpresa(VistaEmpresa vistaEmpresa) {
-        this.vistaEmpresa = vistaEmpresa;
+    public void setVistaClientes(VistaClientes v){
+        this.vistaClientes=v;
     }
 
     public void setVistaLlamadas(VistaLlamadas vistaLlamadas) {
@@ -43,8 +38,7 @@ public class InterfazGrafica {
         Container contenedor = ventana.getContentPane();
 
         JTabbedPane pestanyas=new JTabbedPane();
-        pestanyas.add("Particulares",vistaParticular.cargaInterfaz());
-        pestanyas.add("Empresas", vistaEmpresa.cargaInterfaz());
+        pestanyas.add("Clientes",vistaClientes.cargaInterfaz());
         pestanyas.add("Llamadas",vistaLlamadas.cargaInterfaz());
         pestanyas.add("Facturas",vistaFacturas.cargaInterfaz());
 
