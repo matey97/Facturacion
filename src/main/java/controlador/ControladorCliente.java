@@ -19,6 +19,8 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
     private MetodosModeloParaControlador modelo;
     private VistaParaControladorClientes vista;
 
+    private ControladorParaModelo
+
     private String nombre;
     private String apellidos;
     private String NIF;
@@ -43,43 +45,37 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
             recuperarDatos ();
             Cliente empresa = fabricacliente.crearClienteEmpresa(nombre,NIF,direccion,email,tarifa);//crear cliente
             modelo.anyadirCliente(empresa);
-            //crear cliente
-            //mandar cliente a modeloparticular
         }
     }
-        public void recuperarDatos() {
 
+    public void recuperarDatos() {
 
-            nombre = vista.getNombre();
-            NIF = vista.getNif();
-            poblacion = vista.getPoblación;
-            codpos = vista.getCodpos;
-            provincia = vista.getProvincia;
-            direccion = new Direccion(codPos, provincia, poblacion);// getcodpos getpoblacion getprov
+        nombre = vista.getNombre();
+        NIF = vista.getNif();
+        poblacion = vista.getPoblación;
+        codpos = vista.getCodpos;
+        provincia = vista.getProvincia;
+        direccion = new Direccion(codPos, provincia, poblacion);// getcodpos getpoblacion getprov
 
-            String email = vista.getEmail();
-            Tarifa tarifa = vista.getTarifa();
-
-        }
-
-
-
-
-/* private String nombre;
-        private String NIF;
-        private Direccion direccion;
-        private String email;
-        private LocalDateTime fecha;
-        private Tarifa tarifa;*//*
-
-
+        String email = vista.getEmail();
+        Tarifa tarifa = vista.getTarifa();
 
     }
+
+
     public void borrandoCliente(){
-        String nif = vista.getnif();
-        modelo.borraCliente(nif);
+        if (vista.esParticular()) {
+            String nif = vista.getnif();
+            modelo.borrarCliente(nif);
+        } else if (vista.esEmpresa()) {
+            String nif = vista.getnif();
+            modelo.borrarCliente(nif);
+
+        }
+
     }
-*/
+
+
 
 
   /*  private ModeloClienteParaVista modeloCliente;
