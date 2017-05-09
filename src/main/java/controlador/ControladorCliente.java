@@ -1,7 +1,7 @@
 package controlador;
 
 //import modelo.ModeloClienteParaVista;
-import modelo.MetodosModeloParaControlador;
+import modelo.ModeloParaControlador;
 import modelo.cliente.Cliente;
 import modelo.cliente.Direccion;
 import modelo.factorias.FactoriaCliente;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  */
 public class ControladorCliente implements ControladorParaModelo, ControladorParaVista {
 
-    private MetodosModeloParaControlador modelo;
+    private ModeloParaControlador modelo;
     private VistaParaControladorClientes vista;
 
     private ControladorParaModelo
@@ -45,20 +45,21 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
             recuperarDatos ();
             Cliente empresa = fabricacliente.crearClienteEmpresa(nombre,NIF,direccion,email,tarifa);//crear cliente
             modelo.anyadirCliente(empresa);
+
         }
     }
 
     public void recuperarDatos() {
 
         nombre = vista.getNombre();
-        NIF = vista.getNif();
-        poblacion = vista.getPoblación;
-        codpos = vista.getCodpos;
-        provincia = vista.getProvincia;
-        direccion = new Direccion(codPos, provincia, poblacion);// getcodpos getpoblacion getprov
+        NIF = vista.getNIF();
+        poblacion = vista.getPoblacion();
+        codpos = Integer.parseInt(vista.getCodPos());
+        provincia = vista.getProv();
+        direccion = new Direccion(codpos, provincia, poblacion);// getcodpos getpoblacion getprov
 
         String email = vista.getEmail();
-        Tarifa tarifa = vista.getTarifa();
+       //setear  Tarifa tarifa = vista.getTarifa();
 
     }
 
