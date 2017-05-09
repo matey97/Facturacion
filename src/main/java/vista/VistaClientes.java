@@ -1,12 +1,16 @@
 package vista;
 
-import com.sun.scenario.effect.impl.sw.java.JSWBlend_COLOR_BURNPeer;
+import controlador.ControladorParaVista;
 import modelo.ModeloClienteParaVista;
+import modelo.Utiles;
+import modelo.cliente.Cliente;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by User on 03/05/2017.
@@ -14,8 +18,11 @@ import java.awt.event.ActionListener;
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
     private ModeloClienteParaVista modeloParticular;
     private ModeloClienteParaVista modeloEmpresa;
+    private ControladorParaVista controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
-    private JTextField jtfNIF,jtfNIF2, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
+    private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
+    private JTextArea areaTexto;
+    private JRadioButton particular, empresa, tardes, domingos;
 
     public VistaClientes() {
         super();
@@ -80,7 +87,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         camposClientes.add(new JLabel("E-mail:"),12);
         jtfEmail=new JTextField();
         camposClientes.add(jtfEmail,13);
-        JTextArea areaTexto=new JTextArea(20,50);
+        areaTexto=new JTextArea(20,50);
         areaTexto.setEditable(false);
         JScrollPane scroll=new JScrollPane(areaTexto);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -91,18 +98,34 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     }
 
     @Override
-    public void nuevoClienteAnyadido() {
-
-    }
-
-    @Override
-    public void clienteBorrado() {
-
+    public void modeloModificado(){
+        areaTexto.setText("");
+        for (Cliente c : modeloParticular.getListadoClientes()){
+            areaTexto.append(c.toString());
+        }
+        for (Cliente c : modeloEmpresa.getListadoClientes()){
+            areaTexto.append(c.toString());
+        }
     }
 
     @Override
     public String getNIF() {
         return jtfNIF.getText();
+    }
+
+    @Override
+    public String getNIFBorrar() {
+        return jtfNIFBorra.getText();
+    }
+
+    @Override
+    public String getNIFTarifa() {
+        return jtfNIFTarifa.getText();
+    }
+
+    @Override
+    public String getNIFDatos() {
+        return jtfNIFConsulta.getText();
     }
 
     @Override
@@ -135,30 +158,46 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         return jtfEmail.getText();
     }
 
+    @Override
+    public boolean esParticular() {
+        return particular.isSelected();
+    }
+
+    @Override
+    public boolean esEmpresa() {
+        return empresa.isSelected();
+    }
+
+    @Override
+    public boolean tarifaTardes() {
+        return tardes.isSelected();
+    }
+
+    @Override
+    public boolean tarifaDomingos() {
+        return domingos.isSelected();
+    }
+
     //Escuchadores
     private class EscuchadorBAnyadir implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoAnyadir = new JDialog();
             JPanel panel = new JPanel();
-            JRadioButton particular = new JRadioButton("Particular");
-            JRadioButton empresa =new JRadioButton("Empresa");
+            particular = new JRadioButton("Particular");
+            empresa =new JRadioButton("Empresa");
             ButtonGroup grupo = new ButtonGroup();
             grupo.add(particular);
             grupo.add(empresa);
             panel.add(particular);
             panel.add(empresa);
-            dialogoAnyadir.add(new JLabel("Que tipo de cliente quieres añadir?"),BorderLayout.NORTH);
+            dialogoAnyadir.add(new JLabel(" Que tipo de cliente quieres añadir? \n"),BorderLayout.NORTH);
             dialogoAnyadir.add(panel);
             JButton aceptar=new JButton("Aceptar");
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (particular.isSelected()){
-                        //Por implementar
-                    }else if (empresa.isSelected()){
-                        //Por implementar
-                    }
+                    //Por implementar
                     dialogoAnyadir.setVisible(false);
                 }
             });
@@ -174,13 +213,53 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     private class EscuchadorBBorrar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            JDialog dialogoAnyadir = new JDialog();
+            JPanel panel = new JPanel();
+            panel.add(new JLabel("NIF: "));
+            jtfNIFBorra=new JTextField(20);
+            panel.add(jtfNIFBorra);
+            dialogoAnyadir.add(new JLabel(" NIF del cliente a borrar \n"),BorderLayout.NORTH);
+            dialogoAnyadir.add(panel);
+            JButton aceptar=new JButton("Aceptar");
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Por implementar
+                    dialogoAnyadir.setVisible(false);
+                }
+            });
+            dialogoAnyadir.add(aceptar, BorderLayout.SOUTH);
+            dialogoAnyadir.pack();
+            dialogoAnyadir.setVisible(true);
         }
     }
 
     private class EscuchadorBCambioTarifa implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            JDialog dialogoDatos=new JDialog();
+            JPanel panelDialogo=new JPanel();
+            tardes = new JRadioButton("Tarifa tardes");
+            domingos =new JRadioButton("Tarifa domingos gratis");
+            JPanel panelB = new JPanel();
+            panelB.add(tardes);
+            panelB.add(domingos);
+            dialogoDatos.add(panelB, BorderLayout.NORTH);
+            panelDialogo.add(new JLabel("NIF del cliente:"));
+            jtfNIFTarifa =new JTextField(20);
+            panelDialogo.add(jtfNIFTarifa);
+            JButton aceptar=new JButton("Aceptar");
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    //Llamada controlador
+                    dialogoDatos.setVisible(false);
+                }
+            });
+            dialogoDatos.add(panelDialogo);
+            dialogoDatos.add(aceptar,BorderLayout.SOUTH);
+            dialogoDatos.pack();
+            dialogoDatos.setVisible(true);
 
         }
     }
@@ -190,9 +269,10 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
             JPanel panelDialogo=new JPanel();
+
             panelDialogo.add(new JLabel("NIF del cliente:"));
-            jtfNIF2=new JTextField(20);
-            panelDialogo.add(jtfNIF2);
+            jtfNIFConsulta =new JTextField(20);
+            panelDialogo.add(jtfNIFConsulta);
             JButton aceptar=new JButton("Aceptar");
             aceptar.addActionListener(new ActionListener() {
                 @Override
@@ -211,14 +291,71 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     private class EscuchadorBListado implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            modeloModificado();
         }
     }
 
     private class EscuchadorBListadoFechas implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            JDialog dialogoDatos=new JDialog();
+            dialogoDatos.add(new JLabel("Introduce dos fechas: "),BorderLayout.NORTH);
+            JPanel panel=new JPanel();
+            panel.setLayout(new BorderLayout());
+            JPanel fechaINI=new JPanel();
+            fechaINI.add(new JLabel("Fecha inicial: "));
+            fechaINI.add(new JLabel("Dia: "));
+            JTextField diaIni=new JTextField(2);
+            fechaINI.add(diaIni);
+            fechaINI.add(new JLabel("Mes: "));
+            JTextField mesIni=new JTextField(2);
+            fechaINI.add(mesIni);
+            fechaINI.add(new JLabel("Anyo: "));
+            JTextField anyoIni=new JTextField(4);
+            fechaINI.add(anyoIni);
 
+            JPanel fechaFIN=new JPanel();
+            fechaFIN.add(new JLabel("Fecha final: "));
+            fechaFIN.add(new JLabel("Dia: "));
+            JTextField diaFin=new JTextField(2);
+            fechaFIN.add(diaFin);
+            fechaFIN.add(new JLabel("Mes: "));
+            JTextField mesFin=new JTextField(2);
+            fechaFIN.add(mesFin);
+            fechaFIN.add(new JLabel("Anyo: "));
+            JTextField anyoFin=new JTextField(4);
+            fechaFIN.add(anyoFin);
+            panel.add(fechaINI, BorderLayout.NORTH);
+            panel.add(fechaFIN);
+            JButton aceptar=new JButton("Aceptar");
+
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    areaTexto.setText("");
+                    int anyoI=Integer.parseInt(anyoIni.getText());
+                    int mesI=Integer.parseInt(mesIni.getText());
+                    int diaI=Integer.parseInt(diaIni.getText());
+                    int anyoF=Integer.parseInt(anyoFin.getText());
+                    int mesF=Integer.parseInt(mesFin.getText());
+                    int diaF=Integer.parseInt(diaFin.getText());
+                    Collection<Cliente> colP = Utiles.entreDosFechas(modeloParticular.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
+                    Collection<Cliente> colE = Utiles.entreDosFechas(modeloEmpresa.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
+                    areaTexto.append("\nParticulares:\n");
+                    for(Cliente c : colP){
+                        areaTexto.append(c.toString());
+                    }
+                    areaTexto.append("\nEmpresas:\n");
+                    for(Cliente c: colE){
+                        areaTexto.append(c.toString());
+                    }
+                    dialogoDatos.setVisible(false);
+                }
+            });
+            dialogoDatos.add(panel);
+            dialogoDatos.add(aceptar,BorderLayout.SOUTH);
+            dialogoDatos.pack();
+            dialogoDatos.setVisible(true);
         }
     }
 }

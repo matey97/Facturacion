@@ -5,10 +5,17 @@ package vista;
  */
 public interface VistaParaControladorClientes {
     String getNIF();
+    String getNIFBorrar();
+    String getNIFTarifa();
+    String getNIFDatos();
     String getNombre();
     String getApellido();
     String getCodPos();
     String getPoblacion();
     String getProv();
     String getEmail();
+    boolean esParticular();
+    boolean esEmpresa();
+    boolean tarifaTardes();
+    boolean tarifaDomingos();
 }

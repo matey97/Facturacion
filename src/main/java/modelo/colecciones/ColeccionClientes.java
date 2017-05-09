@@ -34,7 +34,7 @@ public abstract class ColeccionClientes implements Serializable, ModeloClientePa
     public boolean anyadirCliente(Cliente cliente) {
         if (!existeCliente(cliente.getNIF())){
             clientes.put(cliente.getNIF(),cliente);
-            vista.nuevoClienteAnyadido();
+            vista.modeloModificado();
             return true;
         }
         return false;
@@ -43,7 +43,7 @@ public abstract class ColeccionClientes implements Serializable, ModeloClientePa
     public boolean borrarCliente(String NIF) {
         if( clientes.containsKey(NIF)){
             clientes.remove(NIF);
-            vista.clienteBorrado();
+            vista.modeloModificado();
             return true;
         }
         return false;
