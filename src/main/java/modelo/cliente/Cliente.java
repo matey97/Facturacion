@@ -20,12 +20,12 @@ public abstract class Cliente implements Fecha, Serializable{
     public Cliente(){
     }
 
-    public Cliente(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa) {
+    public Cliente(String nombre, String NIF, Direccion direccion, String email,Tarifa tarifa) {
         this.nombre = nombre;
         this.NIF = NIF;
         this.direccion = direccion;
         this.email = email;
-        this.fecha = fecha;
+        this.fecha = LocalDateTime.now();
         this.tarifa = tarifa;
     }
 

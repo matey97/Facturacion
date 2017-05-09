@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  */
 public interface FactoriaCliente {
 
-    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa);
-    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email, LocalDateTime fecha, Tarifa tarifa);
+    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email,  Tarifa tarifa);
+    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email, Tarifa tarifa);
 
 }
