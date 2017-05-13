@@ -1,10 +1,9 @@
 package modelo;
 
 import modelo.cliente.DireccionTest;
-import modelo.colecciones.ColeccionEmpresasTest;
 import modelo.colecciones.ColeccionFacturasTest;
 import modelo.colecciones.ColeccionLlamadasTest;
-import modelo.colecciones.ColeccionParticularesTest;
+import modelo.colecciones.ColeccionClientesTest;
 import modelo.excepciones.DuracionNoValidaTest;
 import modelo.excepciones.ExcepcionClienteSinLlamadasTest;
 import modelo.excepciones.FechaInicialMayorQueFinalTest;
@@ -17,8 +16,8 @@ import org.junit.runners.Suite;
  */
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ DireccionTest.class, ColeccionEmpresasTest.class, ColeccionFacturasTest.class,
-        ColeccionLlamadasTest.class, ColeccionParticularesTest.class, DuracionNoValidaTest.class,
+@Suite.SuiteClasses({ DireccionTest.class,  ColeccionFacturasTest.class,
+        ColeccionLlamadasTest.class, ColeccionClientesTest.class, DuracionNoValidaTest.class,
         FechaInicialMayorQueFinalTest.class, ExcepcionClienteSinLlamadasTest.class, TarifasTest.class
 })
 
