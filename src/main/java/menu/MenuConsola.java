@@ -21,7 +21,7 @@ import java.util.Scanner;
  * Created by sergiojimenez on 28/4/17.
  */
 public class MenuConsola {
-    EntradaDatosConsola datosconsola = new EntradaDatosConsola();
+ /*   EntradaDatosConsola datosconsola = new EntradaDatosConsola();
     GestionDatos datos = new GestionDatos();
     Scanner sc = new Scanner(System.in);
     int n;
@@ -348,3 +348,4 @@ public class MenuConsola {
         System.out.print("Introduce el codigo de factura:");
         return sc.nextInt();
     }*/
+}

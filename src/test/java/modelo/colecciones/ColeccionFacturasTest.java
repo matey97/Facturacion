@@ -41,7 +41,7 @@ public class ColeccionFacturasTest {
         fabricaTarifas=new FactoriaTarifas();
         llamadas=new ColeccionLlamadas();
         tarifa=fabricaTarifas.getTarifaBasica();
-        cliente=fabricaClientes.crearClienteParticular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es", LocalDateTime.now(),tarifa);
+        cliente=fabricaClientes.crearClienteParticular("Miguel","Matey Sanz","73402320M",new Direccion(12600,"Castellon","La Vall d'Uixó"),"al341802@uji.es",tarifa);
         llamada1=new Llamada(669318017, LocalDateTime.now(),13);
         llamada2=new Llamada(612317002, LocalDateTime.now(),5);
         llamada3=new Llamada(695968097, LocalDateTime.now(),10);

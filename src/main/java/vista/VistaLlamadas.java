@@ -1,8 +1,10 @@
 package vista;
 
 import modelo.ModeloLlamadaParaVista;
+import modelo.Utiles;
 import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
+import modelo.factura.Llamada;
 import sun.util.calendar.JulianCalendar;
 
 import javax.swing.*;
@@ -10,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by user on 28/04/17.
@@ -19,6 +23,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     private ModeloLlamadaParaVista modeloLlamada;
     private JButton bAlta, bLlamadasCliente, bLlamadasFechas;
     private JTextField jtfNIF, jtfNIF2, jtfTelefono, jtfDuracion;
+    private JTextArea areaTexto;
 
     public VistaLlamadas() {
         super();
@@ -55,7 +60,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         camposLlamadas.add(new JLabel("Duración:"));
         jtfDuracion=new JTextField(15);
         camposLlamadas.add(jtfDuracion);
-        JTextArea areaTexto=new JTextArea(20,50);
+        areaTexto=new JTextArea(20,50);
         areaTexto.setEditable(false);
         JScrollPane scroll=new JScrollPane(areaTexto);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -126,7 +131,72 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     private class EscuchadorBLlamadasFechas implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
+            JDialog dialogoDatos=new JDialog();
+            dialogoDatos.add(new JLabel("Introduce dos fechas y en NIF del cliente: "),BorderLayout.NORTH);
+            JPanel panel=new JPanel();
+            panel.setLayout(new BorderLayout());
 
+            JPanel dni = new JPanel();
+            dni.add(new JLabel("Introduce NIF: "));
+            JTextField jtfdni = new JTextField(10);
+            dni.add(jtfdni);
+
+            JPanel fechaINI=new JPanel();
+            fechaINI.add(new JLabel("Fecha inicial: "));
+            fechaINI.add(new JLabel("Dia: "));
+            JTextField diaIni=new JTextField(2);
+            fechaINI.add(diaIni);
+            fechaINI.add(new JLabel("Mes: "));
+            JTextField mesIni=new JTextField(2);
+            fechaINI.add(mesIni);
+            fechaINI.add(new JLabel("Anyo: "));
+            JTextField anyoIni=new JTextField(4);
+            fechaINI.add(anyoIni);
+
+            JPanel fechaFIN=new JPanel();
+            fechaFIN.add(new JLabel("Fecha final: "));
+            fechaFIN.add(new JLabel("Dia: "));
+            JTextField diaFin=new JTextField(2);
+            fechaFIN.add(diaFin);
+            fechaFIN.add(new JLabel("Mes: "));
+            JTextField mesFin=new JTextField(2);
+            fechaFIN.add(mesFin);
+            fechaFIN.add(new JLabel("Anyo: "));
+            JTextField anyoFin=new JTextField(4);
+            fechaFIN.add(anyoFin);
+            panel.add(dni,BorderLayout.NORTH);
+            panel.add(fechaINI);
+            panel.add(fechaFIN, BorderLayout.SOUTH);
+            JButton aceptar=new JButton("Aceptar");
+
+            aceptar.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    areaTexto.setText("");
+                    int dni=Integer.parseInt(jtfdni.getText());
+                    int anyoI=Integer.parseInt(anyoIni.getText());
+                    int mesI=Integer.parseInt(mesIni.getText());
+                    int diaI=Integer.parseInt(diaIni.getText());
+                    int anyoF=Integer.parseInt(anyoFin.getText());
+                    int mesF=Integer.parseInt(mesFin.getText());
+                    int diaF=Integer.parseInt(diaFin.getText());
+                    try {
+                        Collection<Llamada> colC = Utiles.entreDosFechas(modeloLlamada.listarLlamadas(jtfdni.getText()), LocalDateTime.of(anyoI, mesI, diaI, 0, 0), LocalDateTime.of(anyoF, mesF, diaF, 0, 0));
+                        areaTexto.append("\nParticulares:\n");
+                        for (Llamada c : colC) {
+                            areaTexto.append(c.toString());
+                        }
+                    }catch (ExcepcionClienteSinLlamadas exc){
+                        System.out.println(exc.getMessage());
+                    }
+
+                    dialogoDatos.setVisible(false);
+                }
+            });
+            dialogoDatos.add(panel);
+            dialogoDatos.add(aceptar,BorderLayout.SOUTH);
+            dialogoDatos.pack();
+            dialogoDatos.setVisible(true);
         }
     }
 
