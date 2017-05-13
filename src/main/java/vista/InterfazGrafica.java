@@ -44,8 +44,24 @@ public class InterfazGrafica {
 
         JPanel panelBotones=new JPanel();
         JButton boton=new JButton("Cargar datos");
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vistaClientes.cargaDatos();
+                vistaLlamadas.cargaDatos();
+                vistaFacturas.cargaDatos();
+            }
+        });
         panelBotones.add(boton);
         boton=new JButton("Guardar datos");
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                vistaClientes.guardaDatos();
+                vistaLlamadas.guardaDatos();
+                vistaFacturas.guardaDatos();
+            }
+        });
         panelBotones.add(boton);
         boton=new JButton("Salir");
         boton.addActionListener(new ActionListener() {

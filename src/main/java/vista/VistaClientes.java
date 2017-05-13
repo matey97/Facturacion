@@ -4,11 +4,13 @@ import controlador.ControladorParaVista;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
+import modelo.colecciones.ColeccionClientes;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -16,8 +18,7 @@ import java.util.Collection;
  * Created by User on 03/05/2017.
  */
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
-    private ModeloClienteParaVista modeloParticular;
-    private ModeloClienteParaVista modeloEmpresa;
+    private ModeloClienteParaVista modeloCliente;
     private ControladorParaVista controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
     private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
@@ -28,11 +29,8 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         super();
     }
 
-    public void setModeloParticular(ModeloClienteParaVista modeloParticular) {
-        this.modeloParticular = modeloParticular;
-    }
-    public void setModeloEmpresa(ModeloClienteParaVista modeloEmpresa) {
-        this.modeloEmpresa = modeloEmpresa;
+    public void setModeloCliente(ModeloClienteParaVista modeloCliente) {
+        this.modeloCliente = modeloCliente;
     }
 
     public JPanel cargaInterfaz(){
@@ -100,10 +98,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     @Override
     public void modeloModificado(){
         areaTexto.setText("");
-        for (Cliente c : modeloParticular.getListadoClientes()){
-            areaTexto.append(c.toString());
-        }
-        for (Cliente c : modeloEmpresa.getListadoClientes()){
+        for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
         }
     }
@@ -339,16 +334,12 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
                     int anyoF=Integer.parseInt(anyoFin.getText());
                     int mesF=Integer.parseInt(mesFin.getText());
                     int diaF=Integer.parseInt(diaFin.getText());
-                    Collection<Cliente> colP = Utiles.entreDosFechas(modeloParticular.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
-                    Collection<Cliente> colE = Utiles.entreDosFechas(modeloEmpresa.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
+                    Collection<Cliente> colC = Utiles.entreDosFechas(modeloCliente.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
                     areaTexto.append("\nParticulares:\n");
-                    for(Cliente c : colP){
+                    for(Cliente c : colC){
                         areaTexto.append(c.toString());
                     }
-                    areaTexto.append("\nEmpresas:\n");
-                    for(Cliente c: colE){
-                        areaTexto.append(c.toString());
-                    }
+
                     dialogoDatos.setVisible(false);
                 }
             });
@@ -356,6 +347,39 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             dialogoDatos.add(aceptar,BorderLayout.SOUTH);
             dialogoDatos.pack();
             dialogoDatos.setVisible(true);
+        }
+    }
+
+    public void cargaDatos(){
+        try{
+            FileInputStream fichClientes = new FileInputStream("clientes.bin");
+            ObjectInputStream objClientes = new ObjectInputStream(fichClientes);
+            modeloCliente = (ColeccionClientes) objClientes.readObject();
+            objClientes.close();
+        } catch(FileNotFoundException e){
+            System.out.println("Error del fichero.");
+            System.out.println(e);
+        } catch(IOException e){
+            System.out.println("Error en ObjectInputStream.");
+            System.out.println(e);
+        } catch(ClassNotFoundException e){
+            System.out.println("Error al recuperar datos del fichero.");
+            System.out.println(e);
+        }
+    }
+
+    public void guardaDatos(){
+        try {
+            FileOutputStream fichClientes = new FileOutputStream("clientes.bin");
+            ObjectOutputStream objClientes = new ObjectOutputStream(fichClientes);
+            objClientes.writeObject(modeloCliente);
+            objClientes.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("Error al intentar abrir el fichero.");
+            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println("Error en ObjectOutputStream");
+            System.out.println(e);
         }
     }
 }

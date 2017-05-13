@@ -31,7 +31,6 @@ public class ColeccionEmpresasTest { //Test de ColeccionEmpresas
 
     @BeforeClass
     public static void init(){
-
         fabricaEmpresas=new FactoriaClientes();
         fabricaTarifas=new FactoriaTarifas();
         empresa1 =fabricaEmpresas.crearClienteEmpresa("Copinsa","120",new Direccion(12600,"Castellon","La Vall d'Uixó"),"copinsa@yahoo.es", LocalDateTime.of(2016,1,2,0,0),fabricaTarifas.getTarifaBasica());

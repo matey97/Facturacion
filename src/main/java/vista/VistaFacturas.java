@@ -1,11 +1,13 @@
 package vista;
 
 import modelo.ModeloFacturaParaVista;
+import modelo.colecciones.ColeccionFacturas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 /**
  * Created by user on 28/04/17.
@@ -93,6 +95,39 @@ public class VistaFacturas implements VistaParaModeloFactura {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+        }
+    }
+
+    public void cargaDatos(){
+        try{
+            FileInputStream fichFacturas = new FileInputStream("clientes.bin");
+            ObjectInputStream objFacturas = new ObjectInputStream(fichFacturas);
+            modeloFactura = (ColeccionFacturas) objFacturas.readObject();
+            objFacturas.close();
+        } catch(FileNotFoundException e){
+            System.out.println("Error del fichero.");
+            System.out.println(e);
+        } catch(IOException e){
+            System.out.println("Error en ObjectInputStream.");
+            System.out.println(e);
+        } catch(ClassNotFoundException e){
+            System.out.println("Error al recuperar datos del fichero.");
+            System.out.println(e);
+        }
+    }
+
+    public void guardaDatos(){
+        try {
+            FileOutputStream fichClientes = new FileOutputStream("clientes.bin");
+            ObjectOutputStream objFacturas = new ObjectOutputStream(fichClientes);
+            objFacturas.writeObject(modeloFactura);
+            objFacturas.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("Error al intentar abrir el fichero.");
+            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println("Error en ObjectOutputStream");
+            System.out.println(e);
         }
     }
 }

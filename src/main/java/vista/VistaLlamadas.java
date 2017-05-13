@@ -1,6 +1,7 @@
 package vista;
 
 import modelo.ModeloLlamadaParaVista;
+import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import sun.util.calendar.JulianCalendar;
 
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 /**
  * Created by user on 28/04/17.
@@ -125,6 +127,39 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
 
+        }
+    }
+
+    public void cargaDatos(){
+        try{
+            FileInputStream fichLlamadas = new FileInputStream("llamadas.bin");
+            ObjectInputStream objLlamadas = new ObjectInputStream(fichLlamadas);
+            modeloLlamada = (ColeccionLlamadas) objLlamadas.readObject();
+            objLlamadas.close();
+        } catch(FileNotFoundException e){
+            System.out.println("Error del fichero.");
+            System.out.println(e);
+        } catch(IOException e){
+            System.out.println("Error en ObjectInputStream.");
+            System.out.println(e);
+        } catch(ClassNotFoundException e){
+            System.out.println("Error al recuperar datos del fichero.");
+            System.out.println(e);
+        }
+    }
+
+    public void guardaDatos(){
+        try {
+            FileOutputStream fichLlamadas = new FileOutputStream("clientes.bin");
+            ObjectOutputStream objLlamadas = new ObjectOutputStream(fichLlamadas);
+            objLlamadas.writeObject(modeloLlamada);
+            objLlamadas.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("Error al intentar abrir el fichero.");
+            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println("Error en ObjectOutputStream");
+            System.out.println(e);
         }
     }
 }
