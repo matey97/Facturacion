@@ -101,6 +101,13 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
         }
+        jtfNIF.setText("");
+        jtfNombre.setText("");
+        jtfApellidos.setText("");
+        jtfCodPos.setText("");
+        jtfPobl.setText("");
+        jtfProv.setText("");
+        jtfEmail.setText("");
     }
 
     @Override

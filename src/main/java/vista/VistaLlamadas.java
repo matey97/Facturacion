@@ -75,11 +75,13 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
 
     @Override
     public void llamadaDadaDeAlta() throws ExcepcionClienteSinLlamadas {
-        modeloLlamada.listarLlamadas("123");
-    }
-
-    public void obtenLlamadasCliente() throws ExcepcionClienteSinLlamadas {
-        modeloLlamada.listarLlamadas("123");
+        areaTexto.setText("");
+        for(Llamada l : modeloLlamada.listarLlamadas(getNIF())){
+            areaTexto.append(l.toString());
+        }
+        jtfNIF.setText("");
+        jtfTelefono.setText("");
+        jtfDuracion.setText("");
     }
 
     @Override
