@@ -111,6 +111,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bLlamadasCliente);
             JPanel panelDialogo=new JPanel();
             panelDialogo.add(new JLabel("NIF del cliente:"));
             jtfNIF2=new JTextField(20);
@@ -134,6 +135,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bLlamadasFechas);
             dialogoDatos.add(new JLabel("Introduce dos fechas y en NIF del cliente: "),BorderLayout.NORTH);
             JPanel panel=new JPanel();
             panel.setLayout(new BorderLayout());

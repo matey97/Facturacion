@@ -185,6 +185,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoAnyadir = new JDialog();
+            dialogoAnyadir.setLocationRelativeTo(bAnyadir);
             JPanel panel = new JPanel();
             particular = new JRadioButton("Particular");
             empresa =new JRadioButton("Empresa");
@@ -215,24 +216,25 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     private class EscuchadorBBorrar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            JDialog dialogoAnyadir = new JDialog();
+            JDialog dialogoBorrar = new JDialog();
+            dialogoBorrar.setLocationRelativeTo(bBorrar);
             JPanel panel = new JPanel();
             panel.add(new JLabel("NIF: "));
             jtfNIFBorra=new JTextField(20);
             panel.add(jtfNIFBorra);
-            dialogoAnyadir.add(new JLabel(" NIF del cliente a borrar \n"),BorderLayout.NORTH);
-            dialogoAnyadir.add(panel);
+            dialogoBorrar.add(new JLabel(" NIF del cliente a borrar \n"),BorderLayout.NORTH);
+            dialogoBorrar.add(panel);
             JButton aceptar=new JButton("Aceptar");
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //Por implementar
-                    dialogoAnyadir.setVisible(false);
+                    dialogoBorrar.setVisible(false);
                 }
             });
-            dialogoAnyadir.add(aceptar, BorderLayout.SOUTH);
-            dialogoAnyadir.pack();
-            dialogoAnyadir.setVisible(true);
+            dialogoBorrar.add(aceptar, BorderLayout.SOUTH);
+            dialogoBorrar.pack();
+            dialogoBorrar.setVisible(true);
         }
     }
 
@@ -240,6 +242,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bCambioTarifa);
             JPanel panelDialogo=new JPanel();
             tardes = new JRadioButton("Tarifa tardes");
             domingos =new JRadioButton("Tarifa domingos gratis");
@@ -270,6 +273,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bDatosCliente);
             JPanel panelDialogo=new JPanel();
 
             panelDialogo.add(new JLabel("NIF del cliente:"));
@@ -301,6 +305,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bListadoFechas);
             dialogoDatos.add(new JLabel("Introduce dos fechas: "),BorderLayout.NORTH);
             JPanel panel=new JPanel();
             panel.setLayout(new BorderLayout());

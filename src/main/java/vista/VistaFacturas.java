@@ -113,6 +113,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bEmitir);
             dialogoDatos.add(new JLabel("Introduce dos fechas y en NIF del cliente: "),BorderLayout.NORTH);
             JPanel panel=new JPanel();
             panel.setLayout(new BorderLayout());
@@ -167,6 +168,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos = new JDialog();
+            dialogoDatos.setLocationRelativeTo(bDatos);
             JPanel panel = new JPanel();
             panel.add(new JLabel("Introduce codigo de factura: "));
             jtfCodigo = new JTextField(10);
@@ -190,6 +192,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos = new JDialog();
+            dialogoDatos.setLocationRelativeTo(bFacCliente);
             JPanel panel = new JPanel();
             panel.add(new JLabel("Introduce NIF de cliente: "));
             jtfdni = new JTextField(10);
@@ -218,6 +221,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bFacClienteFechas);
             dialogoDatos.add(new JLabel("Introduce dos fechas y en NIF del cliente: "),BorderLayout.NORTH);
             JPanel panel=new JPanel();
             panel.setLayout(new BorderLayout());
