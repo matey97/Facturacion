@@ -47,7 +47,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista{
         if (!facturas.containsKey(cliente.getNIF()))
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);
-        vista.nuevaFacturaCreada();
+        vista.nuevaFacturaCreada(contador-1);
         return aux;
     }
 

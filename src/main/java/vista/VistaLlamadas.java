@@ -183,10 +183,10 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
                     int mesF=Integer.parseInt(mesFin.getText());
                     int diaF=Integer.parseInt(diaFin.getText());
                     try {
-                        Collection<Llamada> colC = Utiles.entreDosFechas(modeloLlamada.listarLlamadas(jtfdni.getText()), LocalDateTime.of(anyoI, mesI, diaI, 0, 0), LocalDateTime.of(anyoF, mesF, diaF, 0, 0));
-                        areaTexto.append("\nParticulares:\n");
-                        for (Llamada c : colC) {
+                        Collection<Llamada> colL = Utiles.entreDosFechas(modeloLlamada.listarLlamadas(jtfdni.getText()), LocalDateTime.of(anyoI, mesI, diaI, 0, 0), LocalDateTime.of(anyoF, mesF, diaF, 0, 0));
+                        for (Llamada c : colL) {
                             areaTexto.append(c.toString());
+                            areaTexto.append("");
                         }
                     }catch (ExcepcionClienteSinLlamadas exc){
                         System.out.println(exc.getMessage());

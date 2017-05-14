@@ -345,6 +345,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
                     areaTexto.append("\nParticulares:\n");
                     for(Cliente c : colC){
                         areaTexto.append(c.toString());
+                        areaTexto.append("");
                     }
 
                     dialogoDatos.setVisible(false);
