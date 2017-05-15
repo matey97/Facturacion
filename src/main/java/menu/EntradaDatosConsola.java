@@ -22,7 +22,7 @@ import java.util.Scanner;
  * Created by sergiojimenez on 28/4/17.
  */
 public class EntradaDatosConsola {
-    public Cliente entradaDatosCliente(int n){
+ /*   public Cliente entradaDatosCliente(int n){
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce nombre del cliente: ");
         String nombre=sc.nextLine();
@@ -144,5 +144,5 @@ public class EntradaDatosConsola {
         System.out.println("Introduce el codigo de factura:");
         return sc.nextInt();
     }
-
+*/
 }

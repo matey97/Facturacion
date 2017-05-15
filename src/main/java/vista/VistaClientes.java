@@ -4,11 +4,13 @@ import controlador.ControladorParaVista;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
+import modelo.colecciones.ColeccionClientes;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
@@ -16,8 +18,7 @@ import java.util.Collection;
  * Created by User on 03/05/2017.
  */
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
-    private ModeloClienteParaVista modeloParticular;
-    private ModeloClienteParaVista modeloEmpresa;
+    private ModeloClienteParaVista modeloCliente;
     private ControladorParaVista controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
     private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
@@ -28,11 +29,8 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         super();
     }
 
-    public void setModeloParticular(ModeloClienteParaVista modeloParticular) {
-        this.modeloParticular = modeloParticular;
-    }
-    public void setModeloEmpresa(ModeloClienteParaVista modeloEmpresa) {
-        this.modeloEmpresa = modeloEmpresa;
+    public void setModeloCliente(ModeloClienteParaVista modeloCliente) {
+        this.modeloCliente = modeloCliente;
     }
 
     public JPanel cargaInterfaz(){
@@ -100,12 +98,16 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     @Override
     public void modeloModificado(){
         areaTexto.setText("");
-        for (Cliente c : modeloParticular.getListadoClientes()){
+        for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
         }
-        for (Cliente c : modeloEmpresa.getListadoClientes()){
-            areaTexto.append(c.toString());
-        }
+        jtfNIF.setText("");
+        jtfNombre.setText("");
+        jtfApellidos.setText("");
+        jtfCodPos.setText("");
+        jtfPobl.setText("");
+        jtfProv.setText("");
+        jtfEmail.setText("");
     }
 
     @Override
@@ -183,6 +185,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoAnyadir = new JDialog();
+            dialogoAnyadir.setLocationRelativeTo(bAnyadir);
             JPanel panel = new JPanel();
             particular = new JRadioButton("Particular");
             empresa =new JRadioButton("Empresa");
@@ -213,24 +216,25 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     private class EscuchadorBBorrar implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            JDialog dialogoAnyadir = new JDialog();
+            JDialog dialogoBorrar = new JDialog();
+            dialogoBorrar.setLocationRelativeTo(bBorrar);
             JPanel panel = new JPanel();
             panel.add(new JLabel("NIF: "));
             jtfNIFBorra=new JTextField(20);
             panel.add(jtfNIFBorra);
-            dialogoAnyadir.add(new JLabel(" NIF del cliente a borrar \n"),BorderLayout.NORTH);
-            dialogoAnyadir.add(panel);
+            dialogoBorrar.add(new JLabel(" NIF del cliente a borrar \n"),BorderLayout.NORTH);
+            dialogoBorrar.add(panel);
             JButton aceptar=new JButton("Aceptar");
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     //Por implementar
-                    dialogoAnyadir.setVisible(false);
+                    dialogoBorrar.setVisible(false);
                 }
             });
-            dialogoAnyadir.add(aceptar, BorderLayout.SOUTH);
-            dialogoAnyadir.pack();
-            dialogoAnyadir.setVisible(true);
+            dialogoBorrar.add(aceptar, BorderLayout.SOUTH);
+            dialogoBorrar.pack();
+            dialogoBorrar.setVisible(true);
         }
     }
 
@@ -238,6 +242,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bCambioTarifa);
             JPanel panelDialogo=new JPanel();
             tardes = new JRadioButton("Tarifa tardes");
             domingos =new JRadioButton("Tarifa domingos gratis");
@@ -268,6 +273,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bDatosCliente);
             JPanel panelDialogo=new JPanel();
 
             panelDialogo.add(new JLabel("NIF del cliente:"));
@@ -299,6 +305,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         @Override
         public void actionPerformed(ActionEvent e) {
             JDialog dialogoDatos=new JDialog();
+            dialogoDatos.setLocationRelativeTo(bListadoFechas);
             dialogoDatos.add(new JLabel("Introduce dos fechas: "),BorderLayout.NORTH);
             JPanel panel=new JPanel();
             panel.setLayout(new BorderLayout());
@@ -339,16 +346,13 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
                     int anyoF=Integer.parseInt(anyoFin.getText());
                     int mesF=Integer.parseInt(mesFin.getText());
                     int diaF=Integer.parseInt(diaFin.getText());
-                    Collection<Cliente> colP = Utiles.entreDosFechas(modeloParticular.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
-                    Collection<Cliente> colE = Utiles.entreDosFechas(modeloEmpresa.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
+                    Collection<Cliente> colC = Utiles.entreDosFechas(modeloCliente.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
                     areaTexto.append("\nParticulares:\n");
-                    for(Cliente c : colP){
+                    for(Cliente c : colC){
                         areaTexto.append(c.toString());
+                        areaTexto.append("");
                     }
-                    areaTexto.append("\nEmpresas:\n");
-                    for(Cliente c: colE){
-                        areaTexto.append(c.toString());
-                    }
+
                     dialogoDatos.setVisible(false);
                 }
             });
@@ -356,6 +360,39 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             dialogoDatos.add(aceptar,BorderLayout.SOUTH);
             dialogoDatos.pack();
             dialogoDatos.setVisible(true);
+        }
+    }
+
+    public void cargaDatos(){
+        try{
+            FileInputStream fichClientes = new FileInputStream("clientes.bin");
+            ObjectInputStream objClientes = new ObjectInputStream(fichClientes);
+            modeloCliente = (ColeccionClientes) objClientes.readObject();
+            objClientes.close();
+        } catch(FileNotFoundException e){
+            System.out.println("Error del fichero.");
+            System.out.println(e);
+        } catch(IOException e){
+            System.out.println("Error en ObjectInputStream.");
+            System.out.println(e);
+        } catch(ClassNotFoundException e){
+            System.out.println("Error al recuperar datos del fichero.");
+            System.out.println(e);
+        }
+    }
+
+    public void guardaDatos(){
+        try {
+            FileOutputStream fichClientes = new FileOutputStream("clientes.bin");
+            ObjectOutputStream objClientes = new ObjectOutputStream(fichClientes);
+            objClientes.writeObject(modeloCliente);
+            objClientes.close();
+        }catch (FileNotFoundException e) {
+            System.out.println("Error al intentar abrir el fichero.");
+            System.out.println(e);
+        } catch (IOException e) {
+            System.out.println("Error en ObjectOutputStream");
+            System.out.println(e);
         }
     }
 }

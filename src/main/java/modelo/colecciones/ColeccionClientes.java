@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Created by user on 26/02/17.
  */
-public abstract class ColeccionClientes implements Serializable, ModeloClienteParaVista{
+public class ColeccionClientes implements Serializable, ModeloClienteParaVista{
 
     private VistaParaModeloCliente vista;
     private HashMap<String,Cliente> clientes;

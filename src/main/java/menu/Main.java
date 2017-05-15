@@ -20,19 +20,15 @@ public class Main {
         VistaFacturas vistaFacturas=new VistaFacturas();
         VistaLlamadas vistaLlamadas=new VistaLlamadas();
 
-        ColeccionClientes particulares=new ColeccionParticulares();
-        ColeccionClientes empresas=new ColeccionEmpresas();
+        ColeccionClientes clientes=new ColeccionClientes();
         ColeccionFacturas facturas=new ColeccionFacturas();
         ColeccionLlamadas llamadas=new ColeccionLlamadas();
 
-
-        particulares.setVista(vistaClientes);   //Ponemos a cada modelo su vista
-        empresas.setVista(vistaClientes);
+        clientes.setVista(vistaClientes);   //Ponemos a cada modelo su vista
         facturas.setVista(vistaFacturas);
         llamadas.setVista(vistaLlamadas);
 
-        vistaClientes.setModeloParticular(particulares);  //Ponemos a cada vista su modelo
-        vistaClientes.setModeloEmpresa(empresas);
+        vistaClientes.setModeloCliente(clientes);  //Ponemos a cada vista su modelo
         vistaFacturas.setModeloFactura(facturas);
         vistaLlamadas.setModeloLlamada(llamadas);
 

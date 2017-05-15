@@ -8,8 +8,7 @@ import java.io.*;
  * Created by sergiojimenez on 28/4/17.
  */
 public class GestionDatos {
-    ColeccionClientes particulares = new ColeccionParticulares();
-    ColeccionClientes empresas= new ColeccionEmpresas();
+   /* ColeccionClientes particulares = new ColeccionClientes();
     ColeccionLlamadas llamadas = new ColeccionLlamadas();
     ColeccionFacturas facturas= new ColeccionFacturas();
 
@@ -89,6 +88,6 @@ public class GestionDatos {
     public ColeccionFacturas getFacturas() {
         return facturas;
     }
-
+*/
 
 }
