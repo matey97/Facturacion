@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
  */
 public abstract class Cliente implements Fecha, Serializable{
     private String nombre;
+    private String apellidos = null;
     private String NIF;
     private Direccion direccion;
     private String email;
@@ -20,8 +21,9 @@ public abstract class Cliente implements Fecha, Serializable{
     public Cliente(){
     }
 
-    public Cliente(String nombre, String NIF, Direccion direccion, String email,Tarifa tarifa) {
+    public Cliente(String nombre, String apellidos, String NIF, Direccion direccion, String email,Tarifa tarifa) {
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.NIF = NIF;
         this.direccion = direccion;
         this.email = email;
