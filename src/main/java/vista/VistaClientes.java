@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.ControladorParaVista;
+import controlador.ControladorParaModeloFacturas;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
@@ -19,7 +19,7 @@ import java.util.Collection;
  */
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
     private ModeloClienteParaVista modeloCliente;
-    private ControladorParaVista controladorCliente;
+    private ControladorParaModeloFacturas controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
     private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
     private JTextArea areaTexto;

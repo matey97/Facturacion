@@ -1,10 +1,10 @@
 package controlador;
 
 //import modelo.ModeloClienteParaVista;
-import modelo.ModeloParaControlador;
+import modelo.ModeloParaControladorCliente;
 import modelo.cliente.Cliente;
 import modelo.cliente.Direccion;
-import modelo.factorias.FactoriaCliente;
+import modelo.factorias.FactoriaClientes;
 import modelo.tarifa.Tarifa;
 import vista.VistaParaControladorClientes;
 
@@ -14,12 +14,11 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 25/4/17.
  */
-public class ControladorCliente implements ControladorParaModelo, ControladorParaVista {
+public class ControladorCliente implements ControladorParaModeloCliente, ControladorParaModeloFacturas {
 
-    private ModeloParaControlador modelo;
+    private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;
 
-    private ControladorParaModelo
 
     private String nombre;
     private String apellidos;
@@ -32,9 +31,9 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
     private LocalDateTime fecha;
     private Tarifa tarifa;
 
-    FactoriaCliente fabricacliente = new FactoriaCliente();
+    FactoriaClientes fabricacliente = new FactoriaClientes();
 
-    public void añadiendoCliente() {
+    public void anyadiendoCliente() {
 
         if (vista.esParticular()) {
             String apellidos = vista.getApellido();
@@ -49,7 +48,7 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
         }
     }
 
-    public void recuperarDatos() {
+    private void recuperarDatos() {
 
         nombre = vista.getNombre();
         NIF = vista.getNIF();
@@ -66,48 +65,14 @@ public class ControladorCliente implements ControladorParaModelo, ControladorPar
 
     public void borrandoCliente(){
         if (vista.esParticular()) {
-            String nif = vista.getnif();
+            String nif = vista.getNIF();
             modelo.borrarCliente(nif);
         } else if (vista.esEmpresa()) {
-            String nif = vista.getnif();
+            String nif = vista.getNIF();
             modelo.borrarCliente(nif);
-
         }
 
     }
 
-
-
-
-  /*  private ModeloClienteParaVista modeloCliente;
-
-    public void setModeloCliente(ModeloClienteParaVista modeloCliente) {
-        this.modeloCliente = modeloCliente;
-    }
-
-    @Override
-    public void nuevoClienteAnyadido() {
-        modeloCliente.getListadoClientes();
-    }
-
-    @Override
-    public void clienteBorrado() {
-        modeloCliente.getListadoClientes();
-    }
-
-    public void obtenDatosCliente(){
-        modeloCliente.getDatosCliente("123");
-    }
-
-    public void obtenListadoClientes(){
-        modeloCliente.getListadoClientes();
-    }
-
-    */
-
-
-    /*
-
-     public void añadiendofactura();*/
 
 }

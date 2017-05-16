@@ -18,6 +18,8 @@ public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista{
     private HashMap<String,LinkedList<Llamada>> llamadas;
     private VistaParaModeloLlamada vista;
 
+
+
     public ColeccionLlamadas(){
         llamadas=new HashMap<>();
     }
