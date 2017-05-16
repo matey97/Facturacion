@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 15/5/17.
  */
-public class ControladorLlamada implements ControladorParaModeloLlamada, ControladorParaModeloFacturas {
+public class ControladorLlamada implements ControladorParaModeloLlamada {
     private VistaLlamadas vista;
     private ColeccionLlamadas modelo;
 
 
-    public void darDeAltaLlamada() {
+    public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas {
         String nif = vista.getNIF();
         int duracion = Integer.parseInt(vista.getDuracion());
         int telefono = Integer.parseInt(vista.getTelefono());
@@ -25,15 +25,10 @@ public class ControladorLlamada implements ControladorParaModeloLlamada, Control
 
           modelo.darDeAlta(nif, new Llamada(telefono,LocalDateTime.now(),duracion));
         }
-        catch( DuracionNoValida ex, ExcepcionClienteSinLlamadas sin){
-           /// vista.lanzaError(ex);
+        catch( DuracionNoValida  | ExcepcionClienteSinLlamadas sin){
+           // que hacer con los errores?? vista.lanzaError(ex);
         }
 
-
     }
 
-    @Override
-    public void darDeAlta(String nif, Llamada llamada) throws ExcepcionClienteSinLlamadas {
-
-    }
 }

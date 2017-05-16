@@ -38,7 +38,7 @@ public class ControladorCliente implements ControladorParaModeloCliente, Control
         if (vista.esParticular()) {
             recuperarDatos ();
             String apellidos = vista.getApellido();
-            Cliente particular = fabricacliente.crearClienteParticular(nombre,NIF,direccion,email,tarifa);//crear cliente
+            Cliente particular = fabricacliente.crearClienteParticular(nombre,apellidos,NIF,direccion,email,tarifa);//crear cliente
             modelo.anyadirCliente(particular);//mandar cliente a modeloparticular
         } else if (vista.esEmpresa()) {
             recuperarDatos ();
