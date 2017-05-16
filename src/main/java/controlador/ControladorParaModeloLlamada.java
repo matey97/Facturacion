@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.colecciones.ColeccionLlamadas;
+import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
 
@@ -9,7 +10,7 @@ import modelo.factura.Llamada;
  */
 public interface ControladorParaModeloLlamada {
 
-
+    public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas;
 }
 
 

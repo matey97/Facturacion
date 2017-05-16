@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 25/4/17.
  */
-public class ControladorCliente implements ControladorParaModeloCliente, ControladorParaModeloFacturas {
+public class ControladorCliente implements ControladorParaModeloCliente {
 
     private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;

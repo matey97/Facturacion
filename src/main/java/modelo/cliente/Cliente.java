@@ -30,7 +30,7 @@ public abstract class Cliente implements Fecha, Serializable{
         this.fecha = LocalDateTime.now();
         this.tarifa = tarifa;
     }
-
+//añadido constructor a posteriori para empresa.
     public Cliente(String nombre, String nif, Direccion direccion, String email, Tarifa tarifa) {
         this.nombre = nombre;
         this.NIF = NIF;
