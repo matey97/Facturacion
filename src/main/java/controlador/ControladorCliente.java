@@ -36,9 +36,9 @@ public class ControladorCliente implements ControladorParaModeloCliente, Control
     public void anyadiendoCliente() {
 
         if (vista.esParticular()) {
-            String apellidos = vista.getApellido();
             recuperarDatos ();
-            Cliente particular = fabricacliente.crearClienteParticular(nombre,apellidos,NIF,direccion,email,tarifa);//crear cliente
+             // String apellidos = vista.getApellido();
+            Cliente particular = fabricacliente.crearClienteParticular(nombre,NIF,direccion,email,tarifa);//crear cliente
             modelo.anyadirCliente(particular);//mandar cliente a modeloparticular
         } else if (vista.esEmpresa()) {
             recuperarDatos ();
@@ -49,16 +49,20 @@ public class ControladorCliente implements ControladorParaModeloCliente, Control
     }
 
     private void recuperarDatos() {
+        if (vista.esParticular()) {
+            nombre = vista.getNombre() + "" +vista.getApellido();
+        }
+        else {
+            nombre = vista.getNombre();
+            NIF = vista.getNIF();
+            poblacion = vista.getPoblacion();
+            codpos = Integer.parseInt(vista.getCodPos());
+            provincia = vista.getProv();
+            direccion = new Direccion(codpos, provincia, poblacion);// getcodpos getpoblacion getprov
 
-        nombre = vista.getNombre();
-        NIF = vista.getNIF();
-        poblacion = vista.getPoblacion();
-        codpos = Integer.parseInt(vista.getCodPos());
-        provincia = vista.getProv();
-        direccion = new Direccion(codpos, provincia, poblacion);// getcodpos getpoblacion getprov
-
-        String email = vista.getEmail();
-       //setear  Tarifa tarifa = vista.getTarifa();
+            String email = vista.getEmail();
+            //setear  Tarifa tarifa = vista.getTarifa();
+        }
 
     }
 
