@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorParaModeloCliente;
 import controlador.ControladorParaModeloFacturas;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
@@ -19,7 +20,7 @@ import java.util.Collection;
  */
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
     private ModeloClienteParaVista modeloCliente;
-    private ControladorParaModeloFacturas controladorCliente;
+    private ControladorParaModeloCliente controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
     private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
     private JTextArea areaTexto;
@@ -32,6 +33,8 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
     public void setModeloCliente(ModeloClienteParaVista modeloCliente) {
         this.modeloCliente = modeloCliente;
     }
+
+    public void setControladorCliente(ControladorParaModeloCliente controladorCliente) { this.controladorCliente=controladorCliente; }
 
     public JPanel cargaInterfaz(){
         JPanel panelClientes=new JPanel();          //Subpanel de clientes
@@ -200,7 +203,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Por implementar
+                    controladorCliente.anyadiendoCliente();
                     dialogoAnyadir.setVisible(false);
                 }
             });
@@ -228,7 +231,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Por implementar
+                    controladorCliente.borrandoCliente();
                     dialogoBorrar.setVisible(false);
                 }
             });
@@ -283,7 +286,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Llamada controlador
+                    modeloCliente.getDatosCliente(jtfNIFConsulta.getText());
                     dialogoDatos.setVisible(false);
                 }
             });

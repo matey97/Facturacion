@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorParaModeloLlamada;
 import modelo.ModeloLlamadaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionLlamadas;
@@ -21,6 +22,7 @@ import java.util.Collection;
 public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControladorLlamada {
 
     private ModeloLlamadaParaVista modeloLlamada;
+    private ControladorParaModeloLlamada controladorLlamada;
     private JButton bAlta, bLlamadasCliente, bLlamadasFechas;
     private JTextField jtfNIF, jtfNIF2, jtfTelefono, jtfDuracion;
     private JTextArea areaTexto;
@@ -32,6 +34,8 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     public void setModeloLlamada(ModeloLlamadaParaVista modeloLlamada) {
         this.modeloLlamada = modeloLlamada;
     }
+
+    public void setControladorLlamada(ControladorParaModeloLlamada controladorLlamada){ this.controladorLlamada = controladorLlamada;}
 
     public JPanel cargaInterfaz(){
         JPanel panelLlamadas=new JPanel();

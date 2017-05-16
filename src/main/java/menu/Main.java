@@ -1,5 +1,9 @@
 package menu;
 
+import controlador.ControladorCliente;
+import controlador.ControladorLlamada;
+import controlador.ControladorParaFacturas;
+import controlador.ControladorParaModeloCliente;
 import modelo.colecciones.*;
 import vista.*;
 
@@ -16,21 +20,29 @@ public class Main {
        MenuConsola.muestraMenu();
 
 */
-        VistaClientes vistaClientes=new VistaClientes();
+        VistaClientes vistaClientes=new VistaClientes();    //Creamos vistas
         VistaFacturas vistaFacturas=new VistaFacturas();
         VistaLlamadas vistaLlamadas=new VistaLlamadas();
 
-        ColeccionClientes clientes=new ColeccionClientes();
+        ColeccionClientes clientes=new ColeccionClientes();     //Creamos modelos
         ColeccionFacturas facturas=new ColeccionFacturas();
         ColeccionLlamadas llamadas=new ColeccionLlamadas();
+
+        ControladorCliente controladorCliente = new ControladorCliente();   //Creamos controladores
+        ControladorLlamada controladorLlamada = new ControladorLlamada();
+        ControladorParaFacturas controladorFactura = new ControladorParaFacturas();
 
         clientes.setVista(vistaClientes);   //Ponemos a cada modelo su vista
         facturas.setVista(vistaFacturas);
         llamadas.setVista(vistaLlamadas);
 
-        vistaClientes.setModeloCliente(clientes);  //Ponemos a cada vista su modelo
+        vistaClientes.setModeloCliente(clientes);  //A cada vista, su modelo y controlador
+        vistaClientes.setControladorCliente(controladorCliente);
         vistaFacturas.setModeloFactura(facturas);
+        vistaFacturas.setControladorFactura(controladorFactura);
         vistaLlamadas.setModeloLlamada(llamadas);
+        vistaLlamadas.setControladorLlamada(controladorLlamada);
+
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
