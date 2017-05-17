@@ -16,19 +16,13 @@ public class ControladorLlamada implements ControladorParaModeloLlamada {
     private ColeccionLlamadas modelo;
 
 
-    public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas {
+    public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas{
         String nif = vista.getNIF();
         int duracion = Integer.parseInt(vista.getDuracion());
         int telefono = Integer.parseInt(vista.getTelefono());
 
-        try {
-
-          modelo.darDeAlta(nif, new Llamada(telefono,LocalDateTime.now(),duracion));
-        }
-        catch( DuracionNoValida  | ExcepcionClienteSinLlamadas sin){
-           // que hacer con los errores?? vista.lanzaError(ex);
-        }
-
+        if (duracion<=0)
+            throw new DuracionNoValida("Duración de llamada no valida.");
+        modelo.darDeAlta(nif, new Llamada(telefono,LocalDateTime.now(),duracion));
     }
-
 }

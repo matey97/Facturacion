@@ -29,7 +29,7 @@ public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista,
         this.vista = vista;
     }
 
-    public void darDeAlta(String nif, Llamada llamada) throws ExcepcionClienteSinLlamadas {
+    public void darDeAlta(String nif, Llamada llamada) throws  ExcepcionClienteSinLlamadas{
         if (!llamadas.containsKey(nif)) {
             llamadas.put(nif, new LinkedList<>());
         }
@@ -37,7 +37,7 @@ public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista,
         vista.llamadaDadaDeAlta();
     }
 
-    public Collection<Llamada> listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas{
+    public Collection<Llamada> listarLlamadas(String nif) throws ExcepcionClienteSinLlamadas{
         Collection<Llamada> llamadasNif =llamadas.get(nif);
         if (llamadasNif!=null){
             return llamadasNif;
