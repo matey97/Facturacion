@@ -292,7 +292,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
 
     public void cargaDatos(){
         try{
-            FileInputStream fichFacturas = new FileInputStream("clientes.bin");
+            FileInputStream fichFacturas = new FileInputStream("facturas.bin");
             ObjectInputStream objFacturas = new ObjectInputStream(fichFacturas);
             modeloFactura = (ColeccionFacturas) objFacturas.readObject();
             objFacturas.close();
@@ -310,8 +310,8 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
 
     public void guardaDatos(){
         try {
-            FileOutputStream fichClientes = new FileOutputStream("clientes.bin");
-            ObjectOutputStream objFacturas = new ObjectOutputStream(fichClientes);
+            FileOutputStream fichFacturas = new FileOutputStream("facturas.bin");
+            ObjectOutputStream objFacturas = new ObjectOutputStream(fichFacturas);
             objFacturas.writeObject(modeloFactura);
             objFacturas.close();
         }catch (FileNotFoundException e) {

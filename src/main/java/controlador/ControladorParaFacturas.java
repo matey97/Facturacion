@@ -29,10 +29,10 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         String dni = vista.getDNI();
         String mesIni = vista.getMesIni();
         String mesFini = vista.getMesFin();
-        public Factura( Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
+        //public Factura( Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
 
 
-        modelo.emitirFactura(vista.getDNI(),vista.);
+        //modelo.emitirFactura(vista.getDNI(),vista.);
 
     }
 }

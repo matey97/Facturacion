@@ -5,6 +5,8 @@ import modelo.ModeloParaControladorCliente;
 import modelo.cliente.Cliente;
 import modelo.cliente.Direccion;
 import modelo.factorias.FactoriaClientes;
+import modelo.factorias.FactoriaTarifa;
+import modelo.factorias.FactoriaTarifas;
 import modelo.tarifa.Tarifa;
 import vista.VistaParaControladorClientes;
 
@@ -19,6 +21,14 @@ public class ControladorCliente implements ControladorParaModeloCliente {
     private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;
 
+    public void setVista(VistaParaControladorClientes vista) {
+        this.vista = vista;
+    }
+
+    public void setModelo(ModeloParaControladorCliente modelo) {
+
+        this.modelo = modelo;
+    }
 
     private String nombre;
     private String apellidos;
@@ -32,12 +42,13 @@ public class ControladorCliente implements ControladorParaModeloCliente {
     private Tarifa tarifa;
 
     FactoriaClientes fabricacliente = new FactoriaClientes();
+    FactoriaTarifa fabricaTarifa=new FactoriaTarifas();
 
     public void anyadiendoCliente() {
 
         if (vista.esParticular()) {
             recuperarDatos ();
-            String apellidos = vista.getApellido();
+            apellidos = vista.getApellido();
             Cliente particular = fabricacliente.crearClienteParticular(nombre,apellidos,NIF,direccion,email,tarifa);//crear cliente
             modelo.anyadirCliente(particular);//mandar cliente a modeloparticular
         } else if (vista.esEmpresa()) {
@@ -56,22 +67,16 @@ public class ControladorCliente implements ControladorParaModeloCliente {
         codpos = Integer.parseInt(vista.getCodPos());
         provincia = vista.getProv();
         direccion = new Direccion(codpos, provincia, poblacion);// getcodpos getpoblacion getprov
-
-        String email = vista.getEmail();
+        tarifa=fabricaTarifa.getTarifaBasica();
+        email = vista.getEmail();
        //setear  Tarifa tarifa = vista.getTarifa();
 
     }
 
 
     public void borrandoCliente(){
-        if (vista.esParticular()) {
             String nif = vista.getNIF();
             modelo.borrarCliente(nif);
-        } else if (vista.esEmpresa()) {
-            String nif = vista.getNIF();
-            modelo.borrarCliente(nif);
-        }
-
     }
 
 

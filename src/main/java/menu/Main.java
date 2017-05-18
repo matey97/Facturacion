@@ -43,6 +43,9 @@ public class Main {
         vistaLlamadas.setModeloLlamada(llamadas);
         vistaLlamadas.setControladorLlamada(controladorLlamada);
 
+        controladorCliente.setModelo(clientes);
+        controladorCliente.setVista(vistaClientes);
+
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
