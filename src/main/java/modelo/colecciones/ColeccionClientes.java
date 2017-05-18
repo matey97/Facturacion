@@ -44,7 +44,10 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
     }
 
     public boolean borrarCliente(String NIF) {
+        System.out.println(clientes.size());
+        System.out.println(NIF);
         if( clientes.containsKey(NIF)){
+            System.out.println("Pasaaaa");
             clientes.remove(NIF);
             vista.modeloModificado();
             return true;

@@ -19,6 +19,14 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
     private ModeloParacontroladorFactura modelo;
     private VistaParaControladorFacturas vista;
 
+    public void setModelo(ModeloParacontroladorFactura modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setVista(VistaParaControladorFacturas vista) {
+        this.vista = vista;
+    }
+
     public void emitiendoFactura(){
 
         String anyofin = vista.getAnyoFin();
@@ -29,10 +37,9 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         String dni = vista.getDNI();
         String mesIni = vista.getMesIni();
         String mesFini = vista.getMesFin();
-        //public Factura( Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
 
-
-        //modelo.emitirFactura(vista.getDNI(),vista.);
+        
+        modelo.emitirFactura(vista.getDNI());
 
     }
 }

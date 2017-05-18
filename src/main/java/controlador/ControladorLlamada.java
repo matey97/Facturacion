@@ -15,6 +15,13 @@ public class ControladorLlamada implements ControladorParaModeloLlamada {
     private VistaLlamadas vista;
     private ColeccionLlamadas modelo;
 
+    public void setVista(VistaLlamadas vista) {
+        this.vista = vista;
+    }
+
+    public void setModelo(ColeccionLlamadas modelo) {
+        this.modelo = modelo;
+    }
 
     public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas{
         String nif = vista.getNIF();

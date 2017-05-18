@@ -100,6 +100,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
 
     @Override
     public void modeloModificado(){
+        System.out.println("Llego");
         areaTexto.setText("");
         for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
