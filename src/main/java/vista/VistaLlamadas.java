@@ -4,6 +4,7 @@ import controlador.ControladorParaModeloLlamada;
 import modelo.ModeloLlamadaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionLlamadas;
+import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
 import sun.util.calendar.JulianCalendar;
@@ -78,11 +79,16 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
 
 
     @Override
-    public void llamadaDadaDeAlta() throws ExcepcionClienteSinLlamadas {
-        areaTexto.setText("");
-        for(Llamada l : modeloLlamada.listarLlamadas(getNIF())){
-            areaTexto.append(l.toString());
+    public void llamadaDadaDeAlta() {
+        try{
+            areaTexto.setText("");
+            for(Llamada l : modeloLlamada.listarLlamadas(getNIF())) {
+                areaTexto.append(l.toString());
+            }
+        }catch(ExcepcionClienteSinLlamadas e){
+            e.getMessage();
         }
+
         jtfNIF.setText("");
         jtfTelefono.setText("");
         jtfDuracion.setText("");
@@ -107,7 +113,13 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
     private class EscuchadorBAlta implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            try{
+                controladorLlamada.darDeAltaLlamada();
+            }catch(DuracionNoValida d){
+                areaTexto.append(d.getMessage());
+            }catch(ExcepcionClienteSinLlamadas c){
+                areaTexto.append(c.getMessage());
+            }
         }
     }
 
@@ -124,7 +136,14 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Llamada controlador
+                    try{
+                        areaTexto.setText("");
+                        for(Llamada l : modeloLlamada.listarLlamadas(jtfNIF2.getText())){
+                            areaTexto.append(l.toString());
+                        }
+                    }catch (ExcepcionClienteSinLlamadas ex){
+                        areaTexto.append(ex.getMessage());
+                    }
                     dialogoDatos.setVisible(false);
                 }
             });

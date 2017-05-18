@@ -158,6 +158,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    controladorFactura.emitiendoFactura();
                     dialogoDatos.setVisible(false);
                 }
             });
@@ -182,6 +183,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    modeloFactura.recuperarDatosFactura(Integer.parseInt(jtfCodigo.getText()));
                     dialogoDatos.setVisible(false);
                 }
             });
