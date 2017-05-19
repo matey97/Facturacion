@@ -3,6 +3,7 @@ package modelo.colecciones;
 import controlador.ControladorParaModeloCliente;
 import modelo.ModeloClienteParaVista;
 import modelo.ModeloParaControladorCliente;
+import modelo.ModeloParacontroladorFactura;
 import modelo.cliente.Cliente;
 import vista.VistaParaModeloCliente;
 
@@ -26,6 +27,9 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
     public void setVista(VistaParaModeloCliente vista) {
         this.vista = vista;
     }
+    public void setModelo(ModeloParaControladorCliente modelo) {this.modelo = modelo;}
+
+
 
     public boolean existeCliente(String NIF) {
         if(clientes.containsKey(NIF)){

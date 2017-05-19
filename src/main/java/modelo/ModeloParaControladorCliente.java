@@ -9,8 +9,10 @@ import java.util.Collection;
  */
 public interface ModeloParaControladorCliente {
 
-       public boolean anyadirCliente(Cliente cliente);
-       public boolean borrarCliente(String nif);
+        public boolean anyadirCliente(Cliente cliente);
+        public boolean borrarCliente(String nif);
+        public Cliente getDatosCliente (String nif);
+        public boolean existeCliente(String NIF);
 
 
 

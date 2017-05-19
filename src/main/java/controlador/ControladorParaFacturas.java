@@ -39,7 +39,7 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         String mesFini = vista.getMesFin();
 
         
-        modelo.emitirFactura(vista.getDNI());
+       // modelo.emitirFactura(vista.getDNI());
 
     }
 }

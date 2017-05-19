@@ -7,7 +7,9 @@ import modelo.cliente.Direccion;
 import modelo.factorias.FactoriaClientes;
 import modelo.factorias.FactoriaTarifa;
 import modelo.factorias.FactoriaTarifas;
+import modelo.tarifa.PromocionTardes;
 import modelo.tarifa.Tarifa;
+import modelo.tarifa.TarifaBasica;
 import vista.VistaParaControladorClientes;
 
 import java.time.LocalDateTime;
@@ -75,9 +77,22 @@ public class ControladorCliente implements ControladorParaModeloCliente {
 
 
     public void borrandoCliente(){
-            String nif = vista.getNIF();
+            String nif = vista.getNIFBorrar();
             modelo.borrarCliente(nif);
     }
 
+    public void setTarifa(){
+        String dni =vista.getNIFTarifa();
+        if (modelo.existeCliente(dni)) {
+            if (vista.tarifaTardes()) {
+                Cliente cli = modelo.getDatosCliente(dni);
+                cli.setTarifa(new PromocionTardes);
+            }
+        }
+
+
+        //boolean tarifaTardes()
+        //boolean tarifaDomingos()
+    }
 
 }
