@@ -77,8 +77,10 @@ public class ControladorCliente implements ControladorParaModeloCliente {
 
 
     public void borrandoCliente(){
+        //generar if existe cliente
             String nif = vista.getNIFBorrar();
             modelo.borrarCliente(nif);
+        //devolver a la vista para que muestre no existe cliente???
     }
 
     public void setTarifa(){

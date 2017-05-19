@@ -21,6 +21,7 @@ import java.util.Iterator;
  */
 public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, ModeloParacontroladorFactura{
 
+
     private VistaParaModeloFactura vista;
     private HashMap<String,HashMap<Integer,Factura>> facturas;
     private static int contador;
@@ -66,4 +67,5 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
             return facturas.get(nif).values();
         return null;
     }
+
 }

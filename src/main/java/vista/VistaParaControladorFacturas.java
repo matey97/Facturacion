@@ -12,4 +12,5 @@ public interface VistaParaControladorFacturas {
     String getMesFin();
     String getAnyoIni();
     String getAnyoFin();
+
 }

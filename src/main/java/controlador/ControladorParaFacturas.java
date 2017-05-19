@@ -3,6 +3,7 @@ package controlador;
 import modelo.ModeloParaControladorCliente;
 import modelo.ModeloParaControladorLlamada;
 import modelo.ModeloParacontroladorFactura;
+import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaFacturas;
 import vista.VistaParaControladorClientes;
@@ -27,19 +28,33 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         this.vista = vista;
     }
 
-    public void emitiendoFactura(){
 
-        String anyofin = vista.getAnyoFin();
-        String anyoini = vista.getAnyoIni();
-        String codigo = vista.getCodigo();
-        String diaini = vista.getDiaIni();
-        String diaFin = vista.getDiaFin();
+    public void emitiendoFactura() throws FechaInicialMayorQueFinal {
+
+        int anyofin = Integer.parseInt(vista.getAnyoFin());
+        int anyoini =Integer.parseInt( vista.getAnyoIni());
+
+        int diaini = Integer.parseInt(vista.getDiaIni());
+        int diaFin = Integer.parseInt(vista.getDiaFin());
         String dni = vista.getDNI();
-        String mesIni = vista.getMesIni();
-        String mesFini = vista.getMesFin();
+        int mesIni = Integer.parseInt(vista.getMesIni());
+        int mesFini =Integer.parseInt( vista.getMesFin());
 
-        
-       // modelo.emitirFactura(vista.getDNI());
+        modelo.emitirFactura(modelo.getDatoscliente(dni),modelo.listarLlamadas(dni),new PeriodoFacturacion(
+        LocalDateTime.of(anyoini,mesIni,diaini,01,01), LocalDateTime.of(anyofin,mesFini,diaFin,01,01)));
+
+
 
     }
+    public void mostrarDatosFactura(){
+        int codigo =Integer.parseInt(vista.getCodigo());
+        modelo.recuperarDatosFactura(codigo);
+
+    }
+    public void mostrarFaturasCliente(){
+        modelo.recuperarFacturasCliente(vista.getDNI());
+
+
+    }
+
 }
