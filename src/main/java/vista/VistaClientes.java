@@ -104,6 +104,8 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         areaTexto.setText("");
         for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
+            areaTexto.append("\n");
+            areaTexto.append("\n");
         }
         jtfNIF.setText("");
         jtfNombre.setText("");
@@ -287,7 +289,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    modeloCliente.getDatosCliente(jtfNIFConsulta.getText());
+                    areaTexto.setText(modeloCliente.getDatosCliente(getNIFDatos()).toString());
                     dialogoDatos.setVisible(false);
                 }
             });
@@ -351,10 +353,10 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
                     int mesF=Integer.parseInt(mesFin.getText());
                     int diaF=Integer.parseInt(diaFin.getText());
                     Collection<Cliente> colC = Utiles.entreDosFechas(modeloCliente.getListadoClientes(), LocalDateTime.of(anyoI,mesI,diaI,0,0),LocalDateTime.of(anyoF,mesF,diaF,0,0));
-                    areaTexto.append("\nParticulares:\n");
                     for(Cliente c : colC){
                         areaTexto.append(c.toString());
-                        areaTexto.append("");
+                        areaTexto.append("\n");
+                        areaTexto.append("\n");
                     }
 
                     dialogoDatos.setVisible(false);

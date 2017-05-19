@@ -158,7 +158,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    controladorFactura.emitiendoFactura();
+                    //controladorFactura.emitiendoFactura();
                     dialogoDatos.setVisible(false);
                 }
             });
