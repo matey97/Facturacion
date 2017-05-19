@@ -73,7 +73,7 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
     }
     public void mostrarFacturasentrefecha(){
         ;
-        Utiles.entreDosFechas(modelo.recuperarFacturasCliente(vista.getDNI()),LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01)
+        Utiles.entreDosFechas(modelo.recuperarFacturasCliente(vista.getDNI()),LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01));
 
 
 
