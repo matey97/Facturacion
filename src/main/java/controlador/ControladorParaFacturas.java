@@ -3,6 +3,7 @@ package controlador;
 import modelo.ModeloParaControladorCliente;
 import modelo.ModeloParaControladorLlamada;
 import modelo.ModeloParacontroladorFactura;
+import modelo.Utiles;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaFacturas;
@@ -28,20 +29,34 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         this.vista = vista;
     }
 
+    private int anyoini;
+    private int anyofin;
+    private int diaini;
+    private int diaFin;
+    private int mesIni;
+    private int mesFini;
 
+
+
+    public void recuperarfecha(){
+
+        anyofin = Integer.parseInt(vista.getAnyoFin());
+        anyoini =Integer.parseInt( vista.getAnyoIni());
+
+        mesIni = Integer.parseInt(vista.getMesIni());
+        mesFini =Integer.parseInt( vista.getMesFin());
+
+        diaini = Integer.parseInt(vista.getDiaIni());
+        diaFin = Integer.parseInt(vista.getDiaFin());
+
+
+    }
     public void emitiendoFactura() throws FechaInicialMayorQueFinal {
 
-        int anyofin = Integer.parseInt(vista.getAnyoFin());
-        int anyoini =Integer.parseInt( vista.getAnyoIni());
-
-        int diaini = Integer.parseInt(vista.getDiaIni());
-        int diaFin = Integer.parseInt(vista.getDiaFin());
+        recuperarfecha();
         String dni = vista.getDNI();
-        int mesIni = Integer.parseInt(vista.getMesIni());
-        int mesFini =Integer.parseInt( vista.getMesFin());
-
         modelo.emitirFactura(modelo.getDatoscliente(dni),modelo.listarLlamadas(dni),new PeriodoFacturacion(
-        LocalDateTime.of(anyoini,mesIni,diaini,01,01), LocalDateTime.of(anyofin,mesFini,diaFin,01,01)));
+        LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01)));
 
 
 
@@ -53,6 +68,14 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
     }
     public void mostrarFaturasCliente(){
         modelo.recuperarFacturasCliente(vista.getDNI());
+
+
+    }
+    public void mostrarFacturasentrefecha(){
+        ;
+        Utiles.entreDosFechas(modelo.recuperarFacturasCliente(vista.getDNI()),LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01)
+
+
 
 
     }

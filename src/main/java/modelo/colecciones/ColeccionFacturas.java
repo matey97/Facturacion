@@ -1,5 +1,6 @@
 package modelo.colecciones;
 
+import modelo.Fecha;
 import modelo.ModeloFacturaParaVista;
 import modelo.ModeloParacontroladorFactura;
 import modelo.excepciones.FechaInicialMayorQueFinal;
@@ -67,5 +68,6 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
             return facturas.get(nif).values();
         return null;
     }
+
 
 }
