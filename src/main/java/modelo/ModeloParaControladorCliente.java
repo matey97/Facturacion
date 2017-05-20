@@ -9,8 +9,9 @@ import java.util.Collection;
  * Created by sergiojimenez on 2/5/17.
  */
 public interface ModeloParaControladorCliente {
-        public boolean anyadirCliente(Cliente cliente);
-        public boolean borrarCliente(String nif);
-        public boolean existeCliente(String NIF);
-        public void cambiarTarifa(String NIF, TipoPromocion tipoPromocion);
+        boolean anyadirCliente(Cliente cliente);
+        boolean borrarCliente(String nif);
+        boolean existeCliente(String NIF);
+        void cambiarTarifa(String NIF, TipoPromocion tipoPromocion);
+        Cliente getDatosCliente(String nif);
 }

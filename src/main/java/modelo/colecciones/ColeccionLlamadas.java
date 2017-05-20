@@ -1,5 +1,6 @@
 package modelo.colecciones;
 
+import controlador.ControladorParaModeloLlamadas;
 import modelo.ModeloLlamadaParaVista;
 import modelo.ModeloParaControladorLlamada;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
@@ -14,7 +15,7 @@ import java.util.LinkedList;
 /**
  * Created by user on 27/02/17.
  */
-public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista, ModeloParaControladorLlamada{
+public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista, ModeloParaControladorLlamada, ControladorParaModeloLlamadas{
 
     private HashMap<String,LinkedList<Llamada>> llamadas;
     private VistaParaModeloLlamada vista;

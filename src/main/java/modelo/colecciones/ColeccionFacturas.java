@@ -57,7 +57,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
 //_______________________________________
     @Override
     public Cliente getDatoscliente(String nif) {
-        return null;
+
     }
 
     @Override

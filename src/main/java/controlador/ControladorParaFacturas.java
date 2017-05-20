@@ -1,6 +1,7 @@
 package controlador;
 
 import modelo.*;
+import modelo.colecciones.ColeccionClientes;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaParaControladorFacturas;
@@ -12,16 +13,28 @@ import java.time.LocalDateTime;
  */
 public class ControladorParaFacturas implements ControladorParaVistaFacturas {
     //private VistaFacturas vista;
-    private ModeloParacontroladorFactura modelo;
+    private ModeloParacontroladorFactura modeloFacturas;
+    private ModeloParaControladorLlamada modeloLlamadas;
+    private ModeloParaControladorCliente modeloClientes;
     private VistaParaControladorFacturas vista;
 
-    public void setModelo(ModeloParacontroladorFactura modelo) {
-        this.modelo = modelo;
+    public void setModeloFacturas(ModeloParacontroladorFactura modelo) {
+        this.modeloFacturas = modelo;
+    }
+
+    public void setModeloLlamadas(ModeloParaControladorLlamada modeloLlamadas) {
+        this.modeloLlamadas = modeloLlamadas;
+    }
+
+    public void setModeloClientes(ModeloParaControladorCliente modeloClientes) {
+        modeloClientes = modeloClientes;
     }
 
     public void setVista(VistaParaControladorFacturas vista) {
         this.vista = vista;
     }
+
+    private ColeccionClientes Clientes;
 
     private int anyoini;
     private int anyofin;
@@ -54,7 +67,9 @@ public class ControladorParaFacturas implements ControladorParaVistaFacturas {
         }else {
             recuperarfecha();
             String dni = vista.getDNI();
-            modelo.emitirFactura(modelo.getDatoscliente(dni), modelo.listarLlamadas(dni), new PeriodoFacturacion(ini, fin));
+
+            modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), modeloLlamadas.listarLlamadas(dni), new PeriodoFacturacion(ini, fin));
+
         }
 
     }
