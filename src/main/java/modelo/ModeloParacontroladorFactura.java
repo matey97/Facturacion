@@ -15,9 +15,9 @@ public interface ModeloParacontroladorFactura {
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal;
     public Cliente getDatoscliente(String nif);
     public Collection<Llamada> listarLlamadas(String nif);
-    public void mostrarDatosfactura();
+    /*public void mostrarDatosfactura();
     public Factura recuperarDatosFactura(int codigoFactura);
-    public Collection<Factura> recuperarFacturasCliente(String nif);
+    public Collection<Factura> recuperarFacturasCliente(String nif);*/
 
 
 

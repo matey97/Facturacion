@@ -58,7 +58,6 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
             recuperarfecha();
             String dni = vista.getDNI();
             modelo.emitirFactura(modelo.getDatoscliente(dni), modelo.listarLlamadas(dni), new PeriodoFacturacion(ini, fin));
-
         }
 
     }

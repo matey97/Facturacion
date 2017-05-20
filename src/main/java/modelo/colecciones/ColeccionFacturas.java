@@ -65,10 +65,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         return null;
     }
 
-    @Override
-    public void mostrarDatosfactura() {
 
-    }
 //___________________________________________________________________
     public Factura recuperarDatosFactura(int codigoFactura){
         for (HashMap<Integer,Factura> aux: facturas.values()){
