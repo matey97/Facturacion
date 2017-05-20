@@ -1,10 +1,12 @@
 package controlador;
 
+import modelo.ModeloParaControladorLlamada;
 import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
 import vista.VistaLlamadas;
+import vista.VistaParaControladorLlamada;
 
 import java.time.LocalDateTime;
 
@@ -12,14 +14,14 @@ import java.time.LocalDateTime;
  * Created by sergiojimenez on 15/5/17.
  */
 public class ControladorLlamada implements ControladorParaModeloLlamada {
-    private VistaLlamadas vista;
-    private ColeccionLlamadas modelo;
+    private VistaParaControladorLlamada vista;
+    private ModeloParaControladorLlamada modelo;
 
-    public void setVista(VistaLlamadas vista) {
+    public void setVista(VistaParaControladorLlamada vista) {
         this.vista = vista;
     }
 
-    public void setModelo(ColeccionLlamadas modelo) {
+    public void setModelo(ModeloParaControladorLlamada modelo) {
         this.modelo = modelo;
     }
 
@@ -31,7 +33,7 @@ public class ControladorLlamada implements ControladorParaModeloLlamada {
         if (duracion<=0)
             throw new DuracionNoValida("Duración de llamada no valida.");
         modelo.darDeAlta(nif, new Llamada(telefono,LocalDateTime.now(),duracion));
-        vista.llamadaDadaDeAlta();
+
 
     }
 }

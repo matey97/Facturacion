@@ -46,7 +46,9 @@ public class Main {
         controladorCliente.setModelo(clientes);
         controladorCliente.setVista(vistaClientes);
         controladorFactura.setModelo(facturas);
+        controladorFactura.setVista(vistaFacturas);
         controladorLlamada.setModelo(llamadas);
+        controladorLlamada.setVista(vistaLlamadas);
 
 
         SwingUtilities.invokeLater(new Runnable() {

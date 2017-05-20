@@ -27,10 +27,7 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
     public void setVista(VistaParaModeloCliente vista) {
         this.vista = vista;
     }
-    //public void setModelo(ModeloParaControladorCliente modelo) {this.modelo = modelo;}
-
-
-
+    
     public boolean existeCliente(String NIF) {
         if(clientes.containsKey(NIF)){
             return true;

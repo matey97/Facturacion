@@ -80,16 +80,17 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
 
     @Override
     public void llamadaDadaDeAlta() {
+        System.out.println("Llegó");
         try{
             areaTexto.setText("");
-            for(Llamada l : modeloLlamada.listarLlamadas(getNIF())) {
+            for(Llamada l : modeloLlamada.listarLlamadas(jtfNIF.getText())) {
                 areaTexto.append(l.toString());
+                areaTexto.append("\n");
+                areaTexto.append("\n");
             }
         }catch(ExcepcionClienteSinLlamadas e){
             e.getMessage();
         }
-
-        jtfNIF.setText("");
         jtfTelefono.setText("");
         jtfDuracion.setText("");
     }
@@ -140,6 +141,8 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
                         areaTexto.setText("");
                         for(Llamada l : modeloLlamada.listarLlamadas(jtfNIF2.getText())){
                             areaTexto.append(l.toString());
+                            areaTexto.append("\n");
+                            areaTexto.append("\n");
                         }
                     }catch (ExcepcionClienteSinLlamadas ex){
                         areaTexto.append(ex.getMessage());
