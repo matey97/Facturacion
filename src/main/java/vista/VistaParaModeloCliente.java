@@ -5,5 +5,5 @@ package vista;
  */
 public interface VistaParaModeloCliente {
     void modeloModificado();
-
+    void tarifaCambiada();
 }

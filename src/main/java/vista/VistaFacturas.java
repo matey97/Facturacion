@@ -1,6 +1,6 @@
 package vista;
 
-import controlador.ControladorParaModeloFacturas;
+import controlador.ControladorParaVistaFacturas;
 import modelo.ModeloFacturaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionFacturas;
@@ -21,7 +21,7 @@ import java.util.Collection;
 public class VistaFacturas implements VistaParaModeloFactura, VistaParaControladorFacturas {
 
     private ModeloFacturaParaVista modeloFactura;
-    private ControladorParaModeloFacturas controladorFactura;
+    private ControladorParaVistaFacturas controladorFactura;
     private JButton bEmitir, bDatos, bFacCliente, bFacClienteFechas;
     private JTextField jtfCodigo, jtfdni, diaIni, diaFin, mesIni, mesFin, anyoIni, anyoFin;
     private JTextArea areaTexto;
@@ -34,7 +34,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
         this.modeloFactura = modeloFactura;
     }
 
-    public void setControladorFactura(ControladorParaModeloFacturas controladorFactura) { this.controladorFactura = controladorFactura; }
+    public void setControladorFactura(ControladorParaVistaFacturas controladorFactura) { this.controladorFactura = controladorFactura; }
 
     public JPanel cargaInterfaz(){
         JPanel panelFacturas=new JPanel();

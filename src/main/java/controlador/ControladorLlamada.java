@@ -1,11 +1,9 @@
 package controlador;
 
 import modelo.ModeloParaControladorLlamada;
-import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
-import vista.VistaLlamadas;
 import vista.VistaParaControladorLlamada;
 
 import java.time.LocalDateTime;
@@ -13,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 15/5/17.
  */
-public class ControladorLlamada implements ControladorParaModeloLlamada {
+public class ControladorLlamada implements ControladorParaVistaLlamada {
     private VistaParaControladorLlamada vista;
     private ModeloParaControladorLlamada modelo;
 

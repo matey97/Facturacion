@@ -3,17 +3,14 @@ package controlador;
 import modelo.*;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.PeriodoFacturacion;
-import vista.VistaFacturas;
-import vista.VistaParaControladorClientes;
 import vista.VistaParaControladorFacturas;
-import vista.VistaParaControladorLlamada;
 
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 16/5/17.
  */
-public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
+public class ControladorParaFacturas implements ControladorParaVistaFacturas {
     //private VistaFacturas vista;
     private ModeloParacontroladorFactura modelo;
     private VistaParaControladorFacturas vista;

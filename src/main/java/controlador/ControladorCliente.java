@@ -7,10 +7,8 @@ import modelo.cliente.Direccion;
 import modelo.factorias.FactoriaClientes;
 import modelo.factorias.FactoriaTarifa;
 import modelo.factorias.FactoriaTarifas;
-import modelo.tarifa.PromocionDomingos;
-import modelo.tarifa.PromocionTardes;
+import modelo.factorias.TipoPromocion;
 import modelo.tarifa.Tarifa;
-import modelo.tarifa.TarifaBasica;
 import vista.VistaParaControladorClientes;
 
 import java.time.LocalDateTime;
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 /**
  * Created by sergiojimenez on 25/4/17.
  */
-public class ControladorCliente implements ControladorParaModeloCliente {
+public class ControladorCliente implements ControladorParaVistaCliente {
 
     private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;
@@ -47,6 +45,7 @@ public class ControladorCliente implements ControladorParaModeloCliente {
     FactoriaClientes fabricacliente = new FactoriaClientes();
     FactoriaTarifa fabricaTarifa=new FactoriaTarifas();
 
+    @Override
     public void anyadiendoCliente() {
 
         if (vista.esParticular()) {
@@ -76,7 +75,7 @@ public class ControladorCliente implements ControladorParaModeloCliente {
 
     }
 
-
+    @Override
     public void borrandoCliente(){
         //generar if existe cliente
             String nif = vista.getNIFBorrar();
@@ -86,25 +85,15 @@ public class ControladorCliente implements ControladorParaModeloCliente {
 //_____________________________
     @Override
     public void setTarifaCliente() {
-
-    }
-
-    public void setTarifa(){
-        String dni =vista.getNIFTarifa();
-        Cliente cli = modelo.getDatosCliente(dni);
-        if (modelo.existeCliente(dni)) {
-            if (vista.tarifaTardes()) {
-                cli.setTarifa(new PromocionTardes(tarifa,0));
-            }
-            if (vista.tarifaDomingos()){
-                cli.setTarifa(new PromocionDomingos(tarifa));
-
-            }
+        if (vista.tarifaTardes() && vista.tarifaDomingos()){
+            modelo.cambiarTarifa(vista.getNIFTarifa(), TipoPromocion.TARDES);
+            modelo.cambiarTarifa(vista.getNIFTarifa(), TipoPromocion.DOMINGOS);
+        }else if(vista.tarifaTardes()){
+            modelo.cambiarTarifa(vista.getNIFTarifa(), TipoPromocion.TARDES);
+        }else if(vista.tarifaDomingos()){
+            modelo.cambiarTarifa(vista.getNIFTarifa(), TipoPromocion.DOMINGOS);
         }
-
-
-        //boolean tarifaTardes()
-        //boolean tarifaDomingos()
     }
+
 
 }

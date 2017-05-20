@@ -8,7 +8,7 @@ import modelo.factura.Llamada;
 /**
  * Created by sergiojimenez on 15/5/17.
  */
-public interface ControladorParaModeloLlamada {
+public interface ControladorParaVistaLlamada {
 
     public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas;
 }

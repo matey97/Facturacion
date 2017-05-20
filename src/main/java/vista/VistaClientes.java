@@ -1,7 +1,6 @@
 package vista;
 
-import controlador.ControladorParaModeloCliente;
-import controlador.ControladorParaModeloFacturas;
+import controlador.ControladorParaVistaCliente;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
@@ -20,7 +19,7 @@ import java.util.Collection;
  */
 public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
     private ModeloClienteParaVista modeloCliente;
-    private ControladorParaModeloCliente controladorCliente;
+    private ControladorParaVistaCliente controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;
     private JTextField jtfNIF,jtfNIFBorra,jtfNIFTarifa , jtfNIFConsulta, jtfNombre, jtfApellidos, jtfCodPos, jtfPobl, jtfProv, jtfEmail;
     private JTextArea areaTexto;
@@ -34,7 +33,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         this.modeloCliente = modeloCliente;
     }
 
-    public void setControladorCliente(ControladorParaModeloCliente controladorCliente) { this.controladorCliente=controladorCliente; }
+    public void setControladorCliente(ControladorParaVistaCliente controladorCliente) { this.controladorCliente=controladorCliente; }
 
     public JPanel cargaInterfaz(){
         JPanel panelClientes=new JPanel();          //Subpanel de clientes
@@ -100,7 +99,6 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
 
     @Override
     public void modeloModificado(){
-        System.out.println("Llego");
         areaTexto.setText("");
         for (Cliente c : modeloCliente.getListadoClientes()){
             areaTexto.append(c.toString());
@@ -114,6 +112,11 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
         jtfPobl.setText("");
         jtfProv.setText("");
         jtfEmail.setText("");
+    }
+
+    @Override
+    public void tarifaCambiada(){
+        areaTexto.setText(modeloCliente.getDatosCliente(getNIFTarifa()).toString());
     }
 
     @Override
@@ -263,7 +266,7 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    //Llamada controlador
+                    controladorCliente.setTarifaCliente();
                     dialogoDatos.setVisible(false);
                 }
             });

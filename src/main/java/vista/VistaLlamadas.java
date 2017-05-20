@@ -1,13 +1,12 @@
 package vista;
 
-import controlador.ControladorParaModeloLlamada;
+import controlador.ControladorParaVistaLlamada;
 import modelo.ModeloLlamadaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
-import sun.util.calendar.JulianCalendar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +22,7 @@ import java.util.Collection;
 public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControladorLlamada {
 
     private ModeloLlamadaParaVista modeloLlamada;
-    private ControladorParaModeloLlamada controladorLlamada;
+    private ControladorParaVistaLlamada controladorLlamada;
     private JButton bAlta, bLlamadasCliente, bLlamadasFechas;
     private JTextField jtfNIF, jtfNIF2, jtfTelefono, jtfDuracion;
     private JTextArea areaTexto;
@@ -36,7 +35,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
         this.modeloLlamada = modeloLlamada;
     }
 
-    public void setControladorLlamada(ControladorParaModeloLlamada controladorLlamada){ this.controladorLlamada = controladorLlamada;}
+    public void setControladorLlamada(ControladorParaVistaLlamada controladorLlamada){ this.controladorLlamada = controladorLlamada;}
 
     public JPanel cargaInterfaz(){
         JPanel panelLlamadas=new JPanel();

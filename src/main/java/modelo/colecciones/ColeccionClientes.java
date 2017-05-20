@@ -1,10 +1,12 @@
 package modelo.colecciones;
 
-import controlador.ControladorParaModeloCliente;
 import modelo.ModeloClienteParaVista;
 import modelo.ModeloParaControladorCliente;
-import modelo.ModeloParacontroladorFactura;
 import modelo.cliente.Cliente;
+import modelo.factorias.TipoPromocion;
+import modelo.tarifa.PromocionDomingos;
+import modelo.tarifa.PromocionTardes;
+import modelo.tarifa.Tarifa;
 import vista.VistaParaModeloCliente;
 
 import java.io.Serializable;
@@ -27,7 +29,8 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
     public void setVista(VistaParaModeloCliente vista) {
         this.vista = vista;
     }
-    
+
+    @Override
     public boolean existeCliente(String NIF) {
         if(clientes.containsKey(NIF)){
             return true;
@@ -35,6 +38,7 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
         return false;
     }
 
+    @Override
     public boolean anyadirCliente(Cliente cliente) {
         if (!existeCliente(cliente.getNIF())){
             clientes.put(cliente.getNIF(),cliente);
@@ -44,6 +48,7 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
         return false;
     }
 
+    @Override
     public boolean borrarCliente(String NIF) {
         System.out.println(NIF);
         if( clientes.containsKey(NIF)){
@@ -54,21 +59,32 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
         return false;
     }
 
-/*    public boolean cambiarTarifa(String NIF, int precioMinuto) {
-        if(clientes.containsKey(NIF)){
-            Cliente aux = clientes.get(NIF);
-            aux.getTarifa().setPrecioMinuto(precioMinuto);
-            return true;
+    @Override
+    public void cambiarTarifa(String NIF, TipoPromocion tipoPromocion) {
+        if(existeCliente(NIF)){
+            Cliente cliente = clientes.get(NIF);
+            Tarifa tarifa=clientes.get(NIF).getTarifa();;
+            switch(tipoPromocion){
+                case TARDES:
+                    cliente.setTarifa(new PromocionTardes(tarifa,5));
+                    break;
+                case DOMINGOS:
+                    cliente.setTarifa(new PromocionDomingos(tarifa));
+                    break;
+            }
+            vista.tarifaCambiada();
         }
-        return false;
-    }*/
 
+    }
+
+    @Override
     public Cliente getDatosCliente(String NIF) {
         if(clientes.containsKey(NIF))
             return clientes.get(NIF);
         return null;
     }
 
+    @Override
     public Collection<Cliente> getListadoClientes() {
         return clientes.values();
     }
