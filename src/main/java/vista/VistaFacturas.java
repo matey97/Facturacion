@@ -4,6 +4,7 @@ import controlador.ControladorParaModeloFacturas;
 import modelo.ModeloFacturaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionFacturas;
+import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.Factura;
 
 import javax.swing.*;
@@ -158,7 +159,12 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    controladorFactura.emitiendoFactura();
+                    try {
+                        controladorFactura.emitiendoFactura();
+                    } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
+                        fechaInicialMayorQueFinal.printStackTrace();
+                    }
+
                     dialogoDatos.setVisible(false);
                 }
             });

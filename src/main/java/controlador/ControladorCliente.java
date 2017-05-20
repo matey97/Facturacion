@@ -82,13 +82,18 @@ public class ControladorCliente implements ControladorParaModeloCliente {
             modelo.borrarCliente(nif);
         //devolver a la vista para que muestre no existe cliente???
     }
+//_____________________________
+    @Override
+    public void setTarifaCliente() {
+
+    }
 
     public void setTarifa(){
         String dni =vista.getNIFTarifa();
         if (modelo.existeCliente(dni)) {
             if (vista.tarifaTardes()) {
                 Cliente cli = modelo.getDatosCliente(dni);
-                cli.setTarifa(new PromocionTardes);
+                cli.setTarifa(new PromocionTardes(tarifa,0));
             }
         }
 

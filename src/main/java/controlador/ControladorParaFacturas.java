@@ -1,9 +1,6 @@
 package controlador;
 
-import modelo.ModeloParaControladorCliente;
-import modelo.ModeloParaControladorLlamada;
-import modelo.ModeloParacontroladorFactura;
-import modelo.Utiles;
+import modelo.*;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaFacturas;
@@ -52,16 +49,20 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
 
     }
     public void emitiendoFactura() throws FechaInicialMayorQueFinal {
+        LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,00,01);
+        LocalDateTime fin = LocalDateTime.of(anyofin,mesFini,diaFin,00,01);
 
-        recuperarfecha();
-        String dni = vista.getDNI();
-        modelo.emitirFactura(modelo.getDatoscliente(dni),modelo.listarLlamadas(dni),new PeriodoFacturacion(
-        LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01)));
+        if (fin.isBefore(ini)){
+            throw new FechaInicialMayorQueFinal("Fecha erronea");
+        }else {
+            recuperarfecha();
+            String dni = vista.getDNI();
+            modelo.emitirFactura(modelo.getDatoscliente(dni), modelo.listarLlamadas(dni), new PeriodoFacturacion(ini, fin));
 
-
+        }
 
     }
-    public void mostrarDatosFactura(){
+  /*  public void mostrarDatosFactura(){
         int codigo =Integer.parseInt(vista.getCodigo());
         modelo.recuperarDatosFactura(codigo);
 
@@ -70,14 +71,13 @@ public class ControladorParaFacturas implements ControladorParaModeloFacturas  {
         modelo.recuperarFacturasCliente(vista.getDNI());
 
 
+
     }
     public void mostrarFacturasentrefecha(){
-        ;
+
         Utiles.entreDosFechas(modelo.recuperarFacturasCliente(vista.getDNI()),LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01));
 
 
-
-
     }
-
+*/
 }

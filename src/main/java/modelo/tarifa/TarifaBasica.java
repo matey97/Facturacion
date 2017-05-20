@@ -14,4 +14,5 @@ public class TarifaBasica extends Tarifa {
     public float costeLlamada(Llamada llamada){
         return llamada.getDuración()*getPrecioMinuto();
     }
+
 }

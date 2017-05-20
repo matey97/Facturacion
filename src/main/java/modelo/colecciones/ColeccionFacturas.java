@@ -54,7 +54,22 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         vista.nuevaFacturaCreada(contador-1);
         return aux;
     }
+//_______________________________________
+    @Override
+    public Cliente getDatoscliente(String nif) {
+        return null;
+    }
 
+    @Override
+    public Collection<Llamada> listarLlamadas(String nif) {
+        return null;
+    }
+
+    @Override
+    public void mostrarDatosfactura() {
+
+    }
+//___________________________________________________________________
     public Factura recuperarDatosFactura(int codigoFactura){
         for (HashMap<Integer,Factura> aux: facturas.values()){
             if (aux.containsKey(codigoFactura))

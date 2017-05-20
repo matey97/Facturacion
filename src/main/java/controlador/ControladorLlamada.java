@@ -31,5 +31,6 @@ public class ControladorLlamada implements ControladorParaModeloLlamada {
         if (duracion<=0)
             throw new DuracionNoValida("Duración de llamada no valida.");
         modelo.darDeAlta(nif, new Llamada(telefono,LocalDateTime.now(),duracion));
+        vista.llamadaDadaDeAlta();
     }
 }
