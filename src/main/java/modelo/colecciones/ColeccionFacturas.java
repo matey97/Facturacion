@@ -55,15 +55,6 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         return aux;
     }
 //_______________________________________
-    @Override
-    public Cliente getDatoscliente(String nif) {
-
-    }
-
-    @Override
-    public Collection<Llamada> listarLlamadas(String nif) {
-        return null;
-    }
 
 
 //___________________________________________________________________

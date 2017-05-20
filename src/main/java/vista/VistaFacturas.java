@@ -4,6 +4,7 @@ import controlador.ControladorParaVistaFacturas;
 import modelo.ModeloFacturaParaVista;
 import modelo.Utiles;
 import modelo.colecciones.ColeccionFacturas;
+import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.Factura;
 
@@ -163,6 +164,8 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
                         controladorFactura.emitiendoFactura();
                     } catch (FechaInicialMayorQueFinal fechaInicialMayorQueFinal) {
                         fechaInicialMayorQueFinal.printStackTrace();
+                    } catch (ExcepcionClienteSinLlamadas excepcionClienteSinLlamadas) {
+                        excepcionClienteSinLlamadas.printStackTrace();
                     }
 
                     //controladorFactura.emitiendoFactura();

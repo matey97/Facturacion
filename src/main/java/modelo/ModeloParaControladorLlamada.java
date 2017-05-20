@@ -11,6 +11,6 @@ import java.util.Collection;
  */
 public interface ModeloParaControladorLlamada {
     void darDeAlta(String nif, Llamada llamada) throws ExcepcionClienteSinLlamadas;
-    Collection listarLlamadas(String nif);
+    Collection listarLlamadas(String nif)throws ExcepcionClienteSinLlamadas;
 
 }

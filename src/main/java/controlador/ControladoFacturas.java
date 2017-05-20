@@ -2,16 +2,19 @@ package controlador;
 
 import modelo.*;
 import modelo.colecciones.ColeccionClientes;
+import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.excepciones.FechaInicialMayorQueFinal;
+import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaParaControladorFacturas;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 
 /**
  * Created by sergiojimenez on 16/5/17.
  */
-public class ControladorParaFacturas implements ControladorParaVistaFacturas {
+public class ControladoFacturas implements ControladorParaVistaFacturas {
     //private VistaFacturas vista;
     private ModeloParacontroladorFactura modeloFacturas;
     private ModeloParaControladorLlamada modeloLlamadas;
@@ -27,7 +30,7 @@ public class ControladorParaFacturas implements ControladorParaVistaFacturas {
     }
 
     public void setModeloClientes(ModeloParaControladorCliente modeloClientes) {
-        modeloClientes = modeloClientes;
+        this.modeloClientes = modeloClientes;
     }
 
     public void setVista(VistaParaControladorFacturas vista) {
@@ -58,7 +61,7 @@ public class ControladorParaFacturas implements ControladorParaVistaFacturas {
 
 
     }
-    public void emitiendoFactura() throws FechaInicialMayorQueFinal {
+    public void emitiendoFactura() throws FechaInicialMayorQueFinal, ExcepcionClienteSinLlamadas {
         LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,00,01);
         LocalDateTime fin = LocalDateTime.of(anyofin,mesFini,diaFin,00,01);
 
@@ -67,28 +70,14 @@ public class ControladorParaFacturas implements ControladorParaVistaFacturas {
         }else {
             recuperarfecha();
             String dni = vista.getDNI();
-
-            modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), modeloLlamadas.listarLlamadas(dni), new PeriodoFacturacion(ini, fin));
-
+            Collection<Llamada> llamadas= modeloLlamadas.listarLlamadas(dni);
+            if(llamadas== null){
+                throw new ExcepcionClienteSinLlamadas("No hay llamadas");
+            }else {
+                modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
+            }
         }
 
     }
-  /*  public void mostrarDatosFactura(){
-        int codigo =Integer.parseInt(vista.getCodigo());
-        modelo.recuperarDatosFactura(codigo);
 
-    }
-    public void mostrarFaturasCliente(){
-        modelo.recuperarFacturasCliente(vista.getDNI());
-
-
-
-    }
-    public void mostrarFacturasentrefecha(){
-
-        Utiles.entreDosFechas(modelo.recuperarFacturasCliente(vista.getDNI()),LocalDateTime.of(anyoini,mesIni,diaini,00,01), LocalDateTime.of(anyofin,mesFini,diaFin,00,01));
-
-
-    }
-*/
 }

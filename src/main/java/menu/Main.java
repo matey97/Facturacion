@@ -2,7 +2,7 @@ package menu;
 
 import controlador.ControladorCliente;
 import controlador.ControladorLlamada;
-import controlador.ControladorParaFacturas;
+import controlador.ControladoFacturas;
 import modelo.colecciones.*;
 import vista.*;
 
@@ -29,7 +29,7 @@ public class Main {
 
         ControladorCliente controladorCliente = new ControladorCliente();   //Creamos controladores
         ControladorLlamada controladorLlamada = new ControladorLlamada();
-        ControladorParaFacturas controladorFactura = new ControladorParaFacturas();
+        ControladoFacturas controladorFactura = new ControladoFacturas();
 
         clientes.setVista(vistaClientes);   //Ponemos a cada modelo su vista
         facturas.setVista(vistaFacturas);
@@ -47,6 +47,7 @@ public class Main {
 
         controladorFactura.setModeloFacturas(facturas);
         controladorFactura.setModeloClientes(clientes);
+        controladorFactura.setModeloLlamadas(llamadas);
         controladorLlamada.setModelo(llamadas);
         controladorFactura.setVista(vistaFacturas);
 
