@@ -19,6 +19,7 @@ public abstract class Cliente implements Fecha, Serializable{
     private Tarifa tarifa;
 
     public Cliente(){
+
     }
 
     public Cliente(String nombre, String apellidos, String NIF, Direccion direccion, String email,Tarifa tarifa) {
