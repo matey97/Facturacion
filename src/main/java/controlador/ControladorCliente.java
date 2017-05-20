@@ -7,6 +7,7 @@ import modelo.cliente.Direccion;
 import modelo.factorias.FactoriaClientes;
 import modelo.factorias.FactoriaTarifa;
 import modelo.factorias.FactoriaTarifas;
+import modelo.tarifa.PromocionDomingos;
 import modelo.tarifa.PromocionTardes;
 import modelo.tarifa.Tarifa;
 import modelo.tarifa.TarifaBasica;
@@ -90,10 +91,14 @@ public class ControladorCliente implements ControladorParaModeloCliente {
 
     public void setTarifa(){
         String dni =vista.getNIFTarifa();
+        Cliente cli = modelo.getDatosCliente(dni);
         if (modelo.existeCliente(dni)) {
             if (vista.tarifaTardes()) {
-                Cliente cli = modelo.getDatosCliente(dni);
                 cli.setTarifa(new PromocionTardes(tarifa,0));
+            }
+            if (vista.tarifaDomingos()){
+                cli.setTarifa(new PromocionDomingos(tarifa));
+
             }
         }
 
