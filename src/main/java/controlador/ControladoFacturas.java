@@ -15,14 +15,14 @@ import java.util.Collection;
  * Created by sergiojimenez on 16/5/17.
  */
 public class ControladoFacturas implements ControladorParaVistaFacturas {
-    //private VistaFacturas vista;
+
     private ModeloParacontroladorFactura modeloFacturas;
     private ModeloParaControladorLlamada modeloLlamadas;
     private ModeloParaControladorCliente modeloClientes;
     private VistaParaControladorFacturas vista;
 
-    public void setModeloFacturas(ModeloParacontroladorFactura modelo) {
-        this.modeloFacturas = modelo;
+    public void setModeloFacturas(ModeloParacontroladorFactura modeloFacturas) {
+        this.modeloFacturas = modeloFacturas;
     }
 
     public void setModeloLlamadas(ModeloParaControladorLlamada modeloLlamadas) {
@@ -71,10 +71,7 @@ public class ControladoFacturas implements ControladorParaVistaFacturas {
             recuperarfecha();
             String dni = vista.getDNI();
             Collection<Llamada> llamadas= modeloLlamadas.listarLlamadas(dni);
-            if(llamadas== null){
-                throw new ExcepcionClienteSinLlamadas("No hay llamadas");
-            }else {
-                modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
+            modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
             }
         }
 
