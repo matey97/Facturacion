@@ -62,19 +62,19 @@ public class ControladoFacturas implements ControladorParaVistaFacturas {
 
     }
     public void emitiendoFactura() throws FechaInicialMayorQueFinal, ExcepcionClienteSinLlamadas {
-        LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,00,01);
-        LocalDateTime fin = LocalDateTime.of(anyofin,mesFini,diaFin,00,01);
+        recuperarfecha();
+        LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,0,0);
+        LocalDateTime fin = LocalDateTime.of(anyofin,mesFini,diaFin,0,0);
 
         if (fin.isBefore(ini)){
             throw new FechaInicialMayorQueFinal("Fecha erronea");
         }else {
-            recuperarfecha();
             String dni = vista.getDNI();
             Collection<Llamada> llamadas= modeloLlamadas.listarLlamadas(dni);
             modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
-            }
         }
-
     }
 
 }
+
+

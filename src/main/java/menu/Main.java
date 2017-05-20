@@ -48,7 +48,6 @@ public class Main {
         controladorFactura.setModeloFacturas(facturas);
         controladorFactura.setModeloClientes(clientes);
         controladorFactura.setModeloLlamadas(llamadas);
-        controladorLlamada.setModelo(llamadas);
         controladorFactura.setVista(vistaFacturas);
 
         controladorLlamada.setModelo(llamadas);

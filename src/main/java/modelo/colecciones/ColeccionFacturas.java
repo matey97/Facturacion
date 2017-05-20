@@ -13,9 +13,7 @@ import vista.VistaParaModeloFactura;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Created by user on 27/02/17.
@@ -26,6 +24,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
     private VistaParaModeloFactura vista;
     private HashMap<String,HashMap<Integer,Factura>> facturas;
     private static int contador;
+    private boolean primera=true;
 
     public ColeccionFacturas(){
         facturas=new HashMap<>();
@@ -38,6 +37,8 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
 
 
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
+        if (contador != 1 && primera==true)
+            contador=calculaCodigo();
         int importe=0;
         Collection<Llamada> col=Utiles.entreDosFechas(llamadas,periodoFacturacion.getFechaInicial(),periodoFacturacion.getFechaFinal());
         Iterator<Llamada> it=col.iterator();
@@ -52,7 +53,20 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);
         vista.nuevaFacturaCreada(contador-1);
+        primera=false;
         return aux;
+    }
+
+    private int calculaCodigo(){
+        int max=1;
+        for(String dni : facturas.keySet()){
+            Set<Integer> cod = facturas.get(dni).keySet();
+            for(Integer c : cod){
+                if (c>max)
+                    max=c;
+            }
+        }
+        return max;
     }
 //_______________________________________
 
