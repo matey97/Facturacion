@@ -165,6 +165,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
                         fechaInicialMayorQueFinal.printStackTrace();
                     }
 
+                    //controladorFactura.emitiendoFactura();
                     dialogoDatos.setVisible(false);
                 }
             });
