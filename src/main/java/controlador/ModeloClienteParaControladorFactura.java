@@ -8,6 +8,6 @@ import java.util.HashMap;
 /**
  * Created by sergiojimenez on 20/5/17.
  */
-public interface ControladorParaModeloClientes {
+public interface ModeloClienteParaControladorFactura {
     Cliente getDatosCliente(String nif);
 }

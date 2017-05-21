@@ -3,7 +3,6 @@ package vista;
 import controlador.ControladorParaVistaLlamada;
 import modelo.ModeloLlamadaParaVista;
 import modelo.Utiles;
-import modelo.colecciones.ColeccionLlamadas;
 import modelo.excepciones.DuracionNoValida;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
@@ -226,24 +225,6 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
             dialogoDatos.add(aceptar,BorderLayout.SOUTH);
             dialogoDatos.pack();
             dialogoDatos.setVisible(true);
-        }
-    }
-
-    public void cargaDatos(){
-        try{
-            FileInputStream fichLlamadas = new FileInputStream("llamadas.bin");
-            ObjectInputStream objLlamadas = new ObjectInputStream(fichLlamadas);
-            modeloLlamada = (ColeccionLlamadas) objLlamadas.readObject();
-            objLlamadas.close();
-        } catch(FileNotFoundException e){
-            System.out.println("Error del fichero.");
-            System.out.println(e);
-        } catch(IOException e){
-            System.out.println("Error en ObjectInputStream.");
-            System.out.println(e);
-        } catch(ClassNotFoundException e){
-            System.out.println("Error al recuperar datos del fichero.");
-            System.out.println(e);
         }
     }
 

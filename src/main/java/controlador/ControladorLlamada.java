@@ -23,6 +23,7 @@ public class ControladorLlamada implements ControladorParaVistaLlamada {
         this.modelo = modelo;
     }
 
+    @Override
     public void darDeAltaLlamada() throws DuracionNoValida, ExcepcionClienteSinLlamadas{
         String nif = vista.getNIF();
         int duracion = Integer.parseInt(vista.getDuracion());

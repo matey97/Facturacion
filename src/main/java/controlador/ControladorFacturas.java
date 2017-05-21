@@ -14,22 +14,22 @@ import java.util.Collection;
 /**
  * Created by sergiojimenez on 16/5/17.
  */
-public class ControladoFacturas implements ControladorParaVistaFacturas {
+public class ControladorFacturas implements ControladorParaVistaFacturas {
 
     private ModeloParacontroladorFactura modeloFacturas;
-    private ModeloParaControladorLlamada modeloLlamadas;
-    private ModeloParaControladorCliente modeloClientes;
+    private ModeloLlamadasParaControladorFactura modeloLlamadas;
+    private ModeloClienteParaControladorFactura modeloClientes;
     private VistaParaControladorFacturas vista;
 
     public void setModeloFacturas(ModeloParacontroladorFactura modeloFacturas) {
         this.modeloFacturas = modeloFacturas;
     }
 
-    public void setModeloLlamadas(ModeloParaControladorLlamada modeloLlamadas) {
+    public void setModeloLlamadas(ModeloLlamadasParaControladorFactura modeloLlamadas) {
         this.modeloLlamadas = modeloLlamadas;
     }
 
-    public void setModeloClientes(ModeloParaControladorCliente modeloClientes) {
+    public void setModeloClientes(ModeloClienteParaControladorFactura modeloClientes) {
         this.modeloClientes = modeloClientes;
     }
 
@@ -61,6 +61,8 @@ public class ControladoFacturas implements ControladorParaVistaFacturas {
 
 
     }
+
+    @Override
     public void emitiendoFactura() throws FechaInicialMayorQueFinal, ExcepcionClienteSinLlamadas {
         recuperarfecha();
         LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,0,0);

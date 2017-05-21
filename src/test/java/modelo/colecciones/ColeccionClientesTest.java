@@ -11,6 +11,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import vista.VistaClientes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

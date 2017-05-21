@@ -13,5 +13,4 @@ public interface ModeloParaControladorCliente {
         boolean borrarCliente(String nif);
         boolean existeCliente(String NIF);
         void cambiarTarifa(String NIF, TipoPromocion tipoPromocion);
-        Cliente getDatosCliente(String nif);
 }

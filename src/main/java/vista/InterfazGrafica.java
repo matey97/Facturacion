@@ -43,17 +43,7 @@ public class InterfazGrafica {
         pestanyas.add("Facturas",vistaFacturas.cargaInterfaz());
 
         JPanel panelBotones=new JPanel();
-        JButton boton=new JButton("Cargar datos");
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                vistaClientes.cargaDatos();
-                vistaLlamadas.cargaDatos();
-                vistaFacturas.cargaDatos();
-            }
-        });
-        panelBotones.add(boton);
-        boton=new JButton("Guardar datos");
+        JButton boton=new JButton("Guardar datos");
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

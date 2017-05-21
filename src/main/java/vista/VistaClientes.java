@@ -4,7 +4,6 @@ import controlador.ControladorParaVistaCliente;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
-import modelo.colecciones.ColeccionClientes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -369,24 +368,6 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             dialogoDatos.add(aceptar,BorderLayout.SOUTH);
             dialogoDatos.pack();
             dialogoDatos.setVisible(true);
-        }
-    }
-
-    public void cargaDatos(){
-        try{
-            FileInputStream fichClientes = new FileInputStream("clientes.bin");
-            ObjectInputStream objClientes = new ObjectInputStream(fichClientes);
-            modeloCliente = (ColeccionClientes) objClientes.readObject();
-            objClientes.close();
-        } catch(FileNotFoundException e){
-            System.out.println("Error del fichero.");
-            System.out.println(e);
-        } catch(IOException e){
-            System.out.println("Error en ObjectInputStream.");
-            System.out.println(e);
-        } catch(ClassNotFoundException e){
-            System.out.println("Error al recuperar datos del fichero.");
-            System.out.println(e);
         }
     }
 

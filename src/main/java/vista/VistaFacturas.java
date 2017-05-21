@@ -3,7 +3,6 @@ package vista;
 import controlador.ControladorParaVistaFacturas;
 import modelo.ModeloFacturaParaVista;
 import modelo.Utiles;
-import modelo.colecciones.ColeccionFacturas;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.excepciones.FechaInicialMayorQueFinal;
 import modelo.factura.Factura;
@@ -70,7 +69,8 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
     @Override
     public void nuevaFacturaCreada(int codigo) {
         areaTexto.append(modeloFactura.recuperarDatosFactura(codigo).toString());
-        areaTexto.append("");
+        areaTexto.append("\n");
+        areaTexto.append("\n");
     }
 
     @Override
@@ -221,7 +221,8 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
                     areaTexto.setText("");
                     for(Factura f: modeloFactura.recuperarFacturasCliente(jtfdni.getText())){
                         areaTexto.append(f.toString());
-                        areaTexto.append("");
+                        areaTexto.append("\n");
+                        areaTexto.append("\n");
                     }
                     dialogoDatos.setVisible(false);
                 }
@@ -288,9 +289,11 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
                     int diaF=Integer.parseInt(diaFin.getText());
 
                     Collection<Factura> colF = Utiles.entreDosFechas(modeloFactura.recuperarFacturasCliente(jtfdni.getText()), LocalDateTime.of(anyoI, mesI, diaI, 0, 0), LocalDateTime.of(anyoF, mesF, diaF, 0, 0));
+                    areaTexto.setText("");
                     for (Factura c : colF) {
                         areaTexto.append(c.toString());
-                        areaTexto.append("");
+                        areaTexto.append("\n");
+                        areaTexto.append("\n");
                     }
                     dialogoDatos.setVisible(false);
                 }
@@ -299,24 +302,6 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             dialogoDatos.add(aceptar,BorderLayout.SOUTH);
             dialogoDatos.pack();
             dialogoDatos.setVisible(true);
-        }
-    }
-
-    public void cargaDatos(){
-        try{
-            FileInputStream fichFacturas = new FileInputStream("facturas.bin");
-            ObjectInputStream objFacturas = new ObjectInputStream(fichFacturas);
-            modeloFactura = (ColeccionFacturas) objFacturas.readObject();
-            objFacturas.close();
-        } catch(FileNotFoundException e){
-            System.out.println("Error del fichero.");
-            System.out.println(e);
-        } catch(IOException e){
-            System.out.println("Error en ObjectInputStream.");
-            System.out.println(e);
-        } catch(ClassNotFoundException e){
-            System.out.println("Error al recuperar datos del fichero.");
-            System.out.println(e);
         }
     }
 

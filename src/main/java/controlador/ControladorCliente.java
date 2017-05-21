@@ -1,6 +1,5 @@
 package controlador;
 
-//import modelo.ModeloClienteParaVista;
 import modelo.ModeloParaControladorCliente;
 import modelo.cliente.Cliente;
 import modelo.cliente.Direccion;
@@ -11,8 +10,8 @@ import modelo.factorias.TipoPromocion;
 import modelo.tarifa.Tarifa;
 import vista.VistaParaControladorClientes;
 
+
 import java.time.LocalDateTime;
-//import vista.VistaCliente;
 
 /**
  * Created by sergiojimenez on 25/4/17.
@@ -82,7 +81,7 @@ public class ControladorCliente implements ControladorParaVistaCliente {
             modelo.borrarCliente(nif);
         //devolver a la vista para que muestre no existe cliente???
     }
-//_____________________________
+
     @Override
     public void setTarifaCliente() {
         if (vista.tarifaTardes() && vista.tarifaDomingos()){

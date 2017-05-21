@@ -35,7 +35,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         this.vista = vista;
     }
 
-
+    @Override
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
         if (contador != 1 && primera==true)
             contador=calculaCodigo();
@@ -68,10 +68,8 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         }
         return max;
     }
-//_______________________________________
 
-
-//___________________________________________________________________
+    @Override
     public Factura recuperarDatosFactura(int codigoFactura){
         for (HashMap<Integer,Factura> aux: facturas.values()){
             if (aux.containsKey(codigoFactura))
@@ -80,6 +78,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
         return null;
     }
 
+    @Override
     public Collection<Factura> recuperarFacturasCliente(String nif){
         if (facturas.containsKey(nif))
             return facturas.get(nif).values();
