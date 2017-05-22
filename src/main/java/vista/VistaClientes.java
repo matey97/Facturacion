@@ -16,7 +16,7 @@ import java.util.Collection;
 /**
  * Created by User on 03/05/2017.
  */
-public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes{
+public class VistaClientes implements VistaParaModeloCliente, VistaParaControladorClientes, Serializable{
     private ModeloClienteParaVista modeloCliente;
     private ControladorParaVistaCliente controladorCliente;
     private JButton bAnyadir, bBorrar, bCambioTarifa, bDatosCliente, bListado, bListadoFechas;

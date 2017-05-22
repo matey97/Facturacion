@@ -8,13 +8,14 @@ import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaParaControladorFacturas;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
  * Created by sergiojimenez on 16/5/17.
  */
-public class ControladorFacturas implements ControladorParaVistaFacturas {
+public class ControladorFacturas implements ControladorParaVistaFacturas, Serializable {
 
     private ModeloParacontroladorFactura modeloFacturas;
     private ModeloLlamadasParaControladorFactura modeloLlamadas;

@@ -2,10 +2,12 @@ package modelo.factorias;
 
 import modelo.tarifa.*;
 
+import java.io.Serializable;
+
 /**
  * Created by al341802 on 4/04/17.
  */
-public class FactoriaTarifas implements FactoriaTarifa {
+public class FactoriaTarifas implements FactoriaTarifa, Serializable {
 
     public FactoriaTarifas(){
         super();

@@ -18,7 +18,7 @@ import java.util.Collection;
 /**
  * Created by user on 28/04/17.
  */
-public class VistaFacturas implements VistaParaModeloFactura, VistaParaControladorFacturas {
+public class VistaFacturas implements VistaParaModeloFactura, VistaParaControladorFacturas, Serializable {
 
     private ModeloFacturaParaVista modeloFactura;
     private ControladorParaVistaFacturas controladorFactura;
@@ -193,7 +193,7 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    modeloFactura.recuperarDatosFactura(Integer.parseInt(jtfCodigo.getText()));
+                    areaTexto.setText(modeloFactura.recuperarDatosFactura(Integer.parseInt(jtfCodigo.getText())).toString());
                     dialogoDatos.setVisible(false);
                 }
             });

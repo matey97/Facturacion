@@ -6,12 +6,13 @@ import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.factura.Llamada;
 import vista.VistaParaControladorLlamada;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 15/5/17.
  */
-public class ControladorLlamada implements ControladorParaVistaLlamada {
+public class ControladorLlamada implements ControladorParaVistaLlamada, Serializable {
     private VistaParaControladorLlamada vista;
     private ModeloParaControladorLlamada modelo;
 

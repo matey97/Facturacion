@@ -23,8 +23,8 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
 
     private VistaParaModeloFactura vista;
     private HashMap<String,HashMap<Integer,Factura>> facturas;
-    private static int contador;
-    private boolean primera=true;
+    private int contador;
+
 
     public ColeccionFacturas(){
         facturas=new HashMap<>();
@@ -37,7 +37,7 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
 
     @Override
     public Factura emitirFactura(Cliente cliente, Collection llamadas, PeriodoFacturacion periodoFacturacion) throws FechaInicialMayorQueFinal{
-        if (contador != 1 && primera==true)
+        if (contador == 1)
             contador=calculaCodigo();
         int importe=0;
         Collection<Llamada> col=Utiles.entreDosFechas(llamadas,periodoFacturacion.getFechaInicial(),periodoFacturacion.getFechaFinal());
@@ -53,20 +53,20 @@ public class ColeccionFacturas implements Serializable, ModeloFacturaParaVista, 
             facturas.put(cliente.getNIF(),new HashMap<>());
         facturas.get(cliente.getNIF()).put(aux.getCodfac(),aux);
         vista.nuevaFacturaCreada(contador-1);
-        primera=false;
         return aux;
     }
 
     private int calculaCodigo(){
-        int max=1;
+        int max=0;
         for(String dni : facturas.keySet()){
             Set<Integer> cod = facturas.get(dni).keySet();
             for(Integer c : cod){
+                System.out.println(c);
                 if (c>max)
                     max=c;
             }
         }
-        return max;
+        return max+1;
     }
 
     @Override

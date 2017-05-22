@@ -18,7 +18,7 @@ import java.util.Collection;
 /**
  * Created by user on 28/04/17.
  */
-public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControladorLlamada {
+public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControladorLlamada, Serializable {
 
     private ModeloLlamadaParaVista modeloLlamada;
     private ControladorParaVistaLlamada controladorLlamada;
@@ -230,7 +230,7 @@ public class VistaLlamadas implements VistaParaModeloLlamada, VistaParaControlad
 
     public void guardaDatos(){
         try {
-            FileOutputStream fichLlamadas = new FileOutputStream("clientes.bin");
+            FileOutputStream fichLlamadas = new FileOutputStream("llamadas.bin");
             ObjectOutputStream objLlamadas = new ObjectOutputStream(fichLlamadas);
             objLlamadas.writeObject(modeloLlamada);
             objLlamadas.close();

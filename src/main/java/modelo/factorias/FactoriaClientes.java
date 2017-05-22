@@ -6,12 +6,13 @@ import modelo.cliente.Empresa;
 import modelo.cliente.Particular;
 import modelo.tarifa.Tarifa;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by al341802 on 11/04/17.
  */
-public class FactoriaClientes implements FactoriaCliente {
+public class FactoriaClientes implements FactoriaCliente, Serializable {
 
     @Override
     public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email,  Tarifa tarifa) {

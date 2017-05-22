@@ -11,12 +11,13 @@ import modelo.tarifa.Tarifa;
 import vista.VistaParaControladorClientes;
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
  * Created by sergiojimenez on 25/4/17.
  */
-public class ControladorCliente implements ControladorParaVistaCliente {
+public class ControladorCliente implements ControladorParaVistaCliente, Serializable {
 
     private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;
