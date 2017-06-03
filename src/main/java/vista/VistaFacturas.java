@@ -74,6 +74,13 @@ public class VistaFacturas implements VistaParaModeloFactura, VistaParaControlad
     }
 
     @Override
+    public void noExisteCliente(){
+        areaTexto.append("No se ha emitido factura. No existe el cliente o no tiene llamadas.");
+        areaTexto.append("\n");
+        areaTexto.append("\n");
+    }
+
+    @Override
     public String getCodigo(){
         return jtfCodigo.getText();
     }

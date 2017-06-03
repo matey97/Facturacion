@@ -4,6 +4,7 @@ import controlador.ModeloClienteParaControladorFactura;
 import modelo.ModeloClienteParaVista;
 import modelo.ModeloParaControladorCliente;
 import modelo.cliente.Cliente;
+import modelo.excepciones.NoExisteCliente;
 import modelo.factorias.TipoPromocion;
 import modelo.tarifa.PromocionDomingos;
 import modelo.tarifa.PromocionTardes;
@@ -73,16 +74,18 @@ public class ColeccionClientes implements Serializable, ModeloClienteParaVista, 
                     cliente.setTarifa(new PromocionDomingos(tarifa));
                     break;
             }
-            vista.tarifaCambiada();
-        }
 
+        }
+        vista.tarifaCambiada();
     }
 
     @Override
-    public Cliente getDatosCliente(String NIF) {
+    public Cliente getDatosCliente(String NIF) throws NoExisteCliente{
         if(clientes.containsKey(NIF))
             return clientes.get(NIF);
-        return null;
+        else{
+            throw new NoExisteCliente("El cliente no existe");
+        }
     }
 
     @Override

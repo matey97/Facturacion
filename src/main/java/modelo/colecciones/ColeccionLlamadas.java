@@ -43,7 +43,7 @@ public class ColeccionLlamadas implements  Serializable, ModeloLlamadaParaVista,
         if (llamadasNif!=null){
             return llamadasNif;
         }else{
-            throw new ExcepcionClienteSinLlamadas("no hay llamadas");
+            throw new ExcepcionClienteSinLlamadas("No hay llamadas para dicho cliente.");
         }
     }
 }

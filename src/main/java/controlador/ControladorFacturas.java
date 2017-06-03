@@ -4,6 +4,7 @@ import modelo.*;
 import modelo.colecciones.ColeccionClientes;
 import modelo.excepciones.ExcepcionClienteSinLlamadas;
 import modelo.excepciones.FechaInicialMayorQueFinal;
+import modelo.excepciones.NoExisteCliente;
 import modelo.factura.Llamada;
 import modelo.factura.PeriodoFacturacion;
 import vista.VistaParaControladorFacturas;
@@ -64,7 +65,7 @@ public class ControladorFacturas implements ControladorParaVistaFacturas, Serial
     }
 
     @Override
-    public void emitiendoFactura() throws FechaInicialMayorQueFinal, ExcepcionClienteSinLlamadas {
+    public void emitiendoFactura() throws FechaInicialMayorQueFinal {
         recuperarfecha();
         LocalDateTime ini = LocalDateTime.of(anyoini,mesIni,diaini,0,0);
         LocalDateTime fin = LocalDateTime.of(anyofin,mesFini,diaFin,0,0);
@@ -73,8 +74,13 @@ public class ControladorFacturas implements ControladorParaVistaFacturas, Serial
             throw new FechaInicialMayorQueFinal("Fecha erronea");
         }else {
             String dni = vista.getDNI();
-            Collection<Llamada> llamadas= modeloLlamadas.listarLlamadas(dni);
-            modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
+
+            try {
+                Collection<Llamada> llamadas= modeloLlamadas.listarLlamadas(dni);
+                modeloFacturas.emitirFactura(modeloClientes.getDatosCliente(dni), llamadas, new PeriodoFacturacion(ini, fin));
+            }catch (Exception m) {
+                vista.noExisteCliente();
+            }
         }
     }
 

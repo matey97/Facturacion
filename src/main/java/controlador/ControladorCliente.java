@@ -39,11 +39,8 @@ public class ControladorCliente implements ControladorParaVistaCliente, Serializ
     private String provincia;
     private String poblacion;
     private String email;
-    private LocalDateTime fecha;
-    private Tarifa tarifa;
 
     FactoriaClientes fabricacliente = new FactoriaClientes();
-    FactoriaTarifa fabricaTarifa=new FactoriaTarifas();
 
     @Override
     public void anyadiendoCliente() {
@@ -51,11 +48,11 @@ public class ControladorCliente implements ControladorParaVistaCliente, Serializ
         if (vista.esParticular()) {
             recuperarDatos ();
             apellidos = vista.getApellido();
-            Cliente particular = fabricacliente.crearClienteParticular(nombre,apellidos,NIF,direccion,email,tarifa);//crear cliente
+            Cliente particular = fabricacliente.crearClienteParticular(nombre,apellidos,NIF,direccion,email);//crear cliente
             modelo.anyadirCliente(particular);//mandar cliente a modeloparticular
         } else if (vista.esEmpresa()) {
             recuperarDatos ();
-            Cliente empresa = fabricacliente.crearClienteEmpresa(nombre,NIF,direccion,email,tarifa);//crear cliente
+            Cliente empresa = fabricacliente.crearClienteEmpresa(nombre,NIF,direccion,email);//crear cliente
             modelo.anyadirCliente(empresa);
 
         }
@@ -69,7 +66,6 @@ public class ControladorCliente implements ControladorParaVistaCliente, Serializ
         codpos = Integer.parseInt(vista.getCodPos());
         provincia = vista.getProv();
         direccion = new Direccion(codpos, provincia, poblacion);// getcodpos getpoblacion getprov
-        tarifa=fabricaTarifa.getTarifaBasica();
         email = vista.getEmail();
        //setear  Tarifa tarifa = vista.getTarifa();
 

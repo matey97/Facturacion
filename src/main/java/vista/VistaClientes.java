@@ -4,6 +4,7 @@ import controlador.ControladorParaVistaCliente;
 import modelo.ModeloClienteParaVista;
 import modelo.Utiles;
 import modelo.cliente.Cliente;
+import modelo.excepciones.NoExisteCliente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,7 +116,11 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
 
     @Override
     public void tarifaCambiada(){
-        areaTexto.setText(modeloCliente.getDatosCliente(getNIFTarifa()).toString());
+        try {
+            areaTexto.setText(modeloCliente.getDatosCliente(getNIFTarifa()).toString());
+        }catch (NoExisteCliente m){
+            areaTexto.setText(m.getMessage());
+        }
     }
 
     @Override
@@ -291,7 +296,11 @@ public class VistaClientes implements VistaParaModeloCliente, VistaParaControlad
             aceptar.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    areaTexto.setText(modeloCliente.getDatosCliente(getNIFDatos()).toString());
+                    try {
+                        areaTexto.setText(modeloCliente.getDatosCliente(getNIFDatos()).toString());
+                    }catch (NoExisteCliente m){
+                        areaTexto.setText(m.getMessage());
+                    }
                     dialogoDatos.setVisible(false);
                 }
             });

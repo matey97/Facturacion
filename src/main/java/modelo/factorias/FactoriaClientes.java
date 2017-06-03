@@ -14,15 +14,19 @@ import java.time.LocalDateTime;
  */
 public class FactoriaClientes implements FactoriaCliente, Serializable {
 
+    public FactoriaClientes(){
+        super();
+    }
+
     @Override
-    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email,  Tarifa tarifa) {
-        Cliente nuevoCliente = new Particular(nombre, apellidos, NIF, direccion, email,  tarifa);
+    public Cliente crearClienteParticular(String nombre, String apellidos, String NIF, Direccion direccion, String email) {
+        Cliente nuevoCliente = new Particular(nombre, apellidos, NIF, direccion, email);
         return nuevoCliente;
     }
 
     @Override
-    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email, Tarifa tarifa) {
-        Cliente nuevoCliente = new Empresa(nombre, NIF, direccion, email, tarifa);
+    public Cliente crearClienteEmpresa(String nombre, String NIF, Direccion direccion, String email) {
+        Cliente nuevoCliente = new Empresa(nombre, NIF, direccion, email);
         return nuevoCliente;
     }
 }
