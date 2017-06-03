@@ -45,9 +45,12 @@ public class Gestion {
         controladorCliente=new ControladorCliente();
         controladorFactura=new ControladorFacturas();
         controladorLlamada=new ControladorLlamada();
+
+        cargaDatos();
+        enlazaEstructuras();
     }
 
-    public void cargaDatos(){
+    private void cargaDatos(){
         try{
             FileInputStream fichClientes = new FileInputStream("clientes.bin");
             FileInputStream fichLlamadas = new FileInputStream("llamadas.bin");
@@ -73,7 +76,7 @@ public class Gestion {
         }
     }
 
-    public void enlazaEstructuras(){
+    private void enlazaEstructuras(){
         clientes.setVista(vistaClientes);
         facturas.setVista(vistaFacturas);
         llamadas.setVista(vistaLlamadas);
