@@ -22,12 +22,15 @@ public class ControladorCliente implements ControladorParaVistaCliente, Serializ
     private ModeloParaControladorCliente modelo;
     private VistaParaControladorClientes vista;
 
+    public ControladorCliente(){
+        super();
+    }
+
     public void setVista(VistaParaControladorClientes vista) {
         this.vista = vista;
     }
 
     public void setModelo(ModeloParaControladorCliente modelo) {
-
         this.modelo = modelo;
     }
 

@@ -17,6 +17,10 @@ public class Factura implements Fecha, Serializable{
     private PeriodoFacturacion Periodofact;
     private int importe;
 
+    public Factura(){
+        super();
+    }
+
     public Factura(int codfac, Tarifa tarifa, LocalDateTime fechaDeEmision, PeriodoFacturacion periodofact, int importe) {
         this.codfac = codfac;
         this.tarifa = tarifa;

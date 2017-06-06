@@ -15,7 +15,9 @@ public class Llamada implements Fecha, Serializable{
     private LocalDateTime fecha;
     private int duracion;
 
-
+    public Llamada(){
+        super();
+    }
 
     public Llamada(int telefono, LocalDateTime fecha, int duracion) throws DuracionNoValida {
         if(duracion <= 0){

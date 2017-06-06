@@ -10,6 +10,10 @@ public class Direccion implements Serializable{
     private String provincia;
     private String poblacion;
 
+    public Direccion(){
+        super();
+    }
+
     public Direccion(int codPostal, String provincia, String poblacion) {
         this.codPostal = codPostal;
         this.provincia = provincia;

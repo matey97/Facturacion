@@ -16,6 +16,10 @@ public class ControladorLlamada implements ControladorParaVistaLlamada, Serializ
     private VistaParaControladorLlamada vista;
     private ModeloParaControladorLlamada modelo;
 
+    public ControladorLlamada(){
+        super();
+    }
+
     public void setVista(VistaParaControladorLlamada vista) {
         this.vista = vista;
     }

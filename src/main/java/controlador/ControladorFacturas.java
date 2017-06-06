@@ -23,6 +23,10 @@ public class ControladorFacturas implements ControladorParaVistaFacturas, Serial
     private ModeloClienteParaControladorFactura modeloClientes;
     private VistaParaControladorFacturas vista;
 
+    public ControladorFacturas(){
+        super();
+    }
+
     public void setModeloFacturas(ModeloParacontroladorFactura modeloFacturas) {
         this.modeloFacturas = modeloFacturas;
     }

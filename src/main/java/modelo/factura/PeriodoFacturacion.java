@@ -12,6 +12,9 @@ public class PeriodoFacturacion implements Serializable{
     private LocalDateTime fechaInicial;
     private LocalDateTime fechaFinal;
 
+    public PeriodoFacturacion(){
+        super();
+    }
 
     public PeriodoFacturacion(LocalDateTime fechaInicial, LocalDateTime fechaFinal) throws FechaInicialMayorQueFinal {
         if(fechaInicial.isAfter(fechaFinal)){
